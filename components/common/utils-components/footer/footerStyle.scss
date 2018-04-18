@@ -1,0 +1,30 @@
+.footer {
+    background-color: #000;
+    display: flex;
+    padding: 10px 30px;
+    justify-content: space-between;
+    align-items: center;
+    a {
+        text-decoration: none;
+    }
+    .links {
+        .link-item {
+            color: #fff;
+            &:active {
+                border-bottom: 2px solid #2ef080;
+            }
+            &:first-child {
+                margin-right: 20px
+            }
+        }
+    }
+
+    .contacts {
+        color: #fff;
+        .contacts-link {
+            margin: 0 5px;
+        }
+    }
+}
+
+
