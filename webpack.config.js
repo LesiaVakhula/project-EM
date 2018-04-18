@@ -16,10 +16,10 @@ module.exports = {
           { loader:'ngtemplate-loader?relativeTo=' + (path.resolve(__dirname, './components')) },
           { loader: 'html-loader' }
         ]
-      }]
-    // plugins: [
-    //   new LiveReloadPlugin('http://localhost:35729/livereload.js')
-    // ]
+      }],
+    plugins: [
+      new LiveReloadPlugin('localhost:8080')
+    ]
   },
   watch: true
 };
