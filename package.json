@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --open --config webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --watch-poll --open --config webpack.config.development.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.production.js"
   },
   "author": "",
   "license": "ISC",
