@@ -16,12 +16,7 @@ module.exports = angular.module('emApp.main', ['ui.router'])
     url:'/',
     templateUrl : template,
     controller: (['$scope', function($scope) {
-  	$scope.classesArray = [
-		{ className: 'col-sm-6 birthday', name:'birthday' }, 
-		{ className: 'col-sm-6 funeral', name:'funeral' },
-		{ className: 'col-sm-6 conference', name:'conference' },
-		{ className: 'col-sm-6 wedding', name:'wedding' }
-		];
+  	$scope.classesArray = ['birthday', 'funeral', 'conference', 'wedding'];
 }])
  }
 
