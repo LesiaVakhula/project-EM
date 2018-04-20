@@ -1,9 +1,12 @@
-var LiveReloadPlugin = require('webpack-livereload-plugin');
+const LiveReloadPlugin = require('webpack-livereload-plugin');
 const path = require('path');
+const env = process.env.NODE_ENV;
+
 module.exports = {
   entry: "./components/common/app.js",
   output: {
-    filename: "./build/bundle.js"
+    path: path.join(__dirname, '/build'),
+    filename: "bundle.js"
   },
   module: {
     rules: [{
@@ -23,28 +26,11 @@ module.exports = {
       {
         test: /\.(png|jpe?g)$/i,
         use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              mozjpeg: {
-                quality: 75
-              },
-              optipng: {
-                enabled: true,
-              },
-              pngquant: {
-                quality: '65-90',
-                speed: 5
-              },
-            }
-          },
+          'file-loader?name=[name].[ext]',
+          'image-webpack-loader'
         ],
       }
     ],
-    // plugins: [
-    //   new LiveReloadPlugin('localhost:8080')
-    // ]
   },
     // plugins: [
     //     new LiveReloadPlugin('localhost:8080')
