@@ -10,9 +10,9 @@ $birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
 }
 
 #main {
-	width :100%;
-	height:100%;
-	position:absolute;
+	/* // width :100%;
+	// height:100%;
+	// position:absolute; */
 	padding:0;
 }
 .event-action-wrapper {
@@ -22,17 +22,25 @@ $birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
 }
 
 .wedding {
+	width:100%;
+	height:100%;
 	@include backgroundMixin($weddingUrl);
 }
 
 .funeral {
+		width:100%;
+	height:100%;
 	@include backgroundMixin($funeralUrl);
 }
 
 .conference {
+		width:100%;
+	height:100%;
 	@include backgroundMixin($conferenceUrl);
 }
 
 .birthday {
+		width:100%;
+	height:100%;
 	@include backgroundMixin($birthdayUrl);
 }
