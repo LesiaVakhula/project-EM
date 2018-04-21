@@ -1,5 +1,8 @@
 const angular = require('angular');
 import "./styles/style.scss";
+import "bootstrap";
+import '../../node_modules/bootstrap/dist/css/bootstrap.css';
+
 require('@uirouter/angularjs');
 const home = require('../main/emAppMain.js');
 
