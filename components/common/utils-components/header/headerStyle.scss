@@ -1,3 +1,7 @@
+body header.header{
+  width: 100% !important;
+}
+
 .logo{
   width: 30px;
   height: 30px;
@@ -33,7 +37,14 @@
 }
 li.nav-item.dropdown{
   div.dropdown-menu.black.show{
-    background-color: #000000 !important
+    background-color: #000000 !important;
+
+    a{
+      &:hover{
+        background-color: #000000 !important;
+        color: #474747 !important;
+      }
+    }
   }
 }
 
