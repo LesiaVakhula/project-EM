@@ -5,7 +5,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 
 require('@uirouter/angularjs');
 const home = require('../main/emAppMain.js');
-const shopCard = require('../shopCard/shopCardComponents.js');
+const shopCard = require('../shopCard/shopCard.js');
 
 module.exports = angular.module('emApp', ['ui.router', home, shopCard])
 .config([

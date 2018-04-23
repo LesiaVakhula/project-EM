@@ -1,7 +1,7 @@
 const angular = require('angular');
-const template = require('./shopCardComponents.html');
+const template = require('./shopCard.html');
 require('@uirouter/angularjs');
-require('./shopCardComponents.scss');
+require('./shopCard.scss');
 
 module.exports = angular.module('emApp.shopCard', ['ui.router'])
 .config([
