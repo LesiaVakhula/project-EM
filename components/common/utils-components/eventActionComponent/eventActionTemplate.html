@@ -1,3 +1,7 @@
-<div class='{{$ctrl.data}}'>
-{{$ctrl.data}}
-</div> 
+<div class='h-100 event {{$ctrl.data}}'>
+    <div class="event-url-decoration">
+        <a class="event-url" ui-sref='#{{$ctrl.data}}'>
+            {{$ctrl.data}}
+        </a>
+    </div>
+</div>
