@@ -1,0 +1,35 @@
+$weddingUrl: '../common/images/wedding/homepage_wedding.png';
+$funeralUrl: '../common/images/funeral/homepage_funeral.png';
+$conferenceUrl:'../common/images/conference/homepage_conference.png';
+$birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
+
+@mixin backgroundMixin($url) {
+	background-image: url($url);
+	background-repeat: no-repeat;
+	background-size:cover;
+}
+
+#main {
+	padding:0;
+}
+.event-action-wrapper {
+	width:100%;
+	margin:0;
+	height:100%;
+}
+
+.wedding {
+	@include backgroundMixin($weddingUrl);
+}
+
+.funeral {
+	@include backgroundMixin($funeralUrl);
+}
+
+.conference {
+	@include backgroundMixin($conferenceUrl);
+}
+
+.birthday {
+	@include backgroundMixin($birthdayUrl);
+}

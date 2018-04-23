@@ -1,14 +1,17 @@
+@mixin sprites-mixin($x:0, $y:0) {
+    background-position: $x $y;
+    width: 24px;
+    height: 24px;
+}
+
 .footer {
     background-color: #000;
-    display: flex;
-    padding: 10px 30px;
-    justify-content: space-between;
-    align-items: center;
+    padding: 10px 40px;
     a {
         text-decoration: none;
     }
     .links {
-        .link-item {
+        .link {
             color: #fff;
             &:active {
                 border-bottom: 2px solid #2ef080;
@@ -19,12 +22,35 @@
         }
     }
 
-    .contacts {
-        color: #fff;
-        .contacts-link {
-            margin: 0 5px;
+}
+
+.contacts {
+    color: #fff;
+    list-style: none;
+    margin-bottom: 0px;
+    display: table-row;
+    li {
+        display: table-cell;
+        padding-right: 10px;
+    }
+    .contacts-link {
+        vertical-align: middle;
+        width: 24px;
+        display: inline-block;
+        height: 24px;
+    }
+    .social-media {
+        background: url(../../images/common/social-media-sprite.png) no-repeat;
+        &.facebook {
+            @include sprites-mixin(-10px, -10px);
+        }
+
+        &.instagram {
+            @include sprites-mixin(-54px, -10px);
+        }
+
+        &.skype {
+            @include sprites-mixin(-98px, -10px);
         }
     }
 }
-
-
