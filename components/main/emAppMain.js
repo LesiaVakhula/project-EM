@@ -2,7 +2,7 @@ const angular = require('angular');
 const template = require('./homeTemplate.html');
 require('./main.scss');
 require('@uirouter/angularjs');
-require('bootstrap');
+// require('bootstrap');
 
 module.exports = angular.module('emApp.main', ['ui.router'])
 
