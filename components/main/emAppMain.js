@@ -2,7 +2,7 @@ const angular = require('angular');
 const template = require('./homeTemplate.html');
 require('./main.scss');
 require('@uirouter/angularjs');
-// require('bootstrap');
+
 
 module.exports = angular.module('emApp.main', ['ui.router'])
 
@@ -18,8 +18,8 @@ module.exports = angular.module('emApp.main', ['ui.router'])
     templateUrl : template,
     controller: (['$scope', function($scope) {
   	$scope.classesArray = ['birthday', 'funeral', 'conference', 'wedding'];
-}])
- }
+    }])
+  };
 
   $stateProvider.state(homePageState);
 }])

@@ -3,6 +3,8 @@ const template = require('./shopCard.html');
 require('@uirouter/angularjs');
 require('./shopCard.scss');
 
+
+
 module.exports = angular.module('emApp.shopCard', ['ui.router'])
 .config([
     '$locationProvider', function($locationProvider) {
@@ -13,6 +15,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
         name: 'shopCard',
         url:'/shop',
         templateUrl : template
+        // controller
     };
 
     $stateProvider.state(stateCart);
