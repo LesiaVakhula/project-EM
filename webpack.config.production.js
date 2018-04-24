@@ -1,6 +1,5 @@
 const path = require('path');
 
-
 module.exports = {
   mode: 'production',
   entry: "./components/common/app.js",

@@ -4,6 +4,6 @@ Primary Goal: Our site offers an opportunity to organize the important life even
 
 To install all dependencies run the command -> npm install
 
-To start Dev Server run the command -> npm start
+To start server run the command -> npm run start-dev and navigate to localhost:3000
 
-LiveReload when running -> webpack --watch
+LiveReload when running -> npm run watch-dev

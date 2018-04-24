@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server --watch-poll --open --config webpack.config.development.js",
     "build": "cross-env NODE_ENV=production webpack --config webpack.config.production.js",
     "start-dev": "node server.js",
     "watch-dev": "webpack  --watch --config webpack.config.development.js"
