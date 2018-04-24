@@ -20,4 +20,5 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
     $stateProvider.state(stateCart);
 }])
+    // .controller
 .name;
