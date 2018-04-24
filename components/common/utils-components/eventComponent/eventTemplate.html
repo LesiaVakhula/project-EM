@@ -1,0 +1,16 @@
+<main>
+    <div class="banner">
+        <div class="theme">
+            <div class="head-border">
+                <h2>{{$ctrl.event.name}}</h2>
+            </div>
+        </div>
+    </div>
+    <article ng-repeat="item in {{$ctrl.event.services}}">
+
+        <event-action-component data="item">
+
+        </event-action-component>
+
+    </article>
+</main>
