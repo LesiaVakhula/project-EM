@@ -1,0 +1,93 @@
+diff --git a/index.html b/index.html
+index 24c4b7c..6e08a10 100644
+--- a/index.html
++++ b/index.html
+@@ -28,7 +28,7 @@
+             </div>
+         </div>
+     </div>
+-    <script src="./build/bundle.js"></script>
++    <script type="text/javascript" src="bundle.js"></script>
+     <!-- <script src="http://localhost:35729/livereload.js"></script> -->
+ </body>
+ 
+diff --git a/package.json b/package.json
+index c64e277..99e3b2b 100644
+--- a/package.json
++++ b/package.json
+@@ -4,7 +4,9 @@
+   "main": "index.js",
+   "scripts": {
+     "start": "cross-env NODE_ENV=development webpack-dev-server --watch-poll --open --config webpack.config.development.js",
+-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.production.js"
++    "build": "cross-env NODE_ENV=production webpack --config webpack.config.production.js",
++    "start-dev": "node server.js",
++    "watch-dev": "webpack  --watch --config webpack.config.development.js"
+   },
+   "author": "",
+   "license": "ISC",
+@@ -32,7 +34,9 @@
+     "aws-sdk": "^2.224.1",
+     "babel-core": "^6.26.0",
+     "babel-es6-polyfill": "^1.1.0",
++    "body-parser": "^1.18.2",
+     "bootstrap": "^4.1.0",
++    "express": "^4.16.3",
+     "html-loader": "^0.5.5",
+     "ngtemplate-loader": "^2.0.1",
+     "node-static": "^0.7.10",
+diff --git a/server.js b/server.js
+index e69de29..c48a01c 100644
+--- a/server.js
++++ b/server.js
+@@ -0,0 +1,23 @@
++const express = require('express'),
++    app = express(),
++    bodyParser = require('body-parser');
++
++app.use(express.static('build'))
++// configuration =================
++app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
++app.use(bodyParser.json());                                     // parse application/json
++app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
++
++// application -------------------------------------------------------------
++// app.get('/', function(req, res) {
++//     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
++// });
++app.use('*', function(req, res) {
++    res.sendFile(__dirname + '/index.html');  // load the single view file (angular will handle the page changes on the front-end)
++});
++
++
++
++// listen (start app with node server.js) ======================================
++app.listen(3000);
++console.log("App listening on port 3000");
+diff --git a/webpack.config.development.js b/webpack.config.development.js
+index b6b456c..cf90e1d 100644
+--- a/webpack.config.development.js
++++ b/webpack.config.development.js
+@@ -7,6 +7,7 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
+ 
+ module.exports = merge(production, {
+     devtool: 'source-map',
++    mode: 'development',
+     plugins: [ 
+         new LiveReloadPlugin({
+             appendScriptTag: true,
+diff --git a/webpack.config.production.js b/webpack.config.production.js
+index 8720d07..2288e3e 100644
+--- a/webpack.config.production.js
++++ b/webpack.config.production.js
+@@ -1,8 +1,8 @@
+-const LiveReloadPlugin = require('webpack-livereload-plugin');
+ const path = require('path');
+-const env = process.env.NODE_ENV;
++
+ 
+ module.exports = {
++  mode: 'production',
+   entry: "./components/common/app.js",
+   output: {
+     path: path.join(__dirname, '/build'),

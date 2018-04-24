@@ -7,6 +7,7 @@ const LiveReloadPlugin = require('webpack-livereload-plugin');
 
 module.exports = merge(production, {
     devtool: 'source-map',
+    mode: 'development',
     plugins: [ 
         new LiveReloadPlugin({
             appendScriptTag: true,
