@@ -49,7 +49,7 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
       }])
     };
 
-    var birthdayState = {
+    var conferenceState = {
       name: 'conference',
       url: '/conference',
       templateUrl: template,

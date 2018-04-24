@@ -4,6 +4,7 @@ require('@uirouter/angularjs');
 const home = require('../main/emAppMain.js');
 const eventPage = require('../main/eventModule.js')
 
+
 module.exports = angular.module('emApp', ['ui.router', home, eventPage])
 .config([
 	'$locationProvider',function($locationProvider) {
