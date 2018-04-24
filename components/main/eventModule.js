@@ -4,13 +4,6 @@ require('./main.scss');
 require('@uirouter/angularjs');
 
 module.exports = angular.module('emApp.Event', ['ui.router'])
-
-  .config([
-    '$locationProvider',
-    function ($locationProvider) {
-      $locationProvider.html5Mode(true);
-    }
-  ])
   .config(['$stateProvider', function ($stateProvider) {
     var weddingState = {
       name: 'wedding',

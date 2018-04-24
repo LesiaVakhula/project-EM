@@ -6,10 +6,6 @@ require('@uirouter/angularjs');
 
 module.exports = angular.module('emApp.main', ['ui.router'])
 
-.config([
-	'$locationProvider', function($locationProvider) {
-  $locationProvider.html5Mode(true);
-}])
 
 .config(['$stateProvider', function($stateProvider) {
   var homePageState = {

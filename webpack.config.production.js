@@ -1,8 +1,7 @@
-const LiveReloadPlugin = require('webpack-livereload-plugin');
 const path = require('path');
-const env = process.env.NODE_ENV;
 
 module.exports = {
+  mode: 'production',
   entry: "./components/common/app.js",
   output: {
     path: path.join(__dirname, '/build'),

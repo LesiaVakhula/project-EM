@@ -3,7 +3,7 @@ require('./eventStyle.scss');
 module.exports = {
     templateUrl: eventTemplate,
     bindings: {
-        event: '='
+        event: '<'
     },
     controller: ['$scope', function ($scope) {
     }]
