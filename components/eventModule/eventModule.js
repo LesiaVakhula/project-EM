@@ -1,5 +1,5 @@
 const angular = require('angular');
-const template = '<div><event-component></event-component></div>'
+const template = require('./eventModule.html');
 require('@uirouter/angularjs');
 
 module.exports = angular.module('emApp.Event', ['ui.router'])
@@ -7,7 +7,7 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
         const weddingState = {
             name: 'wedding',
             url: '/wedding',
-            template: template,
+            templateUrl: template,
             controller: (['$scope', function($scope) {
                 $scope.event = {
                     name: 'wedding',
@@ -20,7 +20,7 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
         const funeralState = {
             name: 'funeral',
             url: '/funeral',
-            template: template,
+            templateUrl: template,
             controller: (['$scope', function($scope) {
                 $scope.event = {
                     name: 'funeral',
@@ -33,7 +33,7 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
         const birthdayState = {
             name: 'birthday',
             url: '/birthday',
-            template: template,
+            templateUrl: template,
             controller: (['$scope', function($scope) {
                 $scope.event = {
 
@@ -47,7 +47,7 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
         const conferenceState = {
             name: 'conference',
             url: '/conference',
-            template: template,
+            templateUrl: template,
             controller: (['$scope', function($scope) {
                 $scope.event = {
 
