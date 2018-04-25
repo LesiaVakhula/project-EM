@@ -18,7 +18,7 @@ module.exports = angular.module('emApp.home', ['ui.router'])
     {
     name: 'birthday',
     className: 'birthday',
-    imageUrl: 'homepage_birthday.jpg'
+    imageUrl: 'homepage_birthday.png'
    },
    {
     name: 'funeral',
