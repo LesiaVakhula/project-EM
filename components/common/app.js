@@ -20,4 +20,4 @@ module.exports = angular.module('emApp', ['ui.router', home, shopCard, eventPage
             $rootScope.$state = $state;
         }])
 .component('footerComponent', require('./utils-components/footer/footerComponent.js'))
-    .component('headerComponent', require('./utils-components/header/headerComponent'));
+.component('headerComponent', require('./utils-components/header/headerComponent'));
