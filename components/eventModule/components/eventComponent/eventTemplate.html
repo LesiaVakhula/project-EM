@@ -1,13 +1,13 @@
-<main>
-    <div class="banner">
-        <div class="theme">
-            <div class="head-border">
-                <h2>{{$ctrl.event.name}}</h2>
-            </div>
+<div class="row">
+    <div class="col-12 banner {{$ctrl.bannerClassName}}">
+        <div class="head-border">
+            <h2>{{$ctrl.event.name}}</h2>
         </div>
     </div>
-    <article ng-repeat="item in {{$ctrl.event.services}}">
-        <event-action-component data="item">
-        </event-action-component>
-    </article>
-</main>
+    <div class="col-12 {{$ctrl.serviceClassName}}">
+        <div class="event-item" ng-repeat="item in $ctrl.event.services">
+            <event-action-component data="item">
+            </event-action-component>
+        </div>
+    </div>
+</div>

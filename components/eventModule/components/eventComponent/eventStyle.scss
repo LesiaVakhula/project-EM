@@ -1,0 +1,12 @@
+.banner {
+    height: 200px;
+    &-wedding {
+        background-image: url('../../../common/images/wedding/wedding-banner.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.service-6 {
+    .event-item {}
+}
