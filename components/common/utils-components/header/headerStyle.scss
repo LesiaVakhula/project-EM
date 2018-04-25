@@ -1,3 +1,7 @@
+.header .navbar {
+  background: #000000;
+  padding: 3px 10px;
+}
 .logo{
   width: 30px;
   height: 30px;
@@ -22,24 +26,18 @@
   }
 }
 
-.navbar .collapse .navbar-nav li.nav-item a{
-  color: #ffffff !important;
-  padding-top: 5px;
-
-  &.hover:hover{
-    color: #474747 !important;
-  }
-
+.navbar-nav li.nav-item a.hover:hover{
+  color: #474747;
 }
-li.nav-item.dropdown{
-  div.dropdown-menu.black.show{
-    background-color: #000000 !important;
 
-    a{
-      &:hover{
-        background-color: #000000 !important;
-        color: #474747 !important;
-      }
+div.dropdown-menu.black.show{
+  background-color: #000000;
+  a{
+    color: #ffffff;
+
+    &:hover{
+      background-color: #000000;
+      color: #474747;
     }
   }
 }
