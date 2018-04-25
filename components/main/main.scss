@@ -7,26 +7,19 @@ $birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
 	background-repeat: no-repeat;
 	background-size: cover;
 }
-.main-fluid{
-	padding: 0;
-}
-#main {
-	padding: 0;
-}
 
 .event-action-wrapper {
-	width: 100%;
-	margin: 0;
-	height: auto;
-}
-.category{
-	height: 500px;
-	padding: 0;
-    filter: grayscale(1);
-    &:hover {
-    	filter: grayscale(0);
+    height: auto;
+    .category {
+        height: 500px;
+        padding: 0;
+        filter: grayscale(1);
+        &:hover {
+            filter: grayscale(0);
+        }
     }
 }
+
 
 .wedding {
 	@include backgroundMixin($weddingUrl);
