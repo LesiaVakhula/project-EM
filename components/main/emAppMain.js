@@ -3,10 +3,7 @@ const template = require('./homeTemplate.html');
 require('./main.scss');
 require('@uirouter/angularjs');
 
-
 module.exports = angular.module('emApp.main', ['ui.router'])
-
-
 .config(['$stateProvider', function($stateProvider) {
   var homePageState = {
     name: 'main',
@@ -16,7 +13,6 @@ module.exports = angular.module('emApp.main', ['ui.router'])
   	$scope.classesArray = ['birthday', 'funeral', 'conference', 'wedding'];
     }])
   };
-
   $stateProvider.state(homePageState);
 }])
 .component('eventActionComponent', require('../common/utils-components/eventActionComponent/eventActionComponent.js'))
