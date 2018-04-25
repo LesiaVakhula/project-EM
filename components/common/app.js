@@ -1,7 +1,7 @@
 const angular = require('angular');
 const home = require('../main/emAppMain.js');
 const shopCard = require('../shopCard/shopCard.js');
-const eventPage = require('../main/eventModule.js');
+const eventPage = require('../eventModule/eventModule.js');
 require ("bootstrap");
 require('@uirouter/angularjs');
 
