@@ -1,5 +1,5 @@
 const angular = require('angular');
-const home = require('../main/emAppMain.js');
+const home = require('../home/emAppHome.js');
 const shopCard = require('../shopCard/shopCard.js');
 const eventPage = require('../eventModule/eventModule.js');
 require ("bootstrap");

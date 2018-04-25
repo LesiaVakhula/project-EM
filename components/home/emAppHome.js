@@ -1,15 +1,15 @@
 const angular = require('angular');
 const template = require('./homeTemplate.html');
-require('./main.scss');
+require('./homeStyle.scss');
 require('@uirouter/angularjs');
 
 
-module.exports = angular.module('emApp.main', ['ui.router'])
+module.exports = angular.module('emApp.home', ['ui.router'])
 
 
 .config(['$stateProvider', function($stateProvider) {
   var homePageState = {
-    name: 'main',
+    name: 'home',
     url:'/',
     templateUrl : template,
     controller: (['$scope', function($scope) {
