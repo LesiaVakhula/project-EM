@@ -22,6 +22,10 @@ $birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
 .category{
 	height: 500px;
 	padding: 0;
+    filter: grayscale(1);
+    &:hover {
+    	filter: grayscale(0);
+    }
 }
 
 .wedding {
