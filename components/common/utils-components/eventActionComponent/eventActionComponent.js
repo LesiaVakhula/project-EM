@@ -8,7 +8,7 @@ module.exports = {
 	},
 	controller: function () {
 		this.$onInit = () => {
-		 this.imageUrl =  require(`../../images/${this.data.name}/${this.data.imageUrl}`);
+		 this.imageUrl =  require(`../../images/${this.data.imageUrl}`);
 		};
 	}
 };
