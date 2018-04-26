@@ -22,7 +22,7 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
                     }, {
                         name: 'Car hire',
                         className: 'car-hire',
-                        imageUrl: 'wedding/wedding-car-hire.jpg'
+                        imageUrl: 'wedding/wedding-car-hire.png'
                     }, {
                         name: 'Wedding dresses',
                         className: 'wedding-dresses',
