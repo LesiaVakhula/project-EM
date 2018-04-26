@@ -18,22 +18,22 @@ module.exports = angular.module('emApp.home', ['ui.router'])
     {
     name: 'birthday',
     className: 'birthday',
-    imageUrl: './images/homepage_birthday.png'
+    imageUrl: 'homepage_birthday.png'
    },
    {
     name: 'funeral',
     className: 'funeral',
-    imageUrl: './images/homepage_funeral.png'
+    imageUrl: 'homepage_funeral.png'
    }, 
     {
     name: 'conference',
     className: 'conference',
-    imageUrl: './images/homepage_conference.png'
+    imageUrl: 'homepage_conference.png'
    },
    {
     name: 'wedding',
     className: 'wedding',
-    imageUrl: './images/homepage_wedding.png'
+    imageUrl: 'homepage_wedding.png'
    }
    ];
     }])

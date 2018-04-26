@@ -34,8 +34,5 @@ module.exports = {
       }
     ],
   },
-    // plugins: [
-    //     new LiveReloadPlugin('localhost:8080')
-    // ],
   watch: true
 };
