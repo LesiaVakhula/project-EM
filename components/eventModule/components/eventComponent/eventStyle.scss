@@ -1,12 +1,251 @@
 .banner {
-    height: 200px;
+    height: 300px;
     &-wedding {
         background-image: url('../../../common/images/wedding/wedding-banner.jpg');
         background-repeat: no-repeat;
         background-size: cover;
     }
+    &-funeral {
+        background-image: url('../../../common/images/funeral/funeral-banner.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    &-conference {
+        background-image: url('../../../common/images/conference/conference-banner.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    &-birthday {
+        background-image: url('../../../common/images/birthday/birthday-banner.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
 }
 
-.service-6 {
-    .event-item {}
+// .service-6 {
+//     .event-item {}
+// }
+.dimensions {
+    width: 100%;
+    height: 100%;
 }
+
+.wedding .service-6 {
+    display: grid;
+    // width: 100%;
+    margin:10px 0;
+    grid-template-areas: "a b b" "a c d " "e f d ";
+    height: 100%;
+    grid-template-rows: 30% 35% 35%;
+    grid-gap: 10px;
+    .wedding-suits {
+        grid-area: a;
+    }
+    .repast-hall {
+        grid-area: b;
+    }
+    .car-hire {
+        grid-area: c;
+    }
+    .wedding-dresses {
+        grid-area: d;
+    }
+    .unique-organization {
+        grid-area: f;
+    }
+    .guest-invitation {
+        grid-area: e;
+    }
+}
+
+.birthday .service-6 {
+    display: grid;
+    // width: 100%;
+    grid-template-areas: "a a b" "c d b " "e f f ";
+    height: 100%;
+    margin:10px 0;
+    grid-template-rows: 30% 35% 35%;
+    grid-gap: 10px;
+    .car-rent {
+        grid-area: a;
+    }
+    .design {
+        grid-area: b;
+    }
+    .animators {
+        grid-area: c;
+    }
+    .invite {
+        grid-area: d;
+    }
+    .food-courts {
+        grid-area: e;
+    }
+    .places {
+        grid-area: f;
+    }
+}
+
+.funeral .service-5 {
+    display: grid;
+    // width: 100%;
+    background-color:#000;
+    margin:10px 0;
+    grid-template-areas: "a a b" "c d b " "c e e ";
+    height: 100%;
+    grid-template-rows: 30% 35% 35%;
+    grid-gap: 10px;
+    .car-rent {
+        grid-area: a;
+    }
+    .repast-hall {
+        grid-area: b;
+    }
+    .invite {
+        grid-area: c;
+    }
+    .memorial-hall {
+        grid-area: d;
+    }
+    .funeral-merchandise {
+        grid-area: e;
+    }
+}
+
+.conference .service-4 {
+    display: grid;
+    // width: 100%;
+    margin:10px 0;
+    grid-template-areas: "a a b"
+     "c d b"
+     ;
+    height: 100%;
+    grid-template-rows: 45% 55%;
+    grid-gap: 10px;
+    .car-rent {
+        grid-area: a;
+        // height:340px;
+    }
+    .hall {
+        grid-area: b;
+         // height:700px;
+    }
+    .invite {
+    	// height:360px;
+        grid-area: c;
+    }
+    .food-courts {
+    	// height:360px;
+        grid-area: d;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+// 	.wedding .service-6 {
+//     display: grid;
+//     width: 100%;
+//     grid-template-areas:
+//      "a a " 
+//      "b c "
+//       "b d "
+//       "e d "
+//       "f f "
+//       ;
+//     height: 100%;
+//     grid-template-rows: 30% 35% 35%;
+//     grid-gap: 10px;
+//     .wedding-suits {
+//         grid-area: a;
+
+//     }
+//     .repast-hall {
+//         grid-area: b;
+//     }
+//     .car-hire {
+//         grid-area: c;
+//     }
+//     .wedding-dresses {
+//         grid-area: d;
+//     }
+//     .unique-organization {
+//         grid-area: f;
+//     }
+//     .guest-invitation {
+//         grid-area: e;
+//     }
+// }
+
+
+.birthday .service-6 {
+    display: grid;
+    width: 100%;
+    grid-template-areas:
+     "a a " 
+     // "a a"
+      "b c "
+      "b c "
+      "b d "
+      "e d "
+      "e d "
+      "f f "
+      ;
+    height: 100%;
+    grid-template-rows:15% 14% 14% 14% 14% 14% 15%;
+    grid-gap: 10px;
+    .car-rent {
+        grid-area: a;
+    }
+    .design {
+        grid-area: d;
+    }
+    .animators {
+    	align-self:center;
+    	justify-self:center;
+    	place-self:center;
+        grid-area: c;
+    }
+    .invite {
+        grid-area: e;
+    }
+    .food-courts {
+        grid-area: f;
+    }
+    .places {
+        grid-area: b;
+    }
+}
+
+}
+
+ @media only screen and (max-width: 576px) {
+ 	.banner {
+ 		display:none;
+ 	}
+	 .wedding .service-6, .birthday .service-6 {
+	 	width:100%;
+	 	margin:0;
+	 	padding:0;
+	 	display:grid;
+			grid-template-areas:"a" 
+			"b" "c" "d" "e" "f";
+			grid-gap:0;
+			grid-template-rows:16% 16% 16% 16% 18% 18%;
+
+	 }
+	 .funeral .service-5 {
+	 	margin:0;
+	 	padding:0;
+	 	display:grid;
+	 	grid-template-areas:"a" "b" "c" "d" "e";
+	 	grid-template-rows:20% 20% 20% 20%;
+	 	grid-gap:0;
+	 }
+	 .conference .service-4 {
+	 	margin:0;
+	 	padding:0;
+	 	display:grid;
+	 	grid-template-areas:"a" "b" "c" "d";
+	 	grid-template-rows:25% 25% 25% 25%;
+	 	grid-gap:0;
+	 }
+ }

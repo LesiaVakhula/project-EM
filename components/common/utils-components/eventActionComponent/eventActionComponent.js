@@ -7,6 +7,8 @@ module.exports = {
 		data: '='
 	},
 	controller: function () {
-		this.$onChanges = (old, newVal) => {};
+		this.$onInit = () => {
+		 this.imageUrl =  require(`../../images/${this.data.imageUrl}`);
+		};
 	}
 };

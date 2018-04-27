@@ -13,26 +13,28 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
                     name: 'wedding',
                     services: [{
                         name: 'Wedding suits',
-                        className: 'wedding-suits'
-
+                        className: 'wedding-suits',
+                        imageUrl: 'wedding/wedding-suits.jpg'
                     }, {
                         name: 'Repast hall',
-                        className: 'repast-hall'
-
+                        className: 'repast-hall',
+                        imageUrl: 'wedding/wedding-repast-hall.jpg'
                     }, {
                         name: 'Car hire',
-                        className: 'car-hire'
-
+                        className: 'car-hire',
+                        imageUrl: 'wedding/wedding-car-hire.png'
                     }, {
                         name: 'Wedding dresses',
-                        className: 'wedding-dresses'
-
+                        className: 'wedding-dresses',
+                        imageUrl: 'wedding/wedding-dresses.jpg'
                     }, {
                         name: 'Guest invitation',
-                        className: 'guest-invitation'
+                        className: 'guest-invitation',
+                        imageUrl: 'wedding/wedding-guest-invitation.jpg'
                     }, {
                         name: 'Unique organization',
-                        className: 'unique-organization'
+                        className: 'unique-organization',
+                        imageUrl: 'wedding/wedding-unique-organization.jpeg'
                     }],
                 };
             }])
@@ -47,22 +49,26 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
                     name: 'funeral',
                     services: [{
                         name: 'Choose car for a rent',
-                        className: 'car-rent'
+                        className: 'car-rent',
+                        imageUrl: 'funeral/funeral-car-rent.png'
                     }, {
                         name: 'Repast hall',
-                        className: 'repast-hall'
-
+                        className: 'repast-hall',
+                        imageUrl: 'funeral/funeral-repast-hall.png'
                     }, {
                         name: 'Invite guests',
-                        className: 'invite'
+                        className: 'invite',
+                        imageUrl: 'funeral/funeral-invite-guest.png'
 
                     }, {
                         name: 'Memorial hall',
-                        className: 'memorial-hall'
+                        className: 'memorial-hall',
+                        imageUrl: 'funeral/funeral-memorial-hall.png'
 
                     }, {
                         name: 'Funeral merchandise',
-                        className: 'funeral-merchandise'
+                        className: 'funeral-merchandise',
+                        imageUrl: 'funeral/funeral-merchandise.png'
                     }]
                 };
             }])
@@ -77,27 +83,29 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
                     name: 'birthday',
                     services: [{
                         name: 'Choose car for a rent',
-                        className: 'car-rent'
+                        className: 'car-rent',
+                        imageUrl: 'birthday/birthday-car-rent.png'
 
                     }, {
                         name: 'Design the event',
-                        className: 'design'
-
+                        className: 'design',
+                        imageUrl: 'birthday/birthday-design.png'
                     }, {
                         name: 'Animators',
-                        className: 'animators'
-
+                        className: 'animators',
+                        imageUrl: 'birthday/birthday-animators.png'
                     }, {
                         name: 'Invite guest',
-                        className: 'invite'
-
+                        className: 'invite',
+                        imageUrl: 'birthday/birthday-invite.jpg'
                     }, {
                         name: 'Food courts',
-                        className: 'food-courts'
-
+                        className: 'food-courts',
+                        imageUrl: 'birthday/birthday-food-cort.jpg'
                     }, {
                         name: 'Places',
-                        className: 'places'
+                        className: 'places',
+                        imageUrl: 'birthday/birthday-places.png'
                     }]
                 };
             }])
@@ -112,19 +120,23 @@ module.exports = angular.module('emApp.Event', ['ui.router'])
                     name: 'conference',
                     services: [{
                         name: 'Choose car for a rent',
-                        className: 'car-rent'
+                        className: 'car-rent',
+                        imageUrl: 'conference/conference-car-rent.jpeg'
 
                     }, {
                         name: 'Rent a hall',
-                        className: 'hall'
+                        className: 'hall',
+                        imageUrl: 'conference/conference-rent-hall.jpg'
 
                     }, {
                         name: 'Invite guests',
-                        className: 'invite'
+                        className: 'invite',
+                        imageUrl: 'conference/conference-invite-guest.jpg'
 
                     }, {
                         name: 'Food courts',
-                        className: 'food-courts'
+                        className: 'food-courts',
+                        imageUrl: 'conference/conference-food-cort.jpg'
                     }]
                 }
             }])
