@@ -4,12 +4,18 @@
         height: auto;
     }
 }
-.event-img {
-    width:100%;
-    height:100%;
-    filter: grayscale(1);
-     &:hover {
-            filter: grayscale(0);
+
+.image-wrapper {
+    width: 100%;
+    height: 100%;
+    .event-img {
+        width: 100%;
+        height: 100%;
+        @media only screen and (min-width: 577px) {
+            filter: grayscale(1);
+            &:hover {
+                filter: grayscale(0);
+            }
+        }
     }
 }
-

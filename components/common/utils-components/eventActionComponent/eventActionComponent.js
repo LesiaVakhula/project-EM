@@ -8,7 +8,12 @@ module.exports = {
 	},
 	controller: function () {
 		this.$onInit = () => {
-		 this.imageUrl =  require(`../../images/${this.data.imageUrl}`);
+			this.imageUrl = require(`../../images/${this.data.imageUrl}`);
+			if (this.data.mobileImageUrl) {
+				this.mobileImageUrl = require(`../../images/${this.data.mobileImageUrl}`);
+			} else {
+				this.mobileImageUrl = this.imageUrl;
+			};
 		};
 	}
 };

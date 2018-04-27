@@ -9,6 +9,10 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     background-position: 50% 50%;
 }
 
+.funeral {
+    background-color: #000;
+}
+
 .banner {
     height: 300px;
     position: relative;
@@ -132,7 +136,6 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
 
 .funeral .service-5 {
     display: grid;
-    background-color: #000;
     margin: 10px 0;
     grid-template-areas: "a a b" "c d b " "c e e ";
     height: 100%;
