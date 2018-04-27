@@ -1,23 +1,9 @@
-$weddingUrl: '../common/images/wedding/homepage_wedding.png';
-$funeralUrl: '../common/images/funeral/homepage_funeral.png';
-$conferenceUrl:'../common/images/conference/homepage_conference.png';
-$birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
-@mixin backgroundMixin($url) {
-	background-image: url($url);
-	background-repeat: no-repeat;
-	background-size: cover;
-}
-
 .event-action-wrapper {
-    /*Maybe need to remove width*/
-    // width: 100%;
     height: auto;
     .category {
-        height: auto; // padding: 0;
+        height: auto;
     }
 }
-
-
 .event-img {
     width:100%;
     height:100%;
@@ -26,20 +12,4 @@ $birthdayUrl:'../common/images/birthday/homepage_birthday.jpg';
             filter: grayscale(0);
     }
 }
-
-/* .wedding {
-    @include backgroundMixin($weddingUrl);
-}
-
-.funeral {
-    @include backgroundMixin($funeralUrl);
-}
-
-.conference {
-    @include backgroundMixin($conferenceUrl);
-}
-
-.birthday {
-    @include backgroundMixin($birthdayUrl);
-} */
 

@@ -13,26 +13,24 @@
         width: 50%;
         height: 20%;
         position: absolute;
-        left: 25%;
         .heading {
             height: auto;
             background-color: rgba(79, 79, 79, 0.95);
             color: #fff;
             position: relative;
             top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             left: 65%;
+            transform: translate(-50%, -50%);
             width: max-content;
             padding: 0 10px;
             h2 {
                 margin-bottom: 0;
-                font-size: calc(1rem + 1.2vw);
+                font-size: 3vw;
                 &::first-letter {
                     text-transform: uppercase;
                 }
                 @media only screen and (max-width: 576px) {
-                    font-size: calc(1.2rem + 1.2vw);
+                    font-size: 5vw;
                 }
             }
         }
