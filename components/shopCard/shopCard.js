@@ -1,6 +1,6 @@
 const angular = require('angular');
 const template = require('./shopCard.html');
-const controllerShop = require('./shopCardController');
+// const controllerShop = require('./shopCardController');
 require('@uirouter/angularjs');
 require('./shopCard.scss');
 
