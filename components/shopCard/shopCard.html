@@ -1,35 +1,40 @@
 <div class="shopCard">
     <h1>Shoping Card</h1>
     <h3>Event:{{order.eventName}}</h3>
-    <h4>Guests</h4>
+
+    <hr>
     <ul>
-        <!--<li ng-repeat="person in persons">-->
-        <!--{{person}}-->
-        <li>
-            Persons
+        <li ng-repeat="service in order.services">
+            <h4>{{service.name}}</h4>
+            <ul>
+                <li ng-repeat="item in service.items">
+                    <ul>
+                        <li ng-repeat="prop in item">
+                            {{prop}}
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </li>
     </ul>
-    <p>Total: </p>
-    <!--<p>Total: {{person.length}}</p>-->
-    <hr>
-    <h4>Rent a car</h4>
-    <ul>
-        <!--<li ng-repeat="car in cars">-->
-        <!--{{car}} Price: {{car.price}}-->
-        <li>
-            cars
-        </li>
-        <p>Total: </p>
-    </ul>
-    <hr>
-    <h4>Rent a hall</h4>
-    <ul>
-        <!--<li ng-repeat="hall in halls">-->
-            <!--{{hall}} Price: {{hall.price}}-->
-        <li>
-            hall
-        </li>
-        <p>Total: </p>
-    </ul>
-    <hr>
+    <!--<h4>Rent a car</h4>-->
+    <!--<ul>-->
+        <!--&lt;!&ndash;<li ng-repeat="car in cars">&ndash;&gt;-->
+        <!--&lt;!&ndash;{{car}} Price: {{car.price}}&ndash;&gt;-->
+        <!--<li>-->
+            <!--cars-->
+        <!--</li>-->
+        <!--<p>Total: </p>-->
+    <!--</ul>-->
+    <!--<hr>-->
+    <!--<h4>Rent a hall</h4>-->
+    <!--<ul>-->
+        <!--&lt;!&ndash;<li ng-repeat="hall in halls">&ndash;&gt;-->
+            <!--&lt;!&ndash;{{hall}} Price: {{hall.price}}&ndash;&gt;-->
+        <!--<li>-->
+            <!--hall-->
+        <!--</li>-->
+        <!--<p>Total: </p>-->
+    <!--</ul>-->
+    <!--<hr>-->
 </div>
