@@ -7,21 +7,22 @@
     position: relative;
     .event-heading-decoration {
         z-index: 1000;
-        background-image: url('../../images/common/Group.png');
+        background-image: url('../../images/common/event_border.png');
         background-repeat: no-repeat;
         background-size: contain;
         width: 50%;
         height: 20%;
         position: absolute;
-        display: flex;
-        align-items: center;
         left: 25%;
         .heading {
             height: auto;
             background-color: rgba(79, 79, 79, 0.95);
             color: #fff;
             position: relative;
-            left: 35%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            left: 65%;
             width: max-content;
             padding: 0 10px;
             h2 {
