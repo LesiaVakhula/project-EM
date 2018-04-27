@@ -6,12 +6,39 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     background-image: url($url);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: 50% 50%;
 }
 
 .banner {
     height: 300px;
+    position: relative;
+    .head-border {
+        position: absolute;
+        margin: 0;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-image: url('../../../common/images/common/event_border.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+        div {
+            padding: 10px;
+            margin-left: 125px;
+            h2 {
+                color: #ffffff;
+                background-color: rgba(79, 79, 79, 0.75);
+                padding: 5px;
+                margin-bottom: 0;
+                &::first-letter {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
     &-wedding {
         @include bannerBackgroundMixin($weddingBannerUrl);
+        background-position: 50% 0%;
     }
     &-funeral {
         @include bannerBackgroundMixin($funeralBannerUrl);
@@ -30,7 +57,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     .event {
         .event-heading-decoration {
             background-image: none;
-            border: 4px solid #2EF080;
+            border: 3px solid #2EF080;
             width: max-content;
             height: auto;
             padding: 10px;
