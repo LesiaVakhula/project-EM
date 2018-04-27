@@ -53,7 +53,7 @@ module.exports = angular.module('emApp.partners', ['ui.router'])
                         url: "https://online.voronin.ua",
                         promo: "25",
                         imgUrl:"./images/voronin.jpg"
-                    }
+                   }
                 ];
                 let promoArr = null;
                 $scope.getDiscount = function(num){
