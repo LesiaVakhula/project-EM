@@ -13,46 +13,46 @@ module.exports = angular.module('emApp.partners', ['ui.router'])
                         name: "Zefir-wedding",
                         url: "http://zefir-wedding.com",
                         promo: "20",
-                        imgUrl:"../components/common/images/partners/zefir_wedding.jpg"
+                        imgUrl:"./images/zefir_wedding.jpg"
                     }, {
                         name: "Hadassa",
                         url: "http://hadassa.com.ua",
                         promo: "25",
-                        imgUrl:"hadassa_1.jpg"
+                        imgUrl:"./images/hadassa_1.jpg"
                     }, {
                         name: "Crystall",
                         url: "http://crystalsalon.com.ua",
                         promo: "18",
-                        imgUrl:"crystall.jpg"
+                        imgUrl:"./images/crystall.jpg"
                     }, {
                         name: "AMmelin",
                         url: "http://amelin.in.ua",
                         promo: "25",
-                        imgUrl:"amelin.jpg"
+                        imgUrl:"./images/amelin.jpg"
                     },
                     {
                         name: "Sergio Ellini",
                         url: "http://sergioellini.com.ua",
                         promo: "22",
-                        imgUrl:"sergio_ellini.jpg"
+                        imgUrl:"./images/sergio_ellini.jpg"
                     },
                     {
                         name: "Arber",
                         url: "http://arber.ua/",
                         promo: "19",
-                        imgUrl:"arber.jpg"
+                        imgUrl:"./images/arber.jpg"
                     },
                     {
                         name: "Vels",
                         url: "http://shop.vels.ua",
                         promo: "23",
-                        imgUrl:"vels.jpg"
+                        imgUrl:"./images/vels.jpg"
                     },
                     {
                         name: "Voronin",
                         url: "https://online.voronin.ua",
                         promo: "25",
-                        imgUrl:"voronin.jpg"
+                        imgUrl:"./images/voronin.jpg"
                     }
                 ];
                 let promoArr = null;
