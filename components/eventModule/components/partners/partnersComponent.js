@@ -13,7 +13,7 @@ module.exports = angular.module('emApp.partners', ['ui.router'])
                         name: "Zefir-wedding",
                         url: "http://zefir-wedding.com",
                         promo: "20",
-                        imgUrl:"zefir_wedding.jpg"
+                        imgUrl:"../components/common/images/partners/zefir_wedding.jpg"
                     }, {
                         name: "Hadassa",
                         url: "http://hadassa.com.ua",
