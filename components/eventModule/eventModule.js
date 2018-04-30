@@ -37,7 +37,7 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners])
                         className: 'wedding-dresses',
                         imageUrl: 'wedding/wedding-dresses.jpg',
                         mobileImageUrl: 'wedding/wedding-dresses-mobile.jpg',
-                        id: 9
+                        id: 10
                     }, {
                         name: 'Guest invitation',
                         className: 'guest-invitation',
@@ -222,4 +222,5 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners])
     }])
     .component('eventComponent', require('./components/eventComponent/eventComponent.js'))
     .controller('servicesCtrl', require('../../components/eventModule/servicesCtrl.js'))
+    .factory('filterFactory', require('./filterFactory.js'))
     .name;

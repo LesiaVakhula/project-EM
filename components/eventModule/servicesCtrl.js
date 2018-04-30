@@ -1,5 +1,15 @@
-module.exports =  function ($scope, $stateParams) {
+module.exports =  function ($scope, $stateParams, $state, filterFactory) {
+
     $scope.id = $stateParams.id;
+    if($scope.id == 9 || $scope.id == 10) {
+         if($scope.id == 9) {
+             filterFactory.gender = 'male';
+         } else {
+            filterFactory.gender = 'female';
+         }
+         $state.go('partners');
+    }
+    
     $scope.serviceData = [{
             id: 1,
             name: 'cars',
