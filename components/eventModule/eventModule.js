@@ -67,7 +67,7 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners])
                         className: 'car-rent',
                         imageUrl: 'funeral/funeral-car-rent.png',
                         mobileImageUrl: 'funeral/funeral-car-rent-mobile.jpg',
-                        id: 1
+                        id: 11
                     }, {
                         name: 'Repast hall',
                         className: 'repast-hall',

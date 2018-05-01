@@ -8,8 +8,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
             filterFactory.gender = 'female';
         }
         $state.go('partners');
-    }
-  
+    };
+
     $scope.serviceData = [{
             "id": "1",
             "name": "cars",
@@ -102,42 +102,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                     }
                 },
                 {
-                    "itemId": "9",
-                    "image": "funeral-rolls-royce.png",
-                    "event": "funeral",
-                    "description": {
-                        "name": "Rolls-Royce Phantom",
-                        "cost": "6000 uah",
-                        "amount": "1",
-                        "color": "silver",
-                        "driver": "Vasya Pupkin"
-                    }
-                },
-                {
-                    "itemId": "10",
-                    "image": "funeral-cadilac-black.png",
-                    "event": "funeral",
-                    "description": {
-                        "name": "Mercedes E class",
-                        "cost": "4000 uah",
-                        "amount": "1",
-                        "color": "black",
-                        "driver": "Vasya Pupkin"
-                    }
-                },
-                {
-                    "itemId": "11",
-                    "image": "funeral-cadilac-white.png",
-                    "event": "funeral",
-                    "description": {
-                        "name": "Mercedes E class",
-                        "cost": "4000 uah",
-                        "amount": "1",
-                        "color": "black",
-                        "driver": "Vasya Pupkin"
-                    }
-                },
-                {
                     "itemId": "12",
                     "image": "gl-white.png",
                     "description": {
@@ -155,6 +119,44 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                         "name": "Hyundai",
                         "cost": "5500 uah",
                         "amount": "2",
+                        "color": "black",
+                        "driver": "Vasya Pupkin"
+                    }
+                }
+            ]
+        },
+        {
+            "id": "11",
+            "name": "funeral-cars",
+            "items": [{
+                    "itemId": "9",
+                    "image": "funeral-rolls-royce.png",
+                    "description": {
+                        "name": "Rolls-Royce Phantom",
+                        "cost": "6000 uah",
+                        "amount": "1",
+                        "color": "silver",
+                        "driver": "Vasya Pupkin"
+                    }
+                },
+                {
+                    "itemId": "10",
+                    "image": "funeral-cadilac-black.png",
+                    "description": {
+                        "name": "Mercedes E class",
+                        "cost": "4000 uah",
+                        "amount": "1",
+                        "color": "black",
+                        "driver": "Vasya Pupkin"
+                    }
+                },
+                {
+                    "itemId": "11",
+                    "image": "funeral-cadilac-white.png",
+                    "description": {
+                        "name": "Mercedes E class",
+                        "cost": "4000 uah",
+                        "amount": "1",
                         "color": "black",
                         "driver": "Vasya Pupkin"
                     }
@@ -268,28 +270,37 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         {
             "id": "6",
             "name": "animators",
-            "items": [{
+            "items": [
+                {
                     "itemId": "1",
-                    "image": "imageurl",
+                    "image": "brad-pitt.png",
                     "description": {
                         "name": "Brad Pitt",
-                        "cost": "500 $"
+                        "cost": "2800 $"
                     }
                 },
                 {
                     "itemId": "2",
-                    "image": "imageurl",
+                    "image": "will-smith.png",
                     "description": {
-                        "name": "Ivo Bobul",
-                        "cost": "50 $"
+                        "name": "Will Smith",
+                        "cost": "3000 $"
+                    }
+                },
+                {
+                    "itemId": "4",
+                    "image": "poroh.png",
+                    "description": {
+                        "name": "Petro Poroshenko",
+                        "cost": "free"
                     }
                 },
                 {
                     "itemId": "3",
-                    "image": "imageurl",
+                    "image": "zelenskyi.png",
                     "description": {
-                        "name": "Petro Poroshenko",
-                        "cost": "1 $"
+                        "name": "Volodymyr Zelenskyi",
+                        "cost": "1500 $"
                     }
                 }
             ]
@@ -338,5 +349,4 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         }
     ];
     $scope.currentService = $scope.serviceData.find((item) => item.id == $scope.id);
-
-}
+};
