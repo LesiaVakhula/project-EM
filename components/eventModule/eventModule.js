@@ -221,6 +221,7 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners])
             .state(conferenceServicesState)
     }])
     .component('eventComponent', require('./components/eventComponent/eventComponent.js'))
+    .component('productItemComponent', require('./components/productItemComponent/productItem.js'))
     .controller('servicesCtrl', require('../../components/eventModule/servicesCtrl.js'))
     .factory('filterFactory', require('./filterFactory.js'))
     .name;

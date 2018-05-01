@@ -1,5 +1,6 @@
 module.exports = function(){
     return {
-        gender: 'male'
+        gender: 'male',
+        event: 'funeral'
     };
 };
