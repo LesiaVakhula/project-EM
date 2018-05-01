@@ -1,0 +1,56 @@
+<section>
+    <div class="row">
+        <div class="col-xs-12 col-sm-7 col-md-7">
+            <h2>Invite guests</h2>
+            <form class="form-invitation" novalidate>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
+                    <label for="name">First Name:</label>
+                    <input class="input-name" id="name" type="text" ng-model="name" required />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
+                    <label for="lastname">Last Name:</label>
+                    <input class="input-name" id="lastname" type="text" ng-model = "lastName" required />
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
+                    <label for="email">E-mail:</label>
+                    <input class="input-name" id="email" type="email" ng-model = "email" required />
+                </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
+                    <label for="phone">Phone number:</label>
+                    <input class="input-name" id="phone" type="tel" ng-model = "phone" required />
+                </div>
+                <button ng-click = "addPerson( name, lastName,email, phone)">Add to list</button>
+            </form>
+            <div class="template-invitation">
+                <h3>Invitation template:</h3>
+                <p class="text-input">Invitation text: </p><textarea cols="50" rows="2" ng-model="iputText"></textarea>
+                <p> Date: <input type="datetime-local" ng-model="dateTimeEvent"></p>
+                <button class="btn-set-date" ng-click="date = getDate(dateTimeEvent)">Set date to the template</button>
+                <div class="temlate">
+                    <img src="{{backgroundTemplate}}" alt="">
+                    <p class="invitation-name">{{personList[0].lastName}} {{personList[0].name}} </p>
+                    <p class="invitation-text">{{iputText}}</p>
+                    <p class="event-time" ng-if="flag">{{date.day}}. {{date.month}}. {{date.year}}, at {{date.hour}}:{{date.minutes}} o`clock!</p>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-5 col-md-5 list">
+            <h2>Guest list:</h2>
+            <ul class="person-item">
+                <li ng-repeat="person in personList">
+                    <ul class="list-item">
+                        <li>{{person.name}}</li>
+                        <li>{{person.lastName}}</li>
+                        <li hidden>{{person.phone}}</li>
+                        <li hidden>{{person.email}}</li>
+                        <li> <button class="removePerson" ng-click="removePerson(person.count)">x</button></li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</section>

@@ -1,9 +1,10 @@
 const angular = require('angular');
 const template = require('./eventModule.html');
 const partners = require('./components/partners/partnersComponent');
+const invitation = require('./components/invitation/invitationComponent');
 require('@uirouter/angularjs');
 
-module.exports = angular.module('emApp.Event', ['ui.router',partners])
+module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation])
     .config(['$stateProvider', function ($stateProvider) {
         const weddingState = {
             name: 'wedding',
