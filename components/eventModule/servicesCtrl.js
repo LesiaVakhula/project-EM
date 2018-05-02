@@ -1,12 +1,16 @@
-module.exports = (['$scope', '$stateParams', '$state', 'filterFactory', function($scope, $stateParams, $state, filterFactory) {
-
+module.exports = function ($scope, $stateParams, $state, filterFactory) {
+    'ngInject';
     $scope.id = $stateParams.id;
+    if ($scope.id == 3) {
+        $state.go('invitation');
+    };
+
     if ($scope.id == 9 || $scope.id == 10) {
         if ($scope.id == 9) {
             filterFactory.gender = 'male';
         } else {
             filterFactory.gender = 'female';
-        }
+        };
         $state.go('partners');
     };
 
@@ -270,8 +274,7 @@ module.exports = (['$scope', '$stateParams', '$state', 'filterFactory', function
         {
             "id": "6",
             "name": "animators",
-            "items": [
-                {
+            "items": [{
                     "itemId": "1",
                     "image": "brad-pitt.png",
                     "description": {
@@ -349,4 +352,4 @@ module.exports = (['$scope', '$stateParams', '$state', 'filterFactory', function
         }
     ];
     $scope.currentService = $scope.serviceData.find((item) => item.id == $scope.id);
-}]);
+};

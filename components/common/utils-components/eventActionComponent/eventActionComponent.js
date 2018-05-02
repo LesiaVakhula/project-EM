@@ -18,8 +18,7 @@ module.exports = {
 			this.url = this.data.className;
 			
 			if (this.data.id) {
-				this.url = `.services({id: ${this.data.id}})`
-				
+				this.url = `.services({id: ${this.data.id}})`			
 			};
 		};
 	}

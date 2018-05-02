@@ -4,12 +4,14 @@ require('./homeStyle.scss');
 require('@uirouter/angularjs');
 
 module.exports = angular.module('emApp.home', ['ui.router'])
-  .config(['$stateProvider', function ($stateProvider) {
-    var homePageState = {
+  .config(function ($stateProvider) {
+    'ngInject';
+    const homePageState = {
       name: 'home',
       url: '/',
       templateUrl: template,
-      controller: (['$scope', function ($scope) {
+      controller: function ($scope) {
+        'ngInject';
         $scope.classesArray = [{
             name: 'birthday',
             className: 'birthday',
@@ -31,10 +33,10 @@ module.exports = angular.module('emApp.home', ['ui.router'])
             imageUrl: 'wedding/homepage_wedding.png'
           }
         ];
-      }])
+      }
     };
 
     $stateProvider.state(homePageState);
-  }])
+  })
   .component('eventActionComponent', require('../common/utils-components/eventActionComponent/eventActionComponent.js'))
   .name;
