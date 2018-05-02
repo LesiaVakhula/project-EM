@@ -2,7 +2,7 @@
     <div class="row">
         <h2>Our Partners:</h2>
         <div class="main-pratners">
-            <div class="col-sm-6 col-xs-12 col-lg-4 col-xl-3" ng-repeat="partner in partners">
+            <div class="col-sm-6 col-xs-12 col-lg-4 col-xl-3" ng-repeat="partner in partners | filter : genderFilter">
                 <div   class="partners" >
                     <div class="partner-img">
                         <a href="{{partner.url}}"><img src="{{partner.imgUrl}}" alt=""></a>

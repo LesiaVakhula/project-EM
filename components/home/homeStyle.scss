@@ -1,7 +1,32 @@
 .event-action-wrapper {
+    position: relative;
     height: auto;
     .category {
         height: auto;
+    }
+    .brand-logo {
+        border: 3px solid #fff;
+        color: #fff;
+        font-size: 4vw;
+        padding: 5vw;
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        span {
+            font-family: 'Lobster', cursive;
+            position: absolute;
+
+            &:first-child {
+                top: -5%;
+                left: 10%;
+            }
+            &:last-child {
+                bottom: -5%;
+                right: 10%;
+            }
+        }
     }
 }
 
@@ -17,5 +42,11 @@
                 filter: grayscale(0);
             }
         }
+    }
+}
+
+@media only screen and (max-width:576px) {
+    .brand-logo {
+        display:none;
     }
 }
