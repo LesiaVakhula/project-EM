@@ -1,16 +1,19 @@
 const angular = require('angular');
 const template = require('./eventModule.html');
-const invitation = require('./components/invitation/invitationComponent');
-const partners = require('./components/partners/partnersModule');
+const partners = require('../partnersModule/partnersModule');
 const productsTemplate = require('./productsTemplate.html');
+const invitation = require('../invitationModule/invitationModule')
 require('@uirouter/angularjs');
-module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation])
-    .config(['$stateProvider', function ($stateProvider) {
+
+module.exports = angular.module('emApp.Event', ['ui.router', partners, invitation])
+    .config(function ($stateProvider) {
+    'ngIngect';
         const weddingState = {
             name: 'wedding',
             url: '/wedding',
             templateUrl: template,
-            controller: (['$scope', function ($scope) {
+            controller: function ($scope) {
+                'ngInject';
                 $scope.event = {
                     name: 'wedding',
                     services: [{
@@ -43,7 +46,7 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
                         className: 'guest-invitation',
                         imageUrl: 'wedding/wedding-guest-invitation.jpg',
                         mobileImageUrl: 'wedding/wedding-guest-invitation-mobile.jpg',
-                        id: 8
+                        id: 3
                     }, {
                         name: 'Unique organization',
                         className: 'unique-organization',
@@ -52,14 +55,15 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
                         id: 8
                     }],
                 };
-            }])
+            }
         };
 
         const funeralState = {
             name: 'funeral',
             url: '/funeral',
             templateUrl: template,
-            controller: (['$scope', function ($scope) {
+            controller: function ($scope) {
+                'ngInject';
                 $scope.event = {
                     name: 'funeral',
                     services: [{
@@ -94,14 +98,15 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
                         id: 7
                     }]
                 };
-            }])
+            }
         };
 
         const birthdayState = {
             name: 'birthday',
             url: '/birthday',
             templateUrl: template,
-            controller: (['$scope', function ($scope) {
+            controller: function ($scope) {
+                'ngInject';
                 $scope.event = {
                     name: 'birthday',
                     services: [{
@@ -142,14 +147,15 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
                         id: 2
                     }]
                 };
-            }])
+            }
         };
 
         const conferenceState = {
             name: 'conference',
             url: '/conference',
             templateUrl: template,
-            controller: (['$scope', function ($scope) {
+            controller: function ($scope) {
+                'ngInject';
                 $scope.event = {
                     name: 'conference',
                     services: [{
@@ -158,7 +164,6 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
                         imageUrl: 'conference/conference-car-rent.jpeg',
                         mobileImageUrl: 'conference/conference-car-rent-mobile.jpg',
                         id: 1
-
                     }, {
                         name: 'Rent a hall',
                         className: 'hall',
@@ -179,7 +184,7 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
                         id: 5
                     }]
                 }
-            }])
+            }
         };
 
         const weddingServicesState = {
@@ -219,7 +224,7 @@ module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation]
             .state(funeralServicesState)
             .state(birthdayServicesState)
             .state(conferenceServicesState)
-    }])
+    })
     .component('eventComponent', require('./components/eventComponent/eventComponent.js'))
     .component('productItemComponent', require('./components/productItemComponent/productItem.js'))
     .controller('servicesCtrl', require('../../components/eventModule/servicesCtrl.js'))
