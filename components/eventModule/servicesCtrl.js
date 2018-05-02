@@ -13,7 +13,9 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         };
         $state.go('partners');
     };
-
+    if ($scope.id == 3){
+        $state.go('invitationState');
+    }
     $scope.serviceData = [{
             "id": "1",
             "name": "cars",
