@@ -1,6 +1,6 @@
 const angular = require('angular');
 const template = require('./eventModule.html');
-const partners = require('./components/partners/partnersComponent');
+const partners = require('./components/partners/partnersModule');
 const productsTemplate = require('./productsTemplate.html');
 require('@uirouter/angularjs');
 
