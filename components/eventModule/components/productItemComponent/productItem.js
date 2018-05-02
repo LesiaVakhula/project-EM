@@ -6,7 +6,7 @@ module.exports = {
     bindings: {
         data: '='
     },
-    controller: function(filterFactory) {
+    controller: function() {
         this.$onInit = () => {
             this.imageUrl = require(`../../../common/images/productItemImages/${this.data.image}`);
             //Додати на клік $http і post запит в json

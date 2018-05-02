@@ -1,4 +1,4 @@
-module.exports = function ($scope, $stateParams, $state, filterFactory) {
+module.exports = (['$scope', '$stateParams', '$state', 'filterFactory', function($scope, $stateParams, $state, filterFactory) {
 
     $scope.id = $stateParams.id;
     if ($scope.id == 9 || $scope.id == 10) {
@@ -9,7 +9,9 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         }
         $state.go('partners');
     };
-
+    if ($scope.id == 3){
+        $state.go('invitationState');
+    }
     $scope.serviceData = [{
             "id": "1",
             "name": "cars",
@@ -349,4 +351,4 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         }
     ];
     $scope.currentService = $scope.serviceData.find((item) => item.id == $scope.id);
-};
+}]);

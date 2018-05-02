@@ -6,7 +6,7 @@ module.exports = {
 	bindings: {
 		data: '='
 	},
-	controller: function ($location) {
+	controller: function () {
 		this.$onInit = () => {
 			this.imageUrl = require(`../../images/${this.data.imageUrl}`);
 			if (this.data.mobileImageUrl) {

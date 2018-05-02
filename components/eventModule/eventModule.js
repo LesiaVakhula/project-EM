@@ -1,8 +1,7 @@
 const angular = require('angular');
 const template = require('./eventModule.html');
-const partners = require('./components/partners/partnersComponent');
 const invitation = require('./components/invitation/invitationComponent');
-require('@uirouter/angularjs');
+const partners = require('./components/partners/partnersModule');
 const productsTemplate = require('./productsTemplate.html');
 require('@uirouter/angularjs');
 module.exports = angular.module('emApp.Event', ['ui.router',partners,invitation])
