@@ -1,7 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster');
 .header .navbar {
   background: #000000;
   padding: 3px 10px;
 }
+
+/*MODAL STYLE*/ 
+
+.ngdialog {
+    &.ngdialog-theme-default {
+        &.modal-view {
+            .ngdialog-content {
+                background-color: #595959;
+                margin:-115px auto;
+                color: #fff;
+                border: 1px solid #2ef080;
+                @media only screen and (max-width: 768px) {
+                    width:50%;
+                }
+
+                @media only screen and (max-width:576px) {
+                    width: 75%;
+                }
+            }
+            .ngdialog-overlay {
+                background: rgba(0, 0, 0, .75);
+            }
+        }
+    }
+}
+/* FORM BUTTON STYLE*/
+button.btn.btn-dark.login-btn {
+  position:static;
+  font-size:initial;
+}
+
+
+
 .logo{
   width: 30px;
   height: 30px;

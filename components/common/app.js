@@ -4,13 +4,16 @@ const shopCard = require('../shopCard/shopCard.js');
 const eventPage = require('../eventModule/eventModule.js');
 require("bootstrap");
 require('@uirouter/angularjs');
+require('ng-dialog');
 
 
 // ------------ styles
 require('../../node_modules/bootstrap/dist/css/bootstrap.css');
+require('../../node_modules/ng-dialog/css/ngDialog.min.css');
+require('../../node_modules/ng-dialog/css/ngDialog-theme-default.min.css');
 require("./styles/style.scss");
 
-module.exports = angular.module('emApp', ['ui.router', home, shopCard, eventPage])
+module.exports = angular.module('emApp', ['ui.router', 'ngDialog', home, shopCard, eventPage])
     .config(function ($locationProvider) {
         'ngInject';
         $locationProvider.html5Mode({
