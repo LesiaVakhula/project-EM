@@ -1,5 +1,6 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
@@ -11,10 +12,18 @@ module.exports = {
   module: {
     rules: [{
         test: /\.scss$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader:'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader:'sass-loader'
+          }
+        ]
       },
       {
         test: /\.css$/,
@@ -46,7 +55,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin('style.css')
-  ],
-  watch: true
+  new MiniCssExtractPlugin({
+      filename: "style.css",
+    })
+  ]
 };

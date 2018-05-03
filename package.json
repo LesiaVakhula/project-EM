@@ -44,10 +44,10 @@
   "devDependencies": {
     "cross-env": "^5.1.4",
     "css-loader": "^0.28.11",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "image-webpack-loader": "^4.2.0",
     "jquery": "^3.3.1",
+    "mini-css-extract-plugin": "^0.4.0",
     "ng-annotate-loader": "^0.6.1",
     "ng-dialog": "^1.4.0",
     "node-sass": "^4.8.3",
