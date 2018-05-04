@@ -118,34 +118,40 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
         }
         }
         .wedding-suits {
-            img {
-                height: 470px;
-            }
+            height: 470px;
+           /*  img {
+               height: 470px;
+           } */
         }
         .repast-hall {
-            img {
-                height: 250px;
-            }
+             height: 250px;
+          /*   img {
+              height: 250px;
+          } */
         }
         .car-hire {
-            img {
-                height: 210px;
-            }
+            height: 210px;
+           /*  img {
+               height: 210px;
+           } */
         }
         .wedding-dresses {
-            img {
-                height: 470px;
-            }
+            height: 470px;
+          /*   img {
+              height: 470px;
+          } */
         }
         .unique-organization {
-            img {
-                height: 250px;
-            }
+             height: 250px;
+          /*   img {
+              height: 250px;
+          } */
         }
         .guest-invitation {
-            img {
-                height: 250px;
-            }
+            height: 250px;
+           /*  img {
+               height: 250px;
+           } */
         }
     }
 
@@ -187,6 +193,52 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     .places {
         grid-area: f;
     }
+    .event-img {
+        opacity: 0.75;
+        &:hover {
+            opacity: 1;
+        }
+        }
+    @media only screen and (min-width:1024px) {
+        max-width: 75%;
+        margin: 10px auto;
+        .animators {
+            height: 210px;
+           /*  img {
+               height: 470px;
+           } */
+        }
+        .places {
+             height: 250px;
+          /*   img {
+              height: 250px;
+          } */
+        }
+        .car-rent {
+            height: 230px;
+           /*  img {
+               height: 210px;
+           } */
+        }
+        .invite {
+            height: 210px;
+          /*   img {
+              height: 470px;
+          } */
+        }
+        .food-courts {
+             height: 250px;
+          /*   img {
+              height: 250px;
+          } */
+        }
+        .design {
+            height: 450px;
+           /*  img {
+               height: 250px;
+           } */
+        }
+    }
 }
 
 .funeral .service-5 {
@@ -194,8 +246,19 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     margin: 10px 0;
     grid-template-areas: "a a b" "c d b " "c e e ";
     height: 100%;
+    max-width:75%;
+    margin:10px auto;
     grid-template-rows: 30% 35% 35%;
     grid-gap: 10px;
+     .event {
+        border: 2px solid #fff;
+    }
+    .event-img {
+        opacity: 0.75;
+        &:hover {
+            opacity: 1;
+        }
+        }
     .car-rent {
         grid-area: a;
     }
@@ -210,6 +273,38 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     }
     .funeral-merchandise {
         grid-area: e;
+    }
+    @media only screen and (min-width:1024px) {
+            .car-rent {
+            height: 250px;
+           /*  img {
+               height: 470px;
+           } */
+        }
+        .repast-hall {
+             height: 490px;
+          /*   img {
+              height: 250px;
+          } */
+        }
+        .invite {
+            height: 490px;
+           /*  img {
+               height: 210px;
+           } */
+        }
+        .memorial-hall {
+            height: 220px;
+          /*   img {
+              height: 470px;
+          } */
+        }
+        .funeral-merchandise {
+            height: 250px;
+           /*  img {
+               height: 250px;
+           } */
+        }
     }
 }
 
@@ -231,6 +326,40 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     }
     .food-courts {
         grid-area: d;
+    }
+     // .event-img {
+     //    opacity: 0.75;
+     //    &:hover {
+     //        opacity: 1;
+     //    }
+     //    }
+    @media only screen and (min-width:1024px) {
+        max-width: 75%;
+        margin: 10px auto;
+        .car-rent {
+            height: 250px;
+           /*  img {
+               height: 470px;
+           } */
+        }
+        .hall {
+             height: 470px;
+          /*   img {
+              height: 250px;
+          } */
+        }
+        .food-courts {
+            height: 210px;
+           /*  img {
+               height: 210px;
+           } */
+        }
+        .invite {
+            height: 210px;
+          /*   img {
+              height: 470px;
+          } */
+        }
     }
 }
 

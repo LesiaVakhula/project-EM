@@ -16,11 +16,6 @@ module.exports = {
 				this.mobileImageUrl = this.imageUrl;
 			};
 
-			this.url = `event({eventName: ${this.data.className}})`;
-			
-			if (this.data.id) {
-				this.url = `.services({id: ${this.data.id}})`;			
-			};
 		};
 	}
 };

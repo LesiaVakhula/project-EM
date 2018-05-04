@@ -1,4 +1,4 @@
-<div class='h-100 event {{$ctrl.data.className}}' ui-sref='{{$ctrl.url}}'>
+<div class='h-100 event {{$ctrl.data.className}}' ui-sref={{$ctrl.data.stateTo}}>
     <picture class="image-wrapper">
         <source media="(max-width: 576px)" srcset={{$ctrl.mobileImageUrl}}>
         <img class='event-img' ng-src='{{$ctrl.imageUrl}}'>
