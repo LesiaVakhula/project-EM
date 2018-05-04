@@ -13,9 +13,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         };
         $state.go('partners');
     };
-    if ($scope.id == 3){
-        $state.go('invitationState');
-    }
+
     $scope.serviceData = [{
         "id": "1",
         "name": "cars",
@@ -451,5 +449,5 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
         ]
     }
     ];
-    $scope.currentService = $scope.serviceData.find((item) => item.id == $scope.id);
+    $scope.currentService = $scope.serviceData.find((item) => item.id === $scope.id);
 };

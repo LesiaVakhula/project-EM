@@ -7,107 +7,59 @@ require('@uirouter/angularjs');
 
 module.exports = angular.module('emApp.Event', ['ui.router', partners, invitation])
     .config(function ($stateProvider) {
-    'ngIngect';
-        const weddingState = {
-            name: 'wedding',
-            url: '/wedding',
+    'ngInject';
+
+        const eventState = {
+            name:'event',
+            url:'/:eventName',
             templateUrl: template,
-            controller: function ($scope) {
+            controller: function ($scope, $stateParams) {
                 'ngInject';
-                $scope.event = {
+                $scope.name = $stateParams.eventName;
+                console.log($stateParams.eventName);
+                 $scope.events = [
+                    {
                     name: 'wedding',
                     services: [{
                         name: 'Wedding suits',
-                        className: 'wedding-suits',
+                        className: 'wedding-suits vertical-2',
                         imageUrl: 'wedding/wedding-suits.jpg',
                         mobileImageUrl: 'wedding/wedding-suits-mobile.jpg',
                         id: 9
                     }, {
                         name: 'Repast hall',
-                        className: 'repast-hall',
+                        className: 'repast-hall horizontal-2',
                         imageUrl: 'wedding/wedding-repast-hall.jpg',
                         mobileImageUrl: 'wedding/wedding-repast-hall-mobile.jpg',
                         id: 2
 
                     }, {
                         name: 'Car hire',
-                        className: 'car-hire',
+                        className: 'car-hire horizontal-1',
                         imageUrl: 'wedding/wedding-car-hire.png',
                         mobileImageUrl: 'wedding/wedding-car-hire-mobile.jpg',
                         id: 1
                     }, {
                         name: 'Wedding dresses',
-                        className: 'wedding-dresses',
+                        className: 'wedding-dresses vertical-2',
                         imageUrl: 'wedding/wedding-dresses.jpg',
                         mobileImageUrl: 'wedding/wedding-dresses-mobile.jpg',
                         id: 10
                     }, {
-                        name: 'Guest invitation',
-                        className: 'guest-invitation',
+                        name: 'Guest invitation' ,
+                        className: 'guest-invitation horizontal-1',
                         imageUrl: 'wedding/wedding-guest-invitation.jpg',
                         mobileImageUrl: 'wedding/wedding-guest-invitation-mobile.jpg',
                         id: 3
                     }, {
                         name: 'Unique organization',
-                        className: 'unique-organization',
+                        className: 'unique-organization horizontal-2',
                         imageUrl: 'wedding/wedding-unique-organization.jpeg',
                         mobileImageUrl: 'wedding/wedding-unique-organization-mobile.jpg',
                         id: 8
-                    }],
-                };
-            }
-        };
-
-        const funeralState = {
-            name: 'funeral',
-            url: '/funeral',
-            templateUrl: template,
-            controller: function ($scope) {
-                'ngInject';
-                $scope.event = {
-                    name: 'funeral',
-                    services: [{
-                        name: 'Choose car for a rent',
-                        className: 'car-rent',
-                        imageUrl: 'funeral/funeral-car-rent.png',
-                        mobileImageUrl: 'funeral/funeral-car-rent-mobile.jpg',
-                        id: 11
-                    }, {
-                        name: 'Repast hall',
-                        className: 'repast-hall',
-                        imageUrl: 'funeral/funeral-repast-hall.png',
-                        mobileImageUrl: 'funeral/funeral-repast-hall-mobile.jpg',
-                        id: 2
-                    }, {
-                        name: 'Invite guests',
-                        className: 'invite',
-                        imageUrl: 'funeral/funeral-invite-guest.png',
-                        mobileImageUrl: 'funeral/funeral-invite-guest-mobile.jpg',
-                        id: 3
-                    }, {
-                        name: 'Memorial hall',
-                        className: 'memorial-hall',
-                        imageUrl: 'funeral/funeral-memorial-hall.png',
-                        mobileImageUrl: 'funeral/funeral-memorial-hall-mobile.jpg',
-                        id: 4
-                    }, {
-                        name: 'Funeral merchandise',
-                        className: 'funeral-merchandise',
-                        imageUrl: 'funeral/funeral-merchandise.png',
-                        mobileImageUrl: 'funeral/funeral-merchandise-mobile.jpg',
-                        id: 7
                     }]
-                };
-            }
-        };
-
-        const birthdayState = {
-            name: 'birthday',
-            url: '/birthday',
-            templateUrl: template,
-            controller: function ($scope) {
-                'ngInject';
-                $scope.event = {
+                },
+                {
                     name: 'birthday',
                     services: [{
                         name: 'Choose car for a rent',
@@ -146,17 +98,41 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners, invitatio
                         mobileImageUrl: 'birthday/birthday-places-mobile.jpg',
                         id: 2
                     }]
-                };
-            }
-        };
-
-        const conferenceState = {
-            name: 'conference',
-            url: '/conference',
-            templateUrl: template,
-            controller: function ($scope) {
-                'ngInject';
-                $scope.event = {
+                },{
+                    name: 'funeral',
+                    services: [{
+                        name: 'Choose car for a rent',
+                        className: 'car-rent',
+                        imageUrl: 'funeral/funeral-car-rent.png',
+                        mobileImageUrl: 'funeral/funeral-car-rent-mobile.jpg',
+                        id: 11
+                    }, {
+                        name: 'Repast hall',
+                        className: 'repast-hall',
+                        imageUrl: 'funeral/funeral-repast-hall.png',
+                        mobileImageUrl: 'funeral/funeral-repast-hall-mobile.jpg',
+                        id: 2
+                    }, {
+                        name: 'Invite guests',
+                        className: 'invite',
+                        imageUrl: 'funeral/funeral-invite-guest.png',
+                        mobileImageUrl: 'funeral/funeral-invite-guest-mobile.jpg',
+                        id: 3
+                    }, {
+                        name: 'Memorial hall',
+                        className: 'memorial-hall',
+                        imageUrl: 'funeral/funeral-memorial-hall.png',
+                        mobileImageUrl: 'funeral/funeral-memorial-hall-mobile.jpg',
+                        id: 4
+                    }, {
+                        name: 'Funeral merchandise',
+                        className: 'funeral-merchandise',
+                        imageUrl: 'funeral/funeral-merchandise.png',
+                        mobileImageUrl: 'funeral/funeral-merchandise-mobile.jpg',
+                        id: 7
+                    }]
+                },
+                {
                     name: 'conference',
                     services: [{
                         name: 'Choose car for a rent',
@@ -184,46 +160,23 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners, invitatio
                         id: 5
                     }]
                 }
+                 ]
+                 // console.log($scope.events);
+                  $scope.currentEvent =  $scope.events.find((item) => item.name === $scope.name)
+                     console.log($scope.currentEvent);  
             }
         };
 
-        const weddingServicesState = {
-            name: 'wedding.services',
-            url: '/services/:id',
-            templateUrl: productsTemplate,
-            controller: 'servicesCtrl'
-        };
-
-        const funeralServicesState = {
-            name: 'funeral.services',
-            url: '/services/:id',
-            templateUrl: productsTemplate,
-            controller: 'servicesCtrl'
-        };
-
-        const birthdayServicesState = {
-            name: 'birthday.services',
-            url: '/services/:id',
-            templateUrl: productsTemplate,
-            controller: 'servicesCtrl'
-        };
-
-        const conferenceServicesState = {
-            name: 'conference.services',
+        const servicesState = {
+            name: 'event.services',
             url: '/services/:id',
             templateUrl: productsTemplate,
             controller: 'servicesCtrl'
         };
 
         $stateProvider
-            .state(weddingState)
-            .state(funeralState)
-            .state(birthdayState)
-            .state(conferenceState)
-            .state(weddingServicesState)
-            .state(funeralServicesState)
-            .state(birthdayServicesState)
-            .state(conferenceServicesState)
+            .state(eventState)
+            .state(servicesState);
     })
     .component('eventComponent', require('./components/eventComponent/eventComponent.js'))
     .component('productItemComponent', require('./components/productItemComponent/productItem.js'))

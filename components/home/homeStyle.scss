@@ -1,8 +1,8 @@
 .event-action-wrapper {
     position: relative;
-    height: auto;
+    height: calc(100vh - 92px) ;
     .category {
-        height: auto;
+        height: 50%;
     }
     .brand-logo {
         border: 3px solid #fff;
