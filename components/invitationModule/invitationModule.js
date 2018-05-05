@@ -12,6 +12,9 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                 $scope.iputText = '';
                 $scope.personList = [];
                 $scope.flag = false;
+                $scope.pattern_email=/[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/;
+                $scope.pattern_phone=/^\d{10}$/;
+                $scope.formName = {};
                 let count = 1;
                 function goodLook(num) {
                     if(num <= 9){
