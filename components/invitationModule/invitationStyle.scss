@@ -3,7 +3,7 @@ section{
   margin: 0;
   padding: 20px 0;
   font-family: 'Dancing Script','Bad Script', cursive;
-  height:calc(100vh - 80px);
+  min-height:calc(100vh - 80px);
 
   .form-invitation{
     display: flex;
