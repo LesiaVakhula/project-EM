@@ -6,7 +6,8 @@ module.exports = {
 	bindings: {
 		data: '='
 	},
-	controller: function () {
+	controller: function ($state) {
+		'ngInject';
 		this.$onInit = () => {
 			this.imageUrl = require(`../../images/${this.data.imageUrl}`);
 			if (this.data.mobileImageUrl) {
@@ -15,11 +16,6 @@ module.exports = {
 				this.mobileImageUrl = this.imageUrl;
 			};
 
-			this.url = this.data.className;
-			
-			if (this.data.id) {
-				this.url = `.services({id: ${this.data.id}})`			
-			};
 		};
 	}
 };

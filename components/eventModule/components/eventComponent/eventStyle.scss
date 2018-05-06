@@ -14,7 +14,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
 }
 
 .banner {
-    height: 300px;
+    height: 100%;
     position: relative;
     .head-border {
         position: absolute;
@@ -61,7 +61,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     .event {
         .event-heading-decoration {
             background-image: none;
-            border: 3px solid #2EF080;
+            border: 2px solid #2EF080;
             width: max-content;
             height: auto;
             padding: 10px;
@@ -70,7 +70,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
                 left: 0;
                 transform: none;
                 h2 {
-                    font-size: 2.3vw;
+                    font-size: 1.75vw;
                     @media only screen and (max-width: 576px) {
                         font-size: 5vw;
                     }
@@ -84,9 +84,11 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     display: grid;
     margin: 10px 0;
     grid-template-areas: "a b b" "a c d " "e f d ";
-    height: 100%;
-    grid-template-rows: 30% 35% 35%;
+    grid-template-columns: 30% 40% 30%;
     grid-gap: 10px;
+    .event {
+        border: 2px solid #fff;
+    }
     .wedding-suits {
         grid-area: a;
     }
@@ -105,6 +107,65 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     .guest-invitation {
         grid-area: e;
     }
+
+    @media only screen and (min-width:1024px) {
+        max-width: 75%;
+        margin: 10px auto;
+        .event-img {
+        opacity: 0.4;
+        &:hover {
+            opacity: 1;
+        }
+        }
+        .wedding-suits {
+            height: 470px;
+           /*  img {
+               height: 470px;
+           } */
+        }
+        .repast-hall {
+             height: 250px;
+          /*   img {
+              height: 250px;
+          } */
+        }
+        .car-hire {
+            height: 210px;
+           /*  img {
+               height: 210px;
+           } */
+        }
+        .wedding-dresses {
+            height: 470px;
+          /*   img {
+              height: 470px;
+          } */
+        }
+        .unique-organization {
+             height: 250px;
+          /*   img {
+              height: 250px;
+          } */
+        }
+        .guest-invitation {
+            height: 250px;
+           /*  img {
+               height: 250px;
+           } */
+        }
+    }
+
+
+    /*   .horizontal-2 {
+      height:270px;
+  
+  }
+  .vertical-2 {
+      height:550px;
+  }
+  .horizontal-1 {
+      height:270px;
+  } */
 }
 
 .birthday .service-6 {
@@ -185,6 +246,9 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
     }
     .wedding .service-6,
     .birthday .service-6 {
+         .event {
+        border:none;
+        }
         width: 100%;
         margin: 0;
         padding: 0;
@@ -192,6 +256,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birthday-banner.png';
         grid-template-areas: "a" "b" "c" "d" "e" "f";
         grid-gap: 0;
         grid-template-rows: 16% 16% 16% 16% 18% 18%;
+        grid-template-columns:none;
     }
     .funeral .service-5 {
         margin: 0;

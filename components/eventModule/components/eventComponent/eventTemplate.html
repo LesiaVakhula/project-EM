@@ -1,12 +1,5 @@
-<div class="row {{$ctrl.event.name}}">
-    <div class="col-12 banner {{$ctrl.bannerClassName}}">
-        <div class="head-border">
-            <div>
-                <h2>{{$ctrl.event.name}}</h2>
-            </div>
-        </div>
-    </div>
-    <div class="col-12 {{$ctrl.serviceClassName}}">
+<div class="row {{$ctrl.event.name}} banner {{'banner-' + $ctrl.event.name}}">
+    <div class="col-12 {{'service-' + $ctrl.event.services.length}}">
         <div class="dimensions {{item.className}}" ng-repeat="item in $ctrl.event.services">
             <event-action-component data="item">
             </event-action-component>

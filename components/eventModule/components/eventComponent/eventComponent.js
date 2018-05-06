@@ -7,9 +7,8 @@ module.exports = {
         event: '<eventObject'
     },
     controller: function () {
-        this.$onChanges = (old, newVal) => {
-            this.bannerClassName = `banner-${this.event.name}`;
-            this.serviceClassName = `service-${this.event.services.length}`
+        
+        this.$onChanges = () => {
         }
     }
 };

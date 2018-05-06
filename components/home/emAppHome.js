@@ -10,32 +10,15 @@ module.exports = angular.module('emApp.home', ['ui.router'])
       name: 'home',
       url: '/',
       templateUrl: template,
-      controller: function ($scope) {
+      controller: function ($scope, $http) {
         'ngInject';
-        $scope.classesArray = [{
-            name: 'birthday',
-            className: 'birthday',
-            imageUrl: 'birthday/homepage_birthday.png'
-          },
-          {
-            name: 'funeral',
-            className: 'funeral',
-            imageUrl: 'funeral/homepage_funeral.png'
-          },
-          {
-            name: 'conference',
-            className: 'conference',
-            imageUrl: 'conference/homepage_conference.png'
-          },
-          {
-            name: 'wedding',
-            className: 'wedding',
-            imageUrl: 'wedding/homepage_wedding.png'
-          }
-        ];
+        $http.get('/getEventsData').then(function successCallback(response) {
+          $scope.eventsArray = response.data;
+        }, function errorCallback(response) {
+          console.log('Error!!!');
+        });
       }
     };
-
     $stateProvider.state(homePageState);
   })
   .component('eventActionComponent', require('../common/utils-components/eventActionComponent/eventActionComponent.js'))
