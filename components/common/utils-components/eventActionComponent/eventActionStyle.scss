@@ -5,6 +5,22 @@
     justify-content: center;
     font-family: 'Questrial', sans-serif;
     position: relative;
+    .image-wrapper {
+        width: 100%;
+        height: 100%;
+        .event-img {
+            width: 100%;
+            height: 100%;
+            @media only screen and (min-width: 769px) {
+                filter: grayscale(1);
+            }
+        }
+    }
+    &:hover {
+        & .image-wrapper .event-img {
+            filter: grayscale(0);
+        }
+    }
     .event-heading-decoration {
         z-index: 2;
         background-image: url('../../images/common/event_border.png');
@@ -36,3 +52,4 @@
         }
     }
 }
+
