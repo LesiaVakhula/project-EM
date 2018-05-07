@@ -18,13 +18,13 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
     }
     $scope.serviceData = [{
         "id": "1",
-        "name": "cars",
+        "Name:": "cars",
         "items": [{
                 "itemId": "1",
                 "image": "camry-black.png",
                 "description": {
-                    "name": "Toyota Camry",
-                    "cost": "2500 uah/day",
+                    "Name:": "Toyota Camry",
+                    "Cost:": "2500 uah/day",
                     "color": "black"
                 }
             },
@@ -32,8 +32,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "2",
                 "image": "camry-white.png",
                 "description": {
-                    "name": "Toyota Camry",
-                    "cost": "2500 uah/day",
+                    "Name:": "Toyota Camry",
+                    "Cost:": "2500 uah/day",
                     "color": "white"
                 }
             },
@@ -41,8 +41,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "3",
                 "image": "a6-black.png",
                 "description": {
-                    "name": "Audi A6",
-                    "cost": "3900 uah/day",
+                    "Name:": "Audi A6",
+                    "Cost:": "3900 uah/day",
                     "color": "black"
                 }
             },
@@ -50,17 +50,17 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "4",
                 "image": "a6-white.png",
                 "description": {
-                    "name": "Audi A6",
-                    "cost": "4400 uah/day",
-                    "color": "blue"
+                    "Name:": "Audi A6",
+                    "Cost:": "4400 uah/day",
+                    "color": "white"
                 }
             },
             {
                 "itemId": "5",
                 "image": "s500-black.png",
                 "description": {
-                    "name": "Mercedes-Benz S500",
-                    "cost": "4600 uah/day",
+                    "Name:": "Mercedes-Benz S500",
+                    "Cost:": "4600 uah/day",
                     "color": "black"
                 }
             },
@@ -68,8 +68,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "6",
                 "image": "s500-silver.png",
                 "description": {
-                    "name": "Mercedes-Benz S550",
-                    "cost": "4600 uah/day",
+                    "Name:": "Mercedes-Benz S550",
+                    "Cost:": "4600 uah/day",
                     "color": "silver"
                 }
             },
@@ -77,8 +77,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "7",
                 "image": "gl-black.png",
                 "description": {
-                    "name": "Mercedes-Benz GL350 GL 350 ",
-                    "cost": "5200 uah/day",
+                    "Name:": "Mercedes-Benz GL350",
+                    "Cost:": "5200 uah/day",
                     "color": "black"
                 }
             },
@@ -86,17 +86,35 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "8",
                 "image": "gl-white.png",
                 "description": {
-                    "name": "Mercedes-Benz GL350 GL 350 ",
-                    "cost": "5000 uah/day",
+                    "Name:": "Mercedes-Benz GL350",
+                    "Cost:": "5000 uah/day",
                     "color": "white"
                 }
             },
             {
-                "itemId": "13",
+                "itemId": "9",
+                "image": "blue-mazda.png",
+                "description": {
+                    "Name:": "Mazda 6",
+                    "Cost:": "3000 uah/day",
+                    "color": "blue"
+                }
+            },
+            {
+                "itemId": "10",
+                "image": "red-mazda.png",
+                "description": {
+                    "Name:": "Mazda 6",
+                    "Cost:": "3000 uah/day",
+                    "color": "red"
+                }
+            },
+            {
+                "itemId": "11",
                 "image": "hundai-black.png",
                 "description": {
-                    "name": "Hyundai",
-                    "cost": "5500 uah/day",
+                    "Name:": "Hyundai",
+                    "Cost:": "5500 uah/day",
                     "color": "black"
                 }
             },
@@ -104,8 +122,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "12",
                 "image": "ford.png",
                 "description": {
-                    "name": "Ford",
-                    "cost": "6000 uah/day",
+                    "Name:": "Ford",
+                    "Cost:": "6000 uah/day",
                     "color": "brown"
                 }
             }
@@ -113,13 +131,13 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
     },
     {
         "id": "11",
-        "name": "funeral-cars",
+        "Name:": "funeral-cars",
         "items": [{
                 "itemId": "9",
                 "image": "funeral-rolls-royce.png",
                 "description": {
-                    "name": "Rolls-Royce Phantom",
-                    "cost": "6000 uah",
+                    "Name:": "Rolls-Royce Phantom",
+                    "Cost:": "6000 uah",
                     "color": "silver",
                     "driver": "Vasya Pupkin"
                 }
@@ -128,8 +146,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "10",
                 "image": "funeral-cadilac-black.png",
                 "description": {
-                    "name": "Mercedes E class",
-                    "cost": "4000 uah",
+                    "Name:": "Mercedes E class",
+                    "Cost:": "4000 uah",
                     "color": "black",
                     "driver": "Vasya Pupkin"
                 }
@@ -138,8 +156,8 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "11",
                 "image": "funeral-cadilac-white.png",
                 "description": {
-                    "name": "Mercedes E class",
-                    "cost": "4000 uah",
+                    "Name:": "Mercedes E class",
+                    "Cost:": "4000 uah",
                     "color": "black",
                     "driver": "Vasya Pupkin"
                 }
@@ -148,107 +166,107 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
     },
     {
         "id": "2",
-        "name": "halls",
+        "Name:": "halls",
         "items": [{
                 "itemId": "1",
                 "image": "santinno.png",
                 "description": {
-                    "name": "Santino",
+                    "Name:": "Santino",
                     "number of people": "120",
-                    "cost": "1000 uah/person"
+                    "Cost:": "1000 uah/person"
                 }
             },
             {
                 "itemId": "2",
                 "image": "buhta.png",
                 "description": {
-                    "name": "Viking Bay",
+                    "Name:": "Viking Bay",
                     "number of people": "160",
-                    "cost": "1200 uah/person"
+                    "Cost:": "1200 uah/person"
                 }
             },
             {
                 "itemId": "3",
                 "image": "citadel.png",
                 "description": {
-                    "name": "Citadel lnn",
+                    "Name:": "Citadel lnn",
                     "number of people": "150",
-                    "cost": "1150 uah/person"
+                    "Cost:": "1150 uah/person"
                 }
             },
             {
                 "itemId": "4",
                 "image": "kumpel.png",
                 "description": {
-                    "name": "Kumpel",
+                    "Name:": "Kumpel",
                     "number of people": "60",
-                    "cost": "750 uah/person"
+                    "Cost:": "750 uah/person"
                 }
             },
             {
                 "itemId": "5",
                 "image": "malevich.png",
                 "description": {
-                    "name": "Malevich",
+                    "Name:": "Malevich",
                     "number of people": "450",
-                    "cost": "450 uah/person"
+                    "Cost:": "450 uah/person"
                 }
             },
             {
                 "itemId": "6",
                 "image": "terazza.png",
                 "description": {
-                    "name": "Terrazza",
+                    "Name:": "Terrazza",
                     "number of people": "40",
-                    "cost": "1800 uah/person"
+                    "Cost:": "1800 uah/person"
                 }
             },
             {
                 "itemId": "7",
                 "image": "taurus.png",
                 "description": {
-                    "name": "Taurus conference hall",
+                    "Name:": "Taurus conference hall",
                     "number of people": "100",
-                    "cost": "2000 uah/day"
+                    "Cost:": "2000 uah/day"
                 }
             },
             {
                 "itemId": "8",
                 "image": "panorama.png",
                 "description": {
-                    "name": "Panorama conference hall",
+                    "Name:": "Panorama conference hall",
                     "number of people": "130",
-                    "cost": "2500 uah/day"
+                    "Cost:": "2500 uah/day"
                 }
             },
             {
                 "itemId": "9",
                 "image": "warszawa.png",
                 "description": {
-                    "name": "InterContinental Warszawa conference hall",
+                    "Name:": "InterContinental Warszawa conference hall",
                     "number of people": "120",
-                    "cost": "2100 uah/day"
+                    "Cost:": "2100 uah/day"
                 }
             },
             {
                 "itemId": "10",
                 "image": "airport.png",
                 "description": {
-                    "name": "InterContinental conference hall",
+                    "Name:": "InterContinental conference hall",
                     "number of people": "110",
-                    "cost": "1800 uah/day"
+                    "Cost:": "1800 uah/day"
                 }
             }
         ]
     },
     {
         "id": "4",
-        "name": "memorial-halls",
+        "Name:": "memorial-halls",
         "items": [{
                 "itemId": "1",
                 "image": "dominican.png",
                 "description": {
-                    "name": "Dominician cathedral",
+                    "Name:": "Dominician cathedral",
                     "...": "..."
                 }
             },
@@ -256,7 +274,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "2",
                 "image": "Church of Transfiguration.png",
                 "description": {
-                    "name": "Church of Transfiguration",
+                    "Name:": "Church of Transfiguration",
                     "...": "..."
                 }
             },
@@ -264,7 +282,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "3",
                 "image": "Temple of the Holy Supreme Apostles Peter and Paul.png",
                 "description": {
-                    "name": "Temple of the Holy Supreme Apostles Peter and Paul",
+                    "Name:": "Temple of the Holy Supreme Apostles Peter and Paul",
                     "...": "..."
                 }
             },
@@ -272,7 +290,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "4",
                 "image": "Temple of St. Andrew.png",
                 "description": {
-                    "name": "Temple of St. Andrew",
+                    "Name:": "Temple of St. Andrew",
                     "...": "..."
                 }
             }
@@ -281,12 +299,12 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
     },
     {
         "id": "5",
-        "name": "food-courts",
+        "Name:": "food-courts",
         "items": [{
                 "itemId": "1",
                 "image": "Chief lviv ua.png",
                 "description": {
-                    "name": "Сhief bestcatering",
+                    "Name:": "Сhief bestcatering",
                     "link": "http://chef.lviv.ua",
                     "discount": "12 %"
                 }
@@ -295,7 +313,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "2",
                 "image": "cateringlviv.png",
                 "description": {
-                    "name": "Catering Lviv",
+                    "Name:": "Catering Lviv",
                     "link": "http://cateringlviv.com.ua",
                     "discount": "8 %"
                 }
@@ -304,7 +322,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "3",
                 "image": "embroidered.png",
                 "description": {
-                    "name": "Embroidered shirt",
+                    "Name:": "Embroidered shirt",
                     "link": "http://catering-lviv.com",
                     "discount": "10 %"
                 }
@@ -313,7 +331,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "4",
                 "image": "citadel-inn.png",
                 "description": {
-                    "name": "Citadel-inn",
+                    "Name:": "Citadel-inn",
                     "link": "https://citadel-inn.com.ua",
                     "discount": "5 %"
                 }
@@ -322,7 +340,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "5",
                 "image": "fest.png",
                 "description": {
-                    "name": "Fest-lviv",
+                    "Name:": "Fest-lviv",
                     "link": "http://www.fest.lviv.ua",
                     "discount": "15 %"
                 }
@@ -331,7 +349,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "6",
                 "image": "defilada.png",
                 "description": {
-                    "name": "Defilada",
+                    "Name:": "Defilada",
                     "link": "https://defilada.com.ua",
                     "discount": "18 %"
                 }
@@ -340,70 +358,134 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
     },
     {
         "id": "6",
-        "name": "animators",
+        "Name:": "animators",
         "items": [{
                 "itemId": "1",
                 "image": "brad-pitt.png",
                 "description": {
-                    "name": "Brad Pitt",
-                    "cost": "2800 $"
+                    "Name:": "Brad Pitt",
+                    "Cost:": "2800 $"
                 }
             },
             {
                 "itemId": "2",
                 "image": "will-smith.png",
                 "description": {
-                    "name": "Will Smith",
-                    "cost": "3000 $"
+                    "Name:": "Will Smith",
+                    "Cost:": "3000 $"
                 }
             },
             {
                 "itemId": "4",
                 "image": "poroh.png",
                 "description": {
-                    "name": "Petro Poroshenko",
-                    "cost": "free"
+                    "Name:": "Petro Poroshenko",
+                    "Cost:": "free"
                 }
             },
             {
                 "itemId": "3",
                 "image": "zelenskyi.png",
                 "description": {
-                    "name": "Volodymyr Zelenskyi",
-                    "cost": "1500 $"
+                    "Name:": "Volodymyr Zelenskyi",
+                    "Cost:": "1500 $"
                 }
             }
         ]
     },
     {
         "id": "7",
-        "name": "funeral-merchadnise",
+        "Name:": "funeral-merchadnise",
         "items": [{
                 "itemId": "1",
-                "image": "imageurl",
+                "image": "grob-1.png",
                 "description": {
-                    "name": "coffin",
-                    "cost": "276"
+                    "Name:": "coffin",
+                    "Cost:": "3100 uah"
                 }
             },
             {
                 "itemId": "2",
-                "image": "imageurl",
+                "image": "grob-2.png",
                 "description": {
-                    "name": "candle",
-                    "cost": "276"
+                    "Name:": "coffin",
+                    "Cost:": "2950 uah"
+                }
+            },
+            {
+                "itemId": "3",
+                "image": "grob-3.png",
+                "description": {
+                    "Name:": "coffin",
+                    "Cost:": "3200 uah"
+                }
+            },
+            {
+                "itemId": "4",
+                "image": "grob-4.png",
+                "description": {
+                    "Name:": "coffin",
+                    "Cost:": "3500 uah"
+                }
+            },
+            {
+                "itemId": "5",
+                "image": "vinok-1.png",
+                "description": {
+                    "Name:": "wreath",
+                    "Cost:": "290 uah"
+                }
+            },
+            {
+                "itemId": "6",
+                "image": "vinok-2.png",
+                "description": {
+                    "Name:": "wreath",
+                    "Cost:": "300 uah"
+                }
+            },
+            {
+                "itemId": "7",
+                "image": "vinok-3.png",
+                "description": {
+                    "Name:": "wreath",
+                    "Cost:": "265 uah"
+                }
+            },
+            {
+                "itemId": "8",
+                "image": "vinok-7.png",
+                "description": {
+                    "Name:": "wreath",
+                    "Cost:": "240 uah"
+                }
+            },
+            {
+                "itemId": "9",
+                "image": "vinok-5.png",
+                "description": {
+                    "Name:": "wreath",
+                    "Cost:": "280 uah"
+                }
+            },
+            {
+                "itemId": "10",
+                "image": "vinok-6.png",
+                "description": {
+                    "Name:": "wreath",
+                    "Cost:": "250 uah"
                 }
             }
         ]
     },
     {
         "id": "8",
-        "name": "design",
+        "Name:": "design",
         "items": [{
                 "itemId": "1",
                 "image": "rockets.png",
                 "description": {
-                    "name": "Rockets",
+                    "Name:": "Rockets",
                     "link": "https://rocketsevent.com",
                     "discount": "7 %"
                 }
@@ -412,7 +494,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "2",
                 "image": "design-1.png",
                 "description": {
-                    "name": "Galicia",
+                    "Name:": "Galicia",
                     "link": "http://event-galicia.lviv.ua",
                     "discount": "8 %"
                 }
@@ -421,7 +503,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "3",
                 "image": "design-2.png",
                 "description": {
-                    "name": "Valentinos",
+                    "Name:": "Valentinos",
                     "link": "http://valentinos.ua",
                     "discount": "10 %"
                 }
@@ -430,7 +512,7 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "itemId": "4",
                 "image": "design-3.png",
                 "description": {
-                    "name": "Clevent",
+                    "Name:": "Clevent",
                     "link": "http://clevent.com.ua",
                     "discount": "6 %"
                 }
