@@ -25,7 +25,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Toyota Camry",
                     "cost": "2500 uah/day",
-                    "amount": "3",
                     "color": "black"
                 }
             },
@@ -35,7 +34,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Toyota Camry",
                     "cost": "2500 uah/day",
-                    "amount": "2",
                     "color": "white"
                 }
             },
@@ -45,7 +43,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Audi A6",
                     "cost": "3900 uah/day",
-                    "amount": "2",
                     "color": "black"
                 }
             },
@@ -55,7 +52,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Audi A6",
                     "cost": "4400 uah/day",
-                    "amount": "2",
                     "color": "blue"
                 }
             },
@@ -65,7 +61,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Mercedes-Benz S500",
                     "cost": "4600 uah/day",
-                    "amount": "2",
                     "color": "black"
                 }
             },
@@ -75,7 +70,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Mercedes-Benz S550",
                     "cost": "4600 uah/day",
-                    "amount": "2",
                     "color": "silver"
                 }
             },
@@ -85,7 +79,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Mercedes-Benz GL350 GL 350 ",
                     "cost": "5200 uah/day",
-                    "amount": "2",
                     "color": "black"
                 }
             },
@@ -95,7 +88,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Mercedes-Benz GL350 GL 350 ",
                     "cost": "5000 uah/day",
-                    "amount": "2",
                     "color": "white"
                 }
             },
@@ -105,7 +97,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Hyundai",
                     "cost": "5500 uah/day",
-                    "amount": "2",
                     "color": "black"
                 }
             },
@@ -115,7 +106,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Ford",
                     "cost": "6000 uah/day",
-                    "amount": "5",
                     "color": "brown"
                 }
             }
@@ -130,7 +120,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Rolls-Royce Phantom",
                     "cost": "6000 uah",
-                    "amount": "1",
                     "color": "silver",
                     "driver": "Vasya Pupkin"
                 }
@@ -141,7 +130,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Mercedes E class",
                     "cost": "4000 uah",
-                    "amount": "1",
                     "color": "black",
                     "driver": "Vasya Pupkin"
                 }
@@ -152,7 +140,6 @@ module.exports = function ($scope, $stateParams, $state, filterFactory) {
                 "description": {
                     "name": "Mercedes E class",
                     "cost": "4000 uah",
-                    "amount": "1",
                     "color": "black",
                     "driver": "Vasya Pupkin"
                 }

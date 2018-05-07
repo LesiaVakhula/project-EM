@@ -1,10 +1,10 @@
-<div class='item {{$ctrl.data.description.name}}'>
+<div class='item-block item {{$ctrl.data.description.name}}'>
     <img class='item-img' ng-src='{{$ctrl.imageUrl}}' alt='{{$ctrl.data.description.name}}'>
-   <button type="button" class="btn btn-dark add-btn" ng-click='$ctrl.addToCart($ctrl.data.itemId)'>Add to shopping cart</button>
     <table class="table description">
-        <tr ng-repeat='(key, item) in $ctrl.data.description'>
-            <th scope='col'>{{key}}</th>
-            <td>{{item}}</td>
+        <tr class="my" ng-repeat='(key, item) in $ctrl.data.description'>
+            <th class="my" scope='col'>{{key}}</th>
+            <td class="my">{{item}}</td>
         </tr>
     </table>
+    <button type="button" class="btn btn-dark add-btn" ng-click='$ctrl.addToCart($ctrl.data.itemId)'>Add to shopping cart</button>
 </div>
