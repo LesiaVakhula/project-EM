@@ -1,13 +1,31 @@
 const invitationTemplate = require('./invitationTemplate.html');
 require('./invitationStyle.scss');
 
+// require('jquery');
+// require('../../node_modules/froala-editor/js/froala_editor.min');
+// require('froala-editor');
+
 module.exports = angular.module('emApp.invitation', ['ui.router'])
+    .value('froalaConfig', {
+        toolbarInline: false,
+        placeholderText: 'Enter Text Here'
+    })
     .config(['$stateProvider',function($stateProvider) {
         let invitationState = {
             name: 'invitation',
             url:'/invitation',
             templateUrl : invitationTemplate,
             controller: (['$scope', function ($scope) {
+                // $scope.myHtml = "<h1>Hello World</h1>"
+                $scope.froalaOptions = {
+                    toolbarButtons : ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
+                    events: {
+                        'froalaEditor.initialized': function () {
+                            // Use the methods like this.
+                            $scope.froalaOptions.froalaEditor('selection.get');
+                        }
+                    }
+                };
                 $scope.backgroundTemplate = './images/background7.jpg';
                 $scope.iputText = '';
                 $scope.personList = [];
@@ -23,6 +41,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     return num;
                 };
                 $scope.getDate = function (date) {
+                    if(!date){return}
                     let dateFull = new Date(date);
                     let newDate = {
                         day: goodLook(dateFull.getDate()),

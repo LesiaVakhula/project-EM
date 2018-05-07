@@ -53,31 +53,40 @@ section{
       .ng-invalid{
         border: 1px solid #ff0000;
         box-shadow: 0 0 15px rgba(255,0,0,0.5);
+
+        &:focus{
+          box-shadow: 0 0 15px rgba(255,0,0,0.5);
+        }
+      }
+      .ng-pristine{
+        border: 1px solid #acacac;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      }
+      .add-btn,.btn-set-date{
+        width: 200px;
+        margin: 15px 0;
+        background: #acacac;
+        color: #ffffff;
+        border: none;
+        font-size: 20px;
+        font-family: 'Dancing Script', cursive;
+        border-radius: 3px;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5);
+        outline: none;
+
+        &:hover{
+          box-shadow: 0 0 15px rgba(0,0,0,0.5);
+          width: 205px;
+          text-shadow: 1px 1px 2px black, 0 0 5px rgba(0,0,0,0.5);
+        }
+
+        &:active{
+          width: 208px;
+          transform: translate(1px,1px);
+        }
       }
     }
-    .add-btn,.btn-set-date{
-      width: 200px;
-      margin: 15px 0;
-      background: #acacac;
-      color: #ffffff;
-      border: none;
-      font-size: 20px;
-      font-family: 'Dancing Script', cursive;
-      border-radius: 3px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.5);
-      outline: none;
 
-      &:hover{
-        box-shadow: 0 0 15px rgba(0,0,0,0.5);
-        width: 205px;
-        text-shadow: 1px 1px 2px black, 0 0 5px rgba(0,0,0,0.5);
-      }
-
-      &:active{
-        width: 208px;
-        transform: translate(1px,1px);
-      }
-    }
   }
   .template-invitation {
     width: 100%;
@@ -85,16 +94,24 @@ section{
     font-size: 20px;
     font-family: 'Dancing Script', cursive;
 
-
     .template-version {
       position: relative;
       width: 100%;
       height: 400px;
+      @media (max-width: 375px){
+        height: 60vw;
+      }
+
 
       img {
         width: 70%;
         position: absolute;
         z-index: -1;
+        @media (max-width: 414px){
+            top: 0;
+            left: 0;
+            width: 90%;
+        }
       }
 
       .invitation-name {
@@ -104,6 +121,11 @@ section{
         top: 3vw;
         left: 0;
         font-size: 1.9vw;
+        @media (max-width: 414px){
+          top: 15vw;
+          left: 3vw;
+          font-size: 3.6vw;
+        }
       }
 
       .invitation-text {
@@ -116,6 +138,13 @@ section{
         line-height: 1.3;
         text-align: center;
         font-size: 1.6vw;
+
+        @media (max-width: 414px){
+          top: 23vw;
+          left: 14vw;
+          font-size: 2.6vw;
+        }
+
       }
 
       .event-time {
@@ -123,7 +152,13 @@ section{
         top: 20vw;
         left: 13vw;
         font-size: 1.2vw;
+        @media (max-width: 414px){
+          top: 50vw;
+          left: 35vw;
+          font-size: 2.6vw;
+        }
       }
+
     }
   }
     .list {
@@ -175,7 +210,5 @@ section{
         }
       }
     }
-
-
 
 }
