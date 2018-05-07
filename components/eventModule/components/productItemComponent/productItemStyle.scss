@@ -1,25 +1,31 @@
 .item-img {
     width: 50%;
     height: auto;
-    /*  &:hover {
-            filter:blur(10px); */
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    //filter: grayscale(0);
+    &:hover {
+        filter: grayscale(1);
+    }
 }
-.table{
+
+.table {
     width: 50%;
-    font-size: 15px;
     padding: 0;
     margin: 0;
+    font-size: 15px;
+    text-align: center;
+    border-bottom: 1px solid #dee2e6;
 }
 
-
-.item-block{
+.item-block {
     position: relative;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin: 5px;
     padding: 5px 5px 20px 5px;
-    border: 1px solid black;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
 }
@@ -28,7 +34,7 @@ button.btn.btn-dark.add-btn {
     align-self: flex-end;
     font-size: 1.3vw;
     position: absolute;
-    top: 80%;
+    top: 81%;
     left: 60%;
     z-index: 1;
     &:hover {
@@ -40,7 +46,10 @@ button.btn.btn-dark.add-btn {
 }
 
 @media only screen and (max-width:576px) {
+    .table{
+        font-size: 8px;
+    }
     button.btn.btn-dark.add-btn {
-        font-size: 3vw;
+        font-size: 2vw;
     }
 }
