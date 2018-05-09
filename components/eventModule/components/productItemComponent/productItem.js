@@ -6,11 +6,11 @@ module.exports = {
     bindings: {
         data: '='
     },
-    controller: function() {
+    controller: function () {
         this.$onInit = () => {
             this.imageUrl = require(`../../../common/images/productItemImages/${this.data.image}`);
             //Додати на клік $http і post запит в json
-            this.addToCart = function(itemId) {
+            this.addToCart = function (itemId) {
                 //$http.post()
                 console.log(itemId);
             }

@@ -1,41 +1,50 @@
 <section>
     <div class="row">
-        <div class="col-xs-12 col-sm-7 col-md-7">
+        <div class="col-xs-12 col-sm-6 col-md-6">
             <h2>Invite guests</h2>
-            <form class="form-invitation" novalidate>
+            <form class="form-invitation"name="formName"  novalidate>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
                     <label for="name">First Name:</label>
                     <input class="input-name" id="name" type="text" ng-model="name" required />
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
                     <label for="lastname">Last Name:</label>
-                    <input class="input-name" id="lastname" type="text" ng-model = "lastName" required />
+                    <input class="input-name" id="lastname" type="text" ng-model="lastName" required />
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
                     <label for="email">E-mail:</label>
-                    <input class="input-name" id="email" type="email" ng-model = "email" required />
+                    <input class="input-name" id="email" type="email" ng-model="email" ng-pattern="pattern_email"  required />
                 </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
                     <label for="phone">Phone number:</label>
-                    <input class="input-name" id="phone" type="tel" ng-model = "phone" required />
+                    <input class="input-name" id="phone" type="tel" ng-model="phone" ng-pattern="pattern_phone" required />
                 </div>
-                <button ng-click = "addPerson( name, lastName,email, phone)">Add to list</button>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 description">
+                    <button class="add-btn" ng-click="addPerson( name, lastName,email, phone)">Add Person to list</button>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 description">
+                    <p class="input-date"> Date: <input type="datetime-local" ng-model="dateTimeEvent"></p>
+                    <button class="btn-set-date" ng-click="date = getDate(dateTimeEvent)">Set date to the template</button>
+                    <p class="text-input">Invitation text: </p><textarea froala="froalaOptions" ng-model="iputText" ></textarea>
+                </div>
             </form>
+
+        </div>
+        <div class="col-xs-12 col-sm-6 col-md-6">
             <div class="template-invitation">
                 <h3>Invitation template:</h3>
-                <p class="text-input">Invitation text: </p><textarea cols="50" rows="2" ng-model="iputText"></textarea>
-                <p> Date: <input type="datetime-local" ng-model="dateTimeEvent"></p>
-                <button class="btn-set-date" ng-click="date = getDate(dateTimeEvent)">Set date to the template</button>
-                <div class="temlate">
+                <div class="template-version">
                     <img src="{{backgroundTemplate}}" alt="">
                     <p class="invitation-name">{{personList[0].lastName}} {{personList[0].name}} </p>
                     <p class="invitation-text">{{iputText}}</p>
                     <p class="event-time" ng-if="flag">{{date.day}}. {{date.month}}. {{date.year}}, at {{date.hour}}:{{date.minutes}} o`clock!</p>
-
                 </div>
             </div>
         </div>
-        <div class="col-xs-12 col-sm-5 col-md-5 list">
+
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6 list">
             <h2>Guest list:</h2>
             <ul class="person-item">
                 <li ng-repeat="person in personList">
@@ -50,6 +59,13 @@
             </ul>
         </div>
 
+
+
+
+
     </div>
+
+
+    <!--</div>-->
 
 </section>

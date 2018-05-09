@@ -8,7 +8,6 @@ require('@uirouter/angularjs');
 module.exports = angular.module('emApp.Event', ['ui.router', partners, invitation])
     .config(function ($stateProvider) {
         'ngInject';
-
         const eventState = {
             name: 'event',
             url: '/:eventName',
