@@ -2,6 +2,7 @@ require('jquery');
 const angular = require('angular');
 const home = require('../home/emAppHome.js');
 const shopCard = require('../shopCard/shopCard.js');
+const shoppingCartService = require('../eventModule/shoppingCartService');
 const eventPage = require('../eventModule/eventModule.js');
 require("bootstrap");
 require('@uirouter/angularjs');
@@ -28,5 +29,7 @@ module.exports = angular.module('emApp', ['ui.router', 'ngDialog', home, shopCar
             //this solves page refresh and getting back to state
             $rootScope.$state = $state;
         })
+    .service('shoppingCartService', shoppingCartService)
+    .factory('filterFactory', require('../EventModule/filterFactory.js'))
     .component('footerComponent', require('./utils-components/footer/footerComponent.js'))
     .component('headerComponent', require('./utils-components/header/headerComponent.js'));

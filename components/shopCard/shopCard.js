@@ -1,16 +1,17 @@
 const angular = require('angular');
 const template = require('./shopCard.html');
-// const controllerShop = require('./shopCardController');
 require('@uirouter/angularjs');
 require('./shopCard.scss');
 
 module.exports = angular.module('emApp.shopCard', ['ui.router'])
-.config(['$stateProvider',function($stateProvider) {
+.config(function($stateProvider) {
+    'ngInject';
     var stateCart = {
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
-        controller:  (['$scope', function ($scope){
+        controller:  (function ($scope, shoppingCartService){
+            'ngInject';
            // $scope.quantity =1;
             $scope.order = {
                 eventName: "Funeral",
@@ -79,6 +80,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
             };
            // console.log($scope.confirmOrder());
             $scope.handle = function (object,name,id) {
+                shoppingCartService.removeFromCart(object, name);
                 $scope.order.services =$scope.order.services.filter(function (item) {
                     if(item.name === name){
                         item.items = item.items.filter(function (a) {
@@ -111,8 +113,9 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     }
                 }
             };
-        }])
+        })
     };
     $stateProvider.state(stateCart);
-}])
+})
+// .service('shoppingCartService', shoppingCartService)
 .name;

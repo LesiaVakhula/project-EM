@@ -19,9 +19,9 @@ app.use(bodyParser.json({
 // });
 
 app.get('/getService', function (req, res) {
-    fs.readFile('./storage/eventsItems.json', 'utf8', (err, responce) => {
+    fs.readFile('./storage/eventsItems.json', 'utf8', (err, response) => {
         if (err) throw err;
-        const service = JSON.parse(responce).find((item) => item.id === req.query.id);
+        const service = JSON.parse(response).find((item) => item.id === req.query.id);
         if (!service) {
             res.sendStatus(404);
             return;
@@ -31,9 +31,9 @@ app.get('/getService', function (req, res) {
 });
 
 app.get('/getEventServices', function (req, res) {
-    fs.readFile('./storage/eventsServices.json', 'utf8', (err, responce) => {
+    fs.readFile('./storage/eventsServices.json', 'utf8', (err, response) => {
         if (err) throw err;
-        const services = JSON.parse(responce).find((item) => item.name === req.query.name);
+        const services = JSON.parse(response).find((item) => item.name === req.query.name);
         if (!services) {
             res.sendStatus(404);
             return;
@@ -43,9 +43,9 @@ app.get('/getEventServices', function (req, res) {
 });
 
 app.get('/getClothesPartners', function (req, res) {
-    fs.readFile('./storage/weddingClothes.json', 'utf8', (err, responce) => {
+    fs.readFile('./storage/weddingClothes.json', 'utf8', (err, response) => {
         if (err) throw err;
-        const clothesPartners = JSON.parse(responce);
+        const clothesPartners = JSON.parse(response);
         if (!clothesPartners) {
             res.sendStatus(404);
             return;
@@ -55,9 +55,9 @@ app.get('/getClothesPartners', function (req, res) {
 });
 
 app.get('/getEventsData', function (req, res) {
-    fs.readFile('./storage/events.json', 'utf8', (err, responce) => {
+    fs.readFile('./storage/events.json', 'utf8', (err, response) => {
         if (err) throw err;
-        const eventsData = JSON.parse(responce);
+        const eventsData = JSON.parse(response);
         if (!eventsData) {
             res.sendStatus(404);
             return;
@@ -68,9 +68,9 @@ app.get('/getEventsData', function (req, res) {
 
 app.post('/setNewUser', function (req, res) {
     let newUserObj = req.body;
-    fs.readFile('./storage/users.json', 'utf8', (err, responce) => {
+    fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
-        let usersArray = responce ? JSON.parse(responce) : [],
+        let usersArray = response ? JSON.parse(response) : [],
             isUser = usersArray.find((user) => user.email === req.body.email);
         if (isUser) {
             res.sendStatus(409);
@@ -87,19 +87,94 @@ app.post('/setNewUser', function (req, res) {
     });
 });
 
-app.get('/getUser', function (req, res) {
-    fs.readFile('./storage/users.json', 'utf8', (err, responce) => {
+app.get('/getUsersOrder', function (req, res) {
+    console.log(req.query);
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
-        let registeredUser;
-        if (responce) {
-            let users = JSON.parse(responce),
+        let orders = response ? JSON.parse(response) : [];
+        let orderExists = orders.some( item =>  item.user === req.query.userName
+            && item.eventName === req.query.eventName);
+        console.log(orderExists);
+        res.status(200).send(orderExists);
+    });
+});
+
+app.post('/addOrderPattern', function (req, res) {
+    let newOrder = req.body;
+    console.log(newOrder);
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        let orderStorage = response ? JSON.parse(response) : [];
+        let currentOrderIndex = orderStorage.findIndex( item => item.user = newOrder.user);
+
+        if(currentOrderIndex !== -1) {
+            orderStorage[currentOrderIndex] = newOrder;
+        } else {
+            orderStorage.push(newOrder);
+        }
+       
+
+        fs.writeFile('./storage/orders.json', JSON.stringify(orderStorage), (err) => {
+            if (err) {
+                throw err;
+            } else {
+                res.sendStatus(201);
+            };
+        });
+    });
+});
+
+
+app.post('/addItemToOrder', function (req, res) {
+    let newOrder = req.body;
+    let user = req.body.userEmail;
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        let orderStorage = response ? JSON.parse(response) : [];
+       
+        let userOrders = orderStorage.find((item) => item.user === user);
+    /*    if(!userOrders) {
+            orderStorage.push({user: user});
+        }*/
+
+        let service = userOrders.services.find((item) => item.name === newOrder.name);
+        if (service) {
+            let order = Object.assign({
+                imgUrl: newOrder.service.image,
+                id: newOrder.service.itemId
+            }, newOrder.service.description)
+            service.items.push(order);
+        };
+
+        let index = orderStorage.findIndex((item) => item.user === userOrders.user);
+        orderStorage[index] = userOrders;
+
+
+        fs.writeFile('./storage/orders.json', JSON.stringify(orderStorage), (err) => {
+            if (err) {
+                throw err;
+            } else {
+                res.sendStatus(201);
+            };
+        });
+    })
+});
+
+
+app.get('/getUser', function (req, res) {
+    fs.readFile('./storage/users.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        let registeredUser
+        if (response) {
+            let users = JSON.parse(response),
                 userEmail = req.query.email,
-                userPass = req.query.pass,
+                userPass = req.query.pass;
+
                 registeredUser = users.find((user) => {
                     return user.email === userEmail && user.password === userPass;
                 });
         };
-        res.status(200).send(registeredUser);
+          res.status(200).send(registeredUser);
     });
 });
 

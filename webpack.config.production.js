@@ -33,6 +33,7 @@ module.exports = {
         use: [{
           loader: 'ng-annotate-loader'
         }],
+        exclude: path.resolve(__dirname,'node_modules')
       },
       {
         test: /\.html$/,
