@@ -1,4 +1,3 @@
-require('jquery');
 const angular = require('angular');
 const home = require('../home/emAppHome.js');
 const shopCard = require('../shopCard/shopCard.js');

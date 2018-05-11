@@ -1,57 +1,63 @@
 <div class="main-shop-card">
-    <h1>Your order:</h1>
     <hr>
     <h3>Event: <span>{{order.eventName}}</span></h3>
     <hr>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
-            <div ng-if="order.invitationGuest.exist">
-                <h4>Invite guests: </h4>
-                <p>{{order.invitationGuest.quantityGuest}} people</p>
-                <p>Cost: {{guestCoast}} $</p>
-            </div>
-            <ul class="shop-card col-12" >
-                <hr>
-                <li class="shop-card-item col-xs-6 col-sm-6 col-md-6" ng-repeat="service in order.services">
+            <div class="shop-card col-12" >
+                <div class="service">
+                    <p class="description set-border-right"><span>Description</span></p>
+                    <p class="image set-border-right"><span>Image</span></p>
+                    <p class="quantity set-border-right"><span>Quantity</span></p>
+                    <p class="price set-border-right"><span>Price</span></p>
+                    <p class="total set-border-right"><span>Total</span></p>
+                    <p class="delete set-border-right"><span>delete</span></p>
+                </div>
+                <div  ng-repeat="service in order.services">
                     <h4>{{service.name}}</h4>
-                    <hr>
-                    <div class="service" ng-repeat="item in service.items">
-                        <div class="service-info">
-                            <div class="service-info-item" ng-model="item.name">
-                                <p class="service-info-name">Name:</p>
-                                <p>{{item.name}}</p>
-                            </div>
-
-                            <div class="service-info-item">
-                                <p class="service-info-name">Quantity:</p>
-                                <p>
-                                    <input class="quantity" ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" value={{item.quantity}} min="1" max={{item.amount}}>
-                                </p>
-                            </div>
-                            <div class="service-info-item">
-                                <p class="service-info-name">Cost: </p>
-                                <p>{{item.cost}} $</p>
-                            </div>
-                            <div class="service-info-item">
-                                <p class="service-info-name">Total: </p>
-                                <p>{{item.quantity*item.cost}} $</p>
-                            </div>
-                        </div>
-                        <div class="service-img">
-                            <img src={{item.imgUrl}} alt="photo">
-                        </div>
-                        <div class="service-remove">
-                            <button class="btn-remove" id={{item.id}} ng-click="handle(item,service.name, item.id)" >delete</button>
-                        </div>
+                    <div class="service set-border-top-bottom" ng-repeat="item in service.items">
+                        <p class="description" ng-model="item.name">{{item.name}}</p>
+                        <p class="image"><img src={{item.imgUrl}} alt="photo"></p>
+                        <p class="quantity">
+                            <input  ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" value={{item.quantity}} min="1" max={{item.amount}}>
+                        </p>
+                        <p class="price">{{item.cost}} $</p>
+                        <p class="total">{{item.quantity*item.cost}} $</p>
+                        <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service.name, item.id)" >x</button></p>
                     </div>
-                </li>
-            </ul>
+                </div>
+                <div class="guest-invitation" ng-if="order.invitationGuest.exist">
+                    <h4>Invite guests: </h4>
+                   <div class="guest-invitation-info">
+                       <p class="description">People</p>
+                       <p class="image"> - </p>
+                       <p class="quantity">{{order.invitationGuest.quantityGuest}} </p>
+                       <p class="price"> - </p>
+                       <p class="total">{{guestCoast}} $</p>
+                       <p class="delete"> <button class="btn-remove" ng-click="handle()" >x</button>
+                   </div>
+                </div>
+                <div class="rent-hall" ng-if="order.invitationGuest.exist">
+                    <h4>Rent hall: </h4>
+                    <div class="rent-hall-info">
+                        <p class="description">People</p>
+                        <p class="image"> - </p>
+                        <p class="quantity">{{order.invitationGuest.quantityGuest}} </p>
+                        <p class="price"> - </p>
+                        <p class="total">{{guestCoast}} $</p>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle()" >x</button>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
             <div class="total-info">
-                <h4>Tootal amount: {{totalAll}}$ </h4>
-                <button ng-click="confirmOrder()">Confirm</button>
-                <div ng-if="confirm">
+                <h4>Total amount: {{totalAll}}$ </h4>
+               <div class="confirm-btn-wrapper">
+                   <button class="btn-create-order" ng-click="createOrderList()">Create order</button>
+               </div>
+                <div ng-if="createOrder">
+                    <h3>Your order:</h3>
                     <table>
                         <thead>
                             <tr>
@@ -68,15 +74,23 @@
                                 <td>{{guestCoast}}</td>
                                 <td>{{guestCoast}}</td>
                             </tr>
-                            <tr ng-repeat="serviceItem in confirmOrder()">
+                            <tr ng-repeat="serviceItem in createOrderList()">
                                 <td >{{serviceItem.name}}</td>
                                 <td>{{serviceItem.quantity}}</td>
                                 <td>{{serviceItem.cost}}</td>
                                 <td>{{serviceItem.cost * serviceItem.quantity}}</td>
                             </tr>
                         </tbody>
-                        <tdfoter></tdfoter>
+                        <tfoot>
+                            <tr>
+                                <td colspan="3">Total</td>
+                                <td>{{sum+guestCoast}}</td>
+                            </tr>
+                        </tfoot>
                     </table>
+                    <div class="confirm-order">
+                        <button class="btn-confirm-order">Confirm</button>
+                    </div>
                 </div>
 
             </div>

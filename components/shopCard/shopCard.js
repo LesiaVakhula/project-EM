@@ -4,9 +4,9 @@ const template = require('./shopCard.html');
 require('@uirouter/angularjs');
 require('./shopCard.scss');
 
-module.exports = angular.module('emApp.shopCard', ['ui.router'])
+module.exports = angular.module('emApp.shopCard', ['ui.router']) //'shoppingCartService'
 .config(['$stateProvider',function($stateProvider) {
-    var stateCart = {
+    let stateCart = {
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
@@ -65,20 +65,24 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     }
                 ]
             };
-            $scope.confirm = false;
-            $scope.confirmOrder = function () {
+            $scope.createOrder = false;
+            $scope.createOrderList = function () { //createOrderList
                  let finalOrder = [];
-                 $scope.confirm = true;
+                 $scope.createOrder = true;
                  let array = $scope.order.services;
                 for(let i=0, l=array.length; i<l; i++){
                     for(let k=0, m=array[i].items.length; k<m; k++){
                         finalOrder.push(array[i].items[k]);
                     }
-                }
+                };
+                $scope.sum = finalOrder.reduce((a,b)=>{
+                   return a+(b.quantity*b.cost)
+                },0);
                 return finalOrder;
             };
-           // console.log($scope.confirmOrder());
-            $scope.handle = function (object,name,id) {
+            $scope.handle = function (name,id) {
+
+
                 $scope.order.services =$scope.order.services.filter(function (item) {
                     if(item.name === name){
                         item.items = item.items.filter(function (a) {
