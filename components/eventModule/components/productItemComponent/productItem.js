@@ -5,7 +5,8 @@ module.exports = {
     templateUrl: template,
     bindings: {
         data: '=',
-        name: '='
+        name: '=',
+        owner: '='
     },
     controller: function($scope, $rootScope, shoppingCartService, filterFactory) {
         'ngInject';
@@ -15,8 +16,8 @@ module.exports = {
         });
         this.$onInit = () => {
             this.imageUrl = require(`../../../common/images/productItemImages/${this.data.image}`);
-            this.addToCart = function(item, eventName) {
-                shoppingCartService.addToCart(item, eventName);
+            this.addToCart = function(item, serviceName, owner) {
+                shoppingCartService.addToCart(item, serviceName, owner);
             }
         }
     }

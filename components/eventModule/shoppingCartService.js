@@ -11,7 +11,6 @@ module.exports = function($http, filterFactory) {
             })
             .then(function successCallback(response) {
                 let orderExists = response.data;
-                console.log(orderExists);
                 if (!orderExists) {
                     createOrderPattern(userName, eventName);
                 }
@@ -25,7 +24,6 @@ module.exports = function($http, filterFactory) {
         let orderPattern = {
             user: user,
             eventName: eventName,
-            hall: '',
             invitationGuest:{
                     exist: true,
                     quantityGuest: 0
@@ -33,7 +31,6 @@ module.exports = function($http, filterFactory) {
             services: []
         };
         if (eventName === "funeral") {
-            orderPattern.memorialHall = '';
             orderPattern.services = [{
                 name: "funeral-cars",
                 items: []
@@ -64,13 +61,13 @@ module.exports = function($http, filterFactory) {
             });
     }
 
-    this.addToCart = function(item, eventName) {
+    this.addToCart = function(item, serviceName, owner) {
         let order = {
-            name: eventName,
+            name: serviceName,
             service: item,
+            owner: owner,
             userEmail: filterFactory.userEmail
         };
-        console.log(order);
         $http.post('/addItemToOrder', order)
             .then(function successCallback(response) {
                 console.log('Added');

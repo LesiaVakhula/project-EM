@@ -2,6 +2,7 @@ module.exports = function(){
     return {
         gender: 'male',
         currentEvent: '',
-        selectedEvent: 'wedding'
+        selectedEvent: '',
+        isUser: false
     };
 };
