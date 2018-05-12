@@ -30,6 +30,9 @@ div,p{
       height: 100px;
       display: flex;
       align-items: center;
+      @media (max-width: 600px) {
+        height: 70px;
+      }
 
       &:last-child{
         border-bottom: 1px solid rgba(0, 0, 0, 0.35);
@@ -72,6 +75,10 @@ div,p{
       font-size:18px;
       text-align: center;
       text-shadow: 1px 1px 1px rgba(44, 74, 57, 1),0 0 1px rgba(44, 74, 57, 1);
+      @media (max-width: 600px) {
+        font-size: 16px;
+        width: 23%;
+      }
 
       span{
         font-weight: bold;
@@ -84,7 +91,10 @@ div,p{
     .image{
       width: 20%;
       padding: 0;
-
+      
+      @media (max-width: 600px) {
+          display: none;
+        }
       img{
         height: 100%;
       }

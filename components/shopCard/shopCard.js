@@ -1,70 +1,83 @@
 const angular = require('angular');
 const template = require('./shopCard.html');
-// const controllerShop = require('./shopCardController');
 require('@uirouter/angularjs');
 require('./shopCard.scss');
 
-module.exports = angular.module('emApp.shopCard', ['ui.router']) //'shoppingCartService'
-.config(['$stateProvider',function($stateProvider) {
-    let stateCart = {
+
+module.exports = angular.module('emApp.shopCard', ['ui.router'])
+.config(function($stateProvider) {
+    'ngInject';
+    var stateCart = {
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
-        controller:  (['$scope', function ($scope){
+        controller:  (function ($scope, shoppingCartService, filterFactory, $http){
+            'ngInject';
            // $scope.quantity =1;
-            $scope.order = {
-                eventName: "Funeral",
-                invitationGuest:{
-                    exist: true,
-                    quantityGuest: 100
-                },
-                services:[
-                    {
-                        name:"Rent Car",
-                        items: [
-                            {
-                                id:"1",
-                                name:"Bently",
-                                imgUrl:"./images/camry-black.png",
-                                amount: 3,
-                                color:"black",
-                                quantity: 1,
-                                cost:100
-                            },{
-                                id:"2",
-                                name:"Camry",
-                                imgUrl:"./images/camry-black.png",
-                                color:"white",
-                                amount: 2,
-                                quantity: 1,
-                                cost:100
-                            }
-                        ]
-                    },
-                    {
-                        name: "Accessories",
-                        items: [
-                            {
-                                id:"1",
-                                name:"dgsdg",
-                                imgUrl:"./images/camry-black.png",
-                                color:"white",
-                                amount: 3,
-                                quantity:1,
-                                cost:100
-                            },{
-                                id:"2",
-                                name:"Candle",
-                                imgUrl:"./images/camry-black.png",
-                                color:"white",
-                                amount: 2,
-                                quantity:1,
-                                cost:150
-                            }
-                        ]
+             $http.get('/getShoppingCartContent', {
+                    params: {
+                        user: filterFactory.userEmail
                     }
-                ]
-            };
+                }).then(function successCallback(response) {
+                    $scope.order = response.data;
+                    console.log( $scope.order);
+                }, function errorCallback(response) {
+                    console.log('Error!!!');
+                });
+             $scope.imageStr = './images/';   
+            // $scope.order = {
+            //     eventName: "Funeral",
+            //     invitationGuest:{
+            //         exist: true,
+            //         quantityGuest: 100
+            //     },
+            //     services:[
+            //         {
+            //             name:"Rent Car",
+            //             items: [
+            //                 {
+            //                     id:"1",
+            //                     name:"Bently",
+            //                     imgUrl:"./images/camry-black.png",
+            //                     amount: 3,
+            //                     color:"black",
+            //                     quantity: 1,
+            //                     cost:100
+            //                 },{
+            //                     id:"2",
+            //                     name:"Camry",
+            //                     imgUrl:"./images/camry-black.png",
+            //                     color:"white",
+            //                     amount: 2,
+            //                     quantity: 1,
+            //                     cost:100
+            //                 }
+            //             ]
+            //         },
+            //         {
+            //             name: "Accessories",
+            //             items: [
+            //                 {
+            //                     id:"1",
+            //                     name:"dgsdg",
+            //                     imgUrl:"./images/camry-black.png",
+            //                     color:"white",
+            //                     amount: 3,
+            //                     quantity:1,
+            //                     cost:100
+            //                 },{
+            //                     id:"2",
+            //                     name:"Candle",
+            //                     imgUrl:"./images/camry-black.png",
+            //                     color:"white",
+            //                     amount: 2,
+            //                     quantity:1,
+            //                     cost:150
+            //                 }
+            //             ]
+            //         }
+            //     ]
+            // };
             $scope.createOrder = false;
             $scope.createOrderList = function () { //createOrderList
                  let finalOrder = [];
@@ -76,12 +89,26 @@ module.exports = angular.module('emApp.shopCard', ['ui.router']) //'shoppingCart
                     }
                 };
                 $scope.sum = finalOrder.reduce((a,b)=>{
-                   return a+(b.quantity*b.cost)
+                    console.log(b.quantity,parseFloat(b.cost));
+                   return a+(b.quantity*parseFloat(b.cost));
                 },0);
+                console.log( $scope.sum)
                 return finalOrder;
             };
-            $scope.handle = function (name,id) {
 
+           // console.log($scope.confirmOrder());
+            $scope.handle = function (object,name,id) {
+          
+                shoppingCartService.removeFromCart(object, name);
+                if(object === $scope.order.halls){
+                    $scope.order.halls = null;
+                }
+                if(object === $scope.order.design){
+                    $scope.order.design = null;
+                }
+                if(object === $scope.order.invitationGuest){
+                    $scope.order.invitationGuest = null;
+                }
 
                 $scope.order.services =$scope.order.services.filter(function (item) {
                     if(item.name === name){
@@ -94,18 +121,28 @@ module.exports = angular.module('emApp.shopCard', ['ui.router']) //'shoppingCart
                     }
                 });
             };
-                if($scope.order.invitationGuest.quantityGuest<=100){
-                    $scope.guestCoast = 100;
-                }else if($scope.order.invitationGuest.quantityGuest > 100 && $scope.order.invitationGuest.quantityGuest <= 200){
-                    $scope.guestCoast = 150;
-                }else {
-                    $scope.guestCoast = 200;
+
+            $scope.totalAmountProduct = function(quantity,price){
+                if(price==='invite'){
+                    if(quantity <= 100){
+                            return 100;
+                        }else if(quantity > 100 && quantity <= 200){
+                            return 150;
+                        }else {
+                            return 200;
+                        }
                 }
+                return quantity*parseFloat(price);
+            }
+            
 
             $scope.totalAmount = function () {
                 $scope.totalAll = 0;
                 if($scope.order.invitationGuest.exist){
-                    $scope.totalAll+=$scope.guestCoast;
+                    $scope.totalAll+=$scope.totalAmountInvitation;
+                }
+                if(!!$scope.order.halls){
+                    $scope.totalAll+=$scope.totalAmountHalls;
                 }
                 let array = $scope.order.services;
                 for(let i=0, l=array.length; i<l; i++){
@@ -115,8 +152,9 @@ module.exports = angular.module('emApp.shopCard', ['ui.router']) //'shoppingCart
                     }
                 }
             };
-        }])
+        })
     };
     $stateProvider.state(stateCart);
-}])
+})
+// .service('shoppingCartService', shoppingCartService)
 .name;

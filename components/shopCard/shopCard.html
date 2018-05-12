@@ -17,13 +17,13 @@
                     <h4>{{service.name}}</h4>
                     <div class="service set-border-top-bottom" ng-repeat="item in service.items">
                         <p class="description" ng-model="item.name">{{item.name}}</p>
-                        <p class="image"><img src={{item.imgUrl}} alt="photo"></p>
+                        <p class="image"><img src={{imageStr+item.imgUrl}} alt="photo"></p>
                         <p class="quantity">
                             <input  ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" value={{item.quantity}} min="1" max={{item.amount}}>
                         </p>
-                        <p class="price">{{item.cost}} $</p>
-                        <p class="total">{{item.quantity*item.cost}} $</p>
-                        <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service.name, item.id)" >x</button></p>
+                        <p class="price">{{item.cost}}</p>
+                        <p class="total">{{totalAmountProduct(3,item.cost)}} uah</p>
+                        <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service,service.name, item.id)" >x</button></p>
                     </div>
                 </div>
                 <div class="guest-invitation" ng-if="order.invitationGuest.exist">
@@ -33,26 +33,38 @@
                        <p class="image"> - </p>
                        <p class="quantity">{{order.invitationGuest.quantityGuest}} </p>
                        <p class="price"> - </p>
-                       <p class="total">{{guestCoast}} $</p>
-                       <p class="delete"> <button class="btn-remove" ng-click="handle()" >x</button>
+                       <p class="total">{{totalAmountInvitation = totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}} uah</p>
+                       <p class="delete"> <button class="btn-remove" ng-click="handle(order.invitationGuest)" >x</button>
                    </div>
                 </div>
-                <div class="rent-hall" ng-if="order.invitationGuest.exist">
+                <div class="rent-hall" ng-if="!!order.halls">
                     <h4>Rent hall: </h4>
                     <div class="rent-hall-info">
-                        <p class="description">People</p>
-                        <p class="image"> - </p>
-                        <p class="quantity">{{order.invitationGuest.quantityGuest}} </p>
-                        <p class="price"> - </p>
-                        <p class="total">{{guestCoast}} $</p>
-                        <p class="delete"> <button class="btn-remove" ng-click="handle()" >x</button>
+                        <p class="description">{{order.halls.name}}</p>
+                        <p class="image">{{imageStr+order.halls.imgUrl}}</p>
+                        <p class="quantity">- </p>
+                        <p class="price">{{order.halls.cost}}</p>
+                        <p class="total">{{totalAmountHalls = totalAmountProduct(order.halls.people,order.halls.cost)}} uah</p>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.halls)" >x</button>
+                    </div>
+                </div>
+                <div class="rent-hall" ng-if="!!order.design">
+                    <h4>Discount: </h4>
+                    <div class="rent-hall-info">
+                        <p class="description">{{order.design.name}}</p>
+                        <p class="image">{{order.design.imgUrl}}</p>
+                        <p class="quantity"><a href={{order.design.link}}>link to {{order.design.name}}</a></p>
+                        <p class="price">-</p>
+                        <p class="total">{{order.design.discount}}</p>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.design)" >x</button>
                     </div>
                 </div>
             </div>
+            <h4>Total amount: {{totalAll}}$ </h4>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
             <div class="total-info">
-                <h4>Total amount: {{totalAll}}$ </h4>
+               
                <div class="confirm-btn-wrapper">
                    <button class="btn-create-order" ng-click="createOrderList()">Create order</button>
                </div>
@@ -70,22 +82,34 @@
                         <tbody>
                             <tr ng-if="order.invitationGuest.exist">
                                 <td >Invite  guests</td>
-                                <td>{{order.invitationGuest.quantityGuest}}</td>
-                                <td>{{guestCoast}}</td>
-                                <td>{{guestCoast}}</td>
+                                <td>{{order.invitationGuest.quantityGuest}} people</td>
+                                <td>{{totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}}</td>
+                                <td>{{totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}}</td>
                             </tr>
+                            <tr ng-if="!!order.halls">
+                                <td >Rent hall {{order.halls.name}}</td>
+                                <td>{{order.invitationGuest.quantity}} people</td>
+                                <td>>{{order.halls.cost}}</td>
+                                <td>>{{totalAmountProduct({order.invitationGuest.quantity,order.halls.cost)}}</td>
+                            </tr>
+                        
                             <tr ng-repeat="serviceItem in createOrderList()">
                                 <td >{{serviceItem.name}}</td>
                                 <td>{{serviceItem.quantity}}</td>
                                 <td>{{serviceItem.cost}}</td>
-                                <td>{{serviceItem.cost * serviceItem.quantity}}</td>
+                                <td>{{totalAmountProduct( serviceItem.quantity, serviceItem.cost)}}</td>
                             </tr>
                         </tbody>
                         <tfoot>
+                            <tr ng-if="!!order.design">
+                                <td colspan="3">Get discount {{order.design.name}}</td>
+                                <td>>{{order.design.discount}}</td>
+                            </tr> 
                             <tr>
                                 <td colspan="3">Total</td>
-                                <td>{{sum+guestCoast}}</td>
+                                <td>{{sum+150}}</td>
                             </tr>
+
                         </tfoot>
                     </table>
                     <div class="confirm-order">
