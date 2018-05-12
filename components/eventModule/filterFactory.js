@@ -3,6 +3,7 @@ module.exports = function(){
         gender: 'male',
         currentEvent: '',
         selectedEvent: '',
-        isUser: false
+        isUser: false,
+        userEmail: ''
     };
 };

@@ -160,11 +160,23 @@ app.post('/addItemToOrder', function(req, res) {
     })
 });
 
+app.get('/getShoppingCartContent', function(req, res) {
+    let user = req.query.user;
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        if (response) {
+            let ordersStorage = JSON.parse(response),
+                userOrder = ordersStorage.find( item => item.user === user);
+            res.status(200).send(userOrder);    
+        };
+        
+    });
+});
 
 app.get('/getUser', function(req, res) {
     fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
-        let registeredUser
+        let registeredUser = '';
         if (response) {
             let users = JSON.parse(response),
                 userEmail = req.query.email,

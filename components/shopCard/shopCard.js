@@ -10,9 +10,19 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
-        controller:  (function ($scope, shoppingCartService){
+        controller:  (function ($scope, shoppingCartService, filterFactory, $http){
             'ngInject';
            // $scope.quantity =1;
+             $http.get('/getShoppingCartContent', {
+                    params: {
+                        user: filterFactory.userEmail
+                    }
+                }).then(function successCallback(response) {
+                    $scope.order = response.data;
+                }, function errorCallback(response) {
+                    console.log('Error!!!');
+                });
+
             $scope.order = {
                 eventName: "Funeral",
                 invitationGuest:{
@@ -80,6 +90,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
             };
            // console.log($scope.confirmOrder());
             $scope.handle = function (object,name,id) {
+                console.log(object, name);
                 shoppingCartService.removeFromCart(object, name);
                 $scope.order.services =$scope.order.services.filter(function (item) {
                     if(item.name === name){
