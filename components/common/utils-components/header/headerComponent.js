@@ -5,14 +5,30 @@ require('./headerStyle.scss');
 
 module.exports = {
 	templateUrl: template,
-	controller: function ($scope, ngDialog) {
+	controller: function ($scope, ngDialog, filterFactory, $rootScope, shoppingCartService) {
 		'ngInject';
+
+		$scope.$on('sendUserLog', function (event, args) {
+			$scope.isUser = args.isUser;
+			$scope.userEmail = args.userEmail;
+		});
+
+		$scope.selectEvent = function ($event) {
+			filterFactory.selectedEvent = $event.target.dataset.id;
+			shoppingCartService.getUsersOrder($scope.userEmail, $event.target.dataset.id);
+			$rootScope.$broadcast('sendSelectedEvent', {
+				show: $event.target.dataset.id === filterFactory.currentEvent
+			});
+		};
+
 		$scope.clickToOpenLoginForm = function () {
 			ngDialog.open({
 				templateUrl: loginFormTemplate,
 				className: 'ngdialog-theme-default modal-view',
-				controller: function ($scope, $http) {
+				controller: function ($scope, $http, filterFactory, $rootScope) {
 					'ngInject';
+
+					$scope.regError = false;
 
 					$scope.signInFunc = function (valid) {
 						$http.get('/getUser', {
@@ -22,13 +38,18 @@ module.exports = {
 							}
 						}).then(function successCallback(response) {
 							if (response.data) {
-								$scope.isUser = true;
-								$scope.currentFirstName = response.data.firstName;
-								$scope.currentLastName = response.data.lastName;
-								$scope.currentEmail = response.data.email;
-								$scope.currentPhoneNumber = response.data.phoneNumber;
-								console.log('You are registered')
-							};
+								$scope.regError = false;
+								filterFactory.isUser = true;
+								filterFactory.userEmail = response.data.email;
+								$rootScope.$broadcast('sendUserLog', {
+									isUser: true,
+									userEmail: response.data.email
+								});
+
+								ngDialog.closeAll();
+							} else {
+								$scope.regError = true;
+							}
 						}, function errorCallback(response) {
 							console.log('Error!!!');
 						});

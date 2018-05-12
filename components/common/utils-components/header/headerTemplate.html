@@ -1,10 +1,11 @@
 <header class="header">
     <nav class="navbar navbar-expand-sm navbar-dark">
-        <a class="navbar-brand" ui-sref="home"><div class="logo"> <span>E</span><span>M</span></div></a>
+        <a class="navbar-brand" ui-sref="home">
+            <div class="logo"> <span>E</span><span>M</span></div>
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active hover">
@@ -16,20 +17,24 @@
                 <li class="nav-item lg-hide hover active">
                     <a class="nav-link hover" ui-sref='admin'>For admin</a>
                 </li>
-                <li class="nav-item hover active" >
+                <li class="nav-item hover active">
                     <a class="nav-link hover" ui-sref='shopCard'>Shoping Cart</a>
                 </li>
-                <li class="nav-item dropdown lg-hide">
-                    <a class="nav-link dropdown-toggle hover" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Events</a>
-                    <div class="dropdown-menu black" aria-labelledby="dropdown09">
-                        <a class="dropdown-item" ui-sref="wedding">Wedding services</a>
-                        <a class="dropdown-item" ui-sref="funeral">Funeral services</a>
-                        <a class="dropdown-item" ui-sref="birthday">Birthday services</a>
-                        <a class="dropdown-item" ui-sref="conference">Conference services</a>
-                    </div>
+                <li class="nav-item hover active">
+                 <span class="navbar-brand" ng-if="isUser">Email: {{userEmail}}</span>
                 </li>
+                 <li class="nav-item dropdown" ng-if="isUser">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Choose event
+        </a>
+        <div class="dropdown-menu"  ng-click="selectEvent($event)" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" data-id="wedding" ui-sref="event({eventName: 'wedding'})">Wedding</a>
+          <a class="dropdown-item" data-id="funeral" ui-sref="event({eventName: 'funeral'})">Funeral</a>
+          <a class="dropdown-item" data-id="birthday" ui-sref="event({eventName: 'birthday'})">Birthday</a>
+          <a class="dropdown-item" data-id="conference" ui-sref="event({eventName: 'conference'})">Conference</a>
+        </div>
+      </li>
             </ul>
         </div>
     </nav>
-
 </header>
