@@ -1,6 +1,6 @@
 <div class="main-shop-card">
     <hr>
-    <h3>Event: <span>{{order.eventName}}</span></h3>
+    <h3>Event: <span>{{order[0].eventName}}</span></h3>
     <hr>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
@@ -13,38 +13,44 @@
                     <p class="total set-border-right"><span>Total</span></p>
                     <p class="delete set-border-right"><span>delete</span></p>
                 </div>
-                <div  ng-repeat="service in order.services">
+                <div  ng-repeat="service in order[0].services">
                     <h4>{{service.name}}</h4>
                     <div class="service set-border-top-bottom" ng-repeat="item in service.items">
-                        <p class="description" ng-model="item.name">{{item.name}}</p>
+                        <p class="description" ng-model="item.Name">{{item.Name}}</p>
                         <p class="image"><img src={{item.imgUrl}} alt="photo"></p>
-                        <p class="quantity">
+                        <!-- <p class="quantity">
                             <input  ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" value={{item.quantity}} min="1" max={{item.amount}}>
+                        </p> -->
+                        <p class="quantity">
+                            <input  value="1"  type="number" id="quantity" min="1" max="3">
                         </p>
-                        <p class="price">{{item.cost}} $</p>
-                        <p class="total">{{item.quantity*item.cost}} $</p>
+                        <p class="price">{{item.cost}}</p>
+                        <!-- <p class="total">{{item.quantity*item.cost}} $</p> -->
+                        <p class="total">- </p>
                         <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service.name, item.id)" >x</button></p>
                     </div>
                 </div>
-                <div class="guest-invitation" ng-if="order.invitationGuest.exist">
+                <div class="guest-invitation" ng-if="order[0].invitationGuest.exist">
                     <h4>Invite guests: </h4>
                    <div class="guest-invitation-info">
                        <p class="description">People</p>
                        <p class="image"> - </p>
-                       <p class="quantity">{{order.invitationGuest.quantityGuest}} </p>
+                       <!-- <p class="quantity">{{order.invitationGuest.quantityGuest}} </p> -->
+                       <p class="quantity">-</p>
                        <p class="price"> - </p>
-                       <p class="total">{{guestCoast}} $</p>
+                       <!-- <p class="total">{{guestCoast}} $</p> -->
+                       <p class="total">-</p>
                        <p class="delete"> <button class="btn-remove" ng-click="handle()" >x</button>
                    </div>
                 </div>
-                <div class="rent-hall" ng-if="order.invitationGuest.exist">
+                <div class="rent-hall" ng-if="!!order[0].hall">
                     <h4>Rent hall: </h4>
                     <div class="rent-hall-info">
-                        <p class="description">People</p>
+                        <p class="description">Hall-name</p>
                         <p class="image"> - </p>
-                        <p class="quantity">{{order.invitationGuest.quantityGuest}} </p>
+                        <p class="quantity">-</p>
                         <p class="price"> - </p>
-                        <p class="total">{{guestCoast}} $</p>
+                        <p class="total">-$</p>
                         <p class="delete"> <button class="btn-remove" ng-click="handle()" >x</button>
                     </div>
                 </div>
@@ -75,7 +81,7 @@
                                 <td>{{guestCoast}}</td>
                             </tr>
                             <tr ng-repeat="serviceItem in createOrderList()">
-                                <td >{{serviceItem.name}}</td>
+                                <td >{{serviceItem.Name}}</td>
                                 <td>{{serviceItem.quantity}}</td>
                                 <td>{{serviceItem.cost}}</td>
                                 <td>{{serviceItem.cost * serviceItem.quantity}}</td>
