@@ -92,8 +92,8 @@
                             <tr ng-if="!!order.halls">
                                 <td >Rent hall {{order.halls.name}}</td>
                                 <td>{{order.invitationGuest.quantity}} people</td>
-                                <td>>{{order.halls.cost}}</td>
-                                <td>>{{totalAmountProduct({order.invitationGuest.quantity,order.halls.cost)}}</td>
+                                <td>{{order.halls.cost}}</td>
+                                <td>{{totalAmountProduct(order.invitationGuest.quantity,order.halls.cost)}}</td>
                             </tr>
                         
                             <tr ng-repeat="serviceItem in createOrderList()">
