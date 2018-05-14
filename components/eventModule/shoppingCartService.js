@@ -1,6 +1,15 @@
 module.exports = function($http, filterFactory) {
     'ngIngject';
 
+    function makePostRequest(url, data) {
+        $http.post(url, data)
+            .then(function successCallback(response) {
+                console.log('success');
+            }, function errorCallback(response) {
+                console.log('Error!!!');
+            });
+    }
+
     this.getUsersOrder = function(userName, eventName) {
 
         $http.get('/getUsersOrder', {
@@ -52,30 +61,17 @@ module.exports = function($http, filterFactory) {
                 items: []
             }];
         }
-
-        $http.post('/addOrderPattern', orderPattern)
-            .then(function successCallback(response) {
-                console.log('Added');
-            }, function errorCallback(response) {
-                console.log('Error!!!');
-            });
+        makePostRequest('/addOrderPattern', orderPattern);
     }
 
     this.addToCart = function(item, serviceName, owner) {
-        console.log(item, serviceName, owner);
         let order = {
             name: serviceName,
             service: item,
             owner: owner,
             userEmail: filterFactory.userEmail
         };
-        console.log(order);
-        $http.post('/addItemToOrder', order)
-            .then(function successCallback(response) {
-                console.log('Added');
-            }, function errorCallback(response) {
-                console.log('Error!!!');
-            });
+        makePostRequest('/addItemToOrder', order);
     }
 
     this.removeFromCart = function(item, eventName) {
@@ -92,16 +88,25 @@ module.exports = function($http, filterFactory) {
 
     }
 
-    this.calculatePrice = function(order) {
-        let price = 0;
-        if (order.eventName === 'funeral-cars' || order.eventName === 'cars' || order.eventName === 'funeral-merchandise') {
-            order.forEach((item) => {
-                if (!isNaN(parseInt(item.description.Cost))) {
-                    price += parseInt(item.description.Cost)
-                }
-            });
-            console.log(price);
-            this.order.totalPrice = price;
+    this.changeGuestsList = function(person, operation) {
+        let url = '/addPersonToInvite';
+        let personData = {
+            user: filterFactory.userEmail,
+            eventName: filterFactory.selectedEvent,
+            currentEvent: filterFactory.currentEvent,
+            person: person
+        };
+        if(operation === 'remove') {
+           url = '/removePersonFromInvite';
         }
+
+        makePostRequest(url, personData);
+
     }
+
+     this.checkGuestsList = function(userName, eventName) {
+        let data = { userName: userName, eventName: eventName };
+        makePostRequest('/removeGuests', data);
+    }
+    
 };

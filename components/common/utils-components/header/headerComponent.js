@@ -14,9 +14,14 @@ module.exports = {
 		});
 
 		$scope.selectEvent = function ($event) {
-			filterFactory.selectedEvent = $event.target.dataset.id;
+			let selectedEvent = $event.target.dataset.id;
+			if(selectedEvent === filterFactory.selectedEvent) {
+				return;
+			}
+			filterFactory.selectedEvent = selectedEvent;
 			filterFactory.disabledButtons = [];
-			shoppingCartService.getUsersOrder($scope.userEmail, $event.target.dataset.id);
+			shoppingCartService.getUsersOrder($scope.userEmail, selectedEvent);
+			shoppingCartService.checkGuestsList($scope.userEmail, selectedEvent);
 			$rootScope.$broadcast('sendSelectedEvent', {
 				show: $event.target.dataset.id === filterFactory.currentEvent
 			});
