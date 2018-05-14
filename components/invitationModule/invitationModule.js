@@ -1,10 +1,6 @@
 const invitationTemplate = require('./invitationTemplate.html');
 require('./invitationStyle.scss');
 
-// require('jquery');
-// require('../../node_modules/froala-editor/js/froala_editor.min');
-// require('froala-editor');
-
 module.exports = angular.module('emApp.invitation', ['ui.router'])
     .value('froalaConfig', {
         toolbarInline: false,
@@ -38,14 +34,15 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     })
                     .then(function successCallback(response) {
                         $scope.personList = response.data;
+                        console.log($scope.personList)
                     }, function errorCallback(response) {
                         console.log('Error!!!');
                     });
 
                 $scope.flag = false;
-                $scope.pattern_email = /[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/;
-                $scope.pattern_phone = /^\d{10}$/;
-                $scope.formName = {};
+                $scope.pattern_email=/[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/;
+                $scope.pattern_phone=/^\d{10}$/;
+                // $scope.formName = {};
                 let count = 1;
 
                 function goodLook(num) {
@@ -71,17 +68,22 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     }
                     return newDate;
                 };
-                $scope.addPerson = function(name, lastName, email, phone) {
-                    if (!name || !lastName || !email || !phone) {
+
+                $scope.addPerson = function() {
+                    if (!$scope.name || !$scope.lastName || !$scope.email || !$scope.phone) {
                         return;
                     }
                     let person = {
-                        name: name,
-                        lastName: lastName,
-                        email: email,
-                        phone: phone,
+                        name: $scope.name,
+                        lastName: $scope.lastName,
+                        email: $scope.email,
+                        phone: $scope.phone,
                         count: count++
                     }
+                    $scope.name = '';
+                    $scope.lastName = '';
+                    $scope.email = '';
+                    $scope.phone = null;
                     shoppingCartService.changeGuestsList(person, 'add');
                     $scope.personList.push(person);    
                 };

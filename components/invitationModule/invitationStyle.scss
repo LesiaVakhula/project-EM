@@ -1,9 +1,10 @@
 section{
   width: 100%;
   margin: 0;
-  padding: 20px 0;
-  font-family: 'Dancing Script','Bad Script', cursive;
-  min-height:calc(100vh - 80px);
+  // padding: 20px 0 0;
+  box-sizing: border-box;
+  // font-family: 'Dancing Script','Bad Script', cursive;
+  min-height:calc(100vh - 92px);
 
   .form-invitation{
     display: flex;
@@ -12,42 +13,51 @@ section{
     margin: 0;
 
     .description{
+      margin: 10px;
 
       label{
-        width: 35%;
-        font-size: 16px;
+        width: 30%;
+        font-size: 18px;
       }
 
       .input-name{
-        width: 62%;
+        width: 58%;
         font-size: 18px;
-        border-radius: 3px;
-        border: 1px solid #acacac;
         outline: none;
+        box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+        
 
         &:focus{
-          box-shadow: 0 0 15px rgba(0,0,0,0.5);
+          // box-shadow: 0 0 15px rgba(0,0,0,0.5);
+          box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+          
         }
       }
-
+      // box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
       .input-date{
         margin: 15px 0;
+        font-size: 18px;
       }
 
       .text-input {
         vertical-align: top;
+        font-size: 18px;
       }
       textarea{
         width: 100%;
         height: 100px;
       }
       input, textarea {
-        border-radius: 3px;
+        border-radius: 5px;
         border: 1px solid #acacac;
+        // box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);   
+      // box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+             
         outline: none;
 
         &:focus {
-          box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+          // box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+          box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);          
         }
       }
       .ng-invalid{
@@ -60,51 +70,31 @@ section{
       }
       .ng-pristine{
         border: 1px solid #acacac;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-      }
-      .add-btn,.btn-set-date{
-        width: 200px;
-        margin: 15px 0;
-        background: #acacac;
-        color: #ffffff;
-        border: none;
-        font-size: 20px;
-        font-family: 'Dancing Script', cursive;
-        border-radius: 3px;
-        box-shadow: 0 0 5px rgba(0,0,0,0.5);
-        outline: none;
-
-        &:hover{
-          box-shadow: 0 0 15px rgba(0,0,0,0.5);
-          width: 205px;
-          text-shadow: 1px 1px 2px black, 0 0 5px rgba(0,0,0,0.5);
-        }
-
-        &:active{
-          width: 208px;
-          transform: translate(1px,1px);
-        }
+        // box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+        
       }
     }
 
   }
   .template-invitation {
-    width: 100%;
+    width: 95%;
     margin: 20px;
     font-size: 20px;
-    font-family: 'Dancing Script', cursive;
 
     .template-version {
       position: relative;
       width: 100%;
       height: 400px;
+      font-family: 'Dancing Script', cursive;
+      
       @media (max-width: 375px){
         height: 60vw;
       }
 
 
       img {
-        width: 70%;
+        width: 75%;
         position: absolute;
         z-index: -1;
         @media (max-width: 414px){
@@ -118,8 +108,8 @@ section{
         position: absolute;
         width: 80%;
         text-align: center;
-        top: 3vw;
-        left: 0;
+        top: 4vw;
+        left: 1vw;
         font-size: 1.9vw;
         @media (max-width: 414px){
           top: 15vw;
@@ -130,8 +120,8 @@ section{
 
       .invitation-text {
         position: absolute;
-        top: 8vw;
-        left: 8%;
+        top: 10vw;
+        left: 12%;
         width: 55%;
         max-height: 40%;
         overflow: hidden;
@@ -150,7 +140,7 @@ section{
       .event-time {
         position: absolute;
         top: 20vw;
-        left: 13vw;
+        left: 15vw;
         font-size: 1.2vw;
         @media (max-width: 414px){
           top: 50vw;
@@ -210,5 +200,34 @@ section{
         }
       }
     }
+    .add-btn,.btn-set-date,.btn-add-shop-card{
+      width: 200px;
+      margin: 15px 0;
+      line-height: 2;
+      box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+      background: #343a40;
+      color: #ffffff;
+      border: none;
+      font-size: 16px;
+      border-radius: 3px;
+      outline: none;
 
+      &:hover{
+        box-shadow: 5px 5px 28px 0px rgba(44, 74, 57,  0.9);
+        // opacity: 0.9;
+        text-shadow: 2px 2px #000;
+        color: #2ef080;
+        transform: translate(1px,1px);
+        outline: none;
+        border: none;
+        
+      }
+
+      &:active{
+        transform: translate(2px,2px);
+        outline: none;
+        border: none;
+        
+      }
+    }
 }
