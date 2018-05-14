@@ -1,6 +1,13 @@
+// .main-view{
+//     @media (max-width: 375px) {
+//         height: calc(400vh - 92px) ;
+//       }
+// }
 .event-action-wrapper {
     position: relative;
     height: calc(100vh - 92px) ;
+   
+
     .category {
         height: 50%;
     }

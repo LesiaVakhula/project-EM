@@ -1,9 +1,9 @@
 <div class="main-shop-card">
     <hr>
-    <h3>Event: <span>{{order.eventName}}</span></h3>
+    <h3 class="event-title">Event: <span>{{order.eventName}}</span></h3>
     <hr>
     <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+        <div class="col-12">
             <div class="shop-card col-12" >
                 <div class="service">
                     <p class="description set-border-right"><span>Description</span></p>
@@ -14,7 +14,7 @@
                     <p class="delete set-border-right"><span>delete</span></p>
                 </div>
                 <div  ng-repeat="service in order.services">
-                    <h4>{{service.name}}</h4>
+                    <h4 class="product-title">{{service.name}}</h4>
                     <div class="service set-border-top-bottom" ng-repeat="item in service.items">
 
                         <p class="description" ng-model="item.name">{{item.name}}</p>
@@ -25,11 +25,11 @@
                         <p class="price">{{item.cost}}</p>
 
                         <p class="total">{{totalAmountProduct(3,item.cost)}} uah</p>
-                        <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service,service.name, item.id)" >x</button></p>
+                        <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service,service.name, item.id)" >&#10006;</button></p>
                     </div>
                 </div>
                 <div class="guest-invitation" ng-if="order.invitationGuest.exist">
-                    <h4>Invite guests: </h4>
+                    <h4 class="product-title">Invite guests: </h4>
                    <div class="guest-invitation-info">
                        <p class="description">People</p>
                        <p class="image"> - </p>
@@ -37,41 +37,41 @@
                        <p class="quantity">-</p>
                        <p class="price"> - </p>
                        <p class="total">{{totalAmountInvitation = totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}} uah</p>
-                       <p class="delete"> <button class="btn-remove" ng-click="handle(order.invitationGuest)" >x</button>
+                       <p class="delete"> <button class="btn-remove" ng-click="handle(order.invitationGuest)" >&#10006;</button>
                    </div>
                 </div>
                 <div class="rent-hall" ng-if="!!order.halls">
-                    <h4>Rent hall: </h4>
+                    <h4 class="product-title">Rent hall: </h4>
                     <div class="rent-hall-info">
                         <p class="description">{{order.halls.name}}</p>
-                        <p class="image">{{imageStr+order.halls.imgUrl}}</p>
+                        <p class="image"><img src={{imageStr+order.halls.imgUrl}} alt="hall"></p>
                         <p class="quantity">- </p>
                         <p class="price">{{order.halls.cost}}</p>
                         <p class="total">{{totalAmountHalls = totalAmountProduct(order.halls.people,order.halls.cost)}} uah</p>
-                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.halls)" >x</button>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.halls)" >&#10006;</button>
                     </div>
                 </div>
                 <div class="rent-hall" ng-if="!!order.design">
-                    <h4>Discount: </h4>
+                    <h4 class="product-title">Discount: </h4>
                     <div class="rent-hall-info">
                         <p class="description">{{order.design.name}}</p>
-                        <p class="image">{{order.design.imgUrl}}</p>
+                        <p class="image"><img src={{imageStr+order.design.imgUr}} alt="design"></p>
                         <p class="quantity"><a href={{order.design.link}}>link to {{order.design.name}}</a></p>
                         <p class="price">-</p>
                         <p class="total">{{order.design.discount}}</p>
-                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.design)" >x</button>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.design)" >&#10006;</button>
                     </div>
                 </div>
             </div>
-            <h4>Total amount: {{totalAll}}$ </h4>
+            <h4 class="product-title">Total amount: {{totalAmount()}}$ </h4>
+            <div class="confirm-btn-wrapper">
+                    <a href="#modal"><button class="btn-create-order" ng-click="createOrderList()">Create order</button></a>
+            </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
-            <div class="total-info">
-               
-               <div class="confirm-btn-wrapper">
-                   <button class="btn-create-order" ng-click="createOrderList()">Create order</button>
-               </div>
-                <div ng-if="createOrder">
+    </div>
+    <div class="modal-order" ng-if="createOrder">
+            <div id="modal" class="total-info">             
+               <button class="btn-close-modal" ng-click="closeModal()">&#10006;</button>
                     <h3>Your order:</h3>
                     <table>
                         <thead>
@@ -102,24 +102,27 @@
                                 <td>{{serviceItem.cost}}</td>
                                 <td>{{totalAmountProduct( serviceItem.quantity, serviceItem.cost)}}</td>
                             </tr>
-                        </tbody>
-                        <tfoot>
                             <tr ng-if="!!order.design">
                                 <td colspan="3">Get discount {{order.design.name}}</td>
                                 <td>{{order.design.discount}}</td>
                             </tr> 
+                        </tbody>
+                        <!-- <tfoot>
+                            
                             <tr>
                                 <td colspan="3">Total</td>
                                 <td>{{sum+150}}</td>
                             </tr>
 
-                        </tfoot>
+                        </tfoot> -->
                     </table>
+                    <div class="modal-total">
+                        <p>Total: {{sum+150}}</p>
+                    </div>
                     <div class="confirm-order">
                         <button class="btn-confirm-order">Confirm</button>
                     </div>
-                </div>
+               
             </div>
         </div>
-    </div>
 </div>

@@ -98,7 +98,11 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                         $scope.totalAll+=array[i].items[k].cost* array[i].items[k].quantity;
                     }
                 }
+                return $scope.totalAll
             };
+            $scope.closeModal = function(){
+                $scope.createOrder = false;
+            }
         })
     };
     $stateProvider.state(stateCart);
