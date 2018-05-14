@@ -128,7 +128,8 @@ app.post('/addItemToOrder', function(req, res) {
     let newOrder = req.body;
     let user = req.body.userEmail;
     let owner = req.body.owner;
-
+    console.log(newOrder);
+    console.log(req.body.name)
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [],
@@ -137,7 +138,6 @@ app.post('/addItemToOrder', function(req, res) {
                 imgUrl: newOrder.service.image,
                 id: newOrder.service.itemId
             }, newOrder.service.description);
-
         if (owner === 'other') {
             userOrders[newOrder.name] = order;
         } else {

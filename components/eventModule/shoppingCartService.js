@@ -62,12 +62,14 @@ module.exports = function($http, filterFactory) {
     }
 
     this.addToCart = function(item, serviceName, owner) {
+        console.log(item, serviceName, owner);
         let order = {
             name: serviceName,
             service: item,
             owner: owner,
             userEmail: filterFactory.userEmail
         };
+        console.log(order);
         $http.post('/addItemToOrder', order)
             .then(function successCallback(response) {
                 console.log('Added');

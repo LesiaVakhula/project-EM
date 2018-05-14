@@ -1,9 +1,9 @@
 const angular = require('angular');
 const template = require('./eventModule.html');
 const partners = require('../partnersModule/partnersModule');
-// const shoppingCartService = require('./shoppingCartService');
 const productsTemplate = require('./productsTemplate.html');
-const invitation = require('../invitationModule/invitationModule')
+const invitation = require('../invitationModule/invitationModule');
+
 require('@uirouter/angularjs');
 
 module.exports = angular.module('emApp.Event', ['ui.router', partners, invitation])
@@ -42,7 +42,4 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners, invitatio
     .component('eventComponent', require('./components/eventComponent/eventComponent.js'))
     .component('productItemComponent', require('./components/productItemComponent/productItem.js'))
     .controller('servicesCtrl', require('../../components/eventModule/servicesCtrl.js'))
-    // .factory('filterFactory', require('./filterFactory.js'))
-    // .service('shoppingCartService', shoppingCartService)
-
     .name;

@@ -15,7 +15,8 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
             name: 'invitation',
             url:'/invitation',
             templateUrl : invitationTemplate,
-            controller: (['$scope', function ($scope) {
+            controller: (function ($scope, shoppingCartService) {
+                'ngInject';
                 // $scope.myHtml = "<h1>Hello World</h1>"
                 $scope.froalaOptions = {
                     toolbarButtons : ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
@@ -59,8 +60,9 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     if(!name || !lastName || !email || !phone){
                         return;
                     }
-
-                    $scope.personList.push({name: name, lastName: lastName, email: email, phone: phone,count: count++});
+                    let person = {name: name, lastName: lastName, email: email, phone: phone,count: count++}
+                    $scope.personList.push(person);
+                    shoppingCartService.addToCart(person, 'invitationGuest', 'other');
                     console.log( $scope.personList);
                 };
                 $scope.removePerson = function (count) {
@@ -71,7 +73,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     $scope.personList.splice(index,1);
                     console.log($scope.personList);
                 }
-            }])
+            })
         };
         $stateProvider.state(invitationState);
     }])

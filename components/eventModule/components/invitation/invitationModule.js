@@ -7,7 +7,9 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
             name: 'invitation',
             url:'/invitation',
             templateUrl : invitationTemplate,
-            controller: (['$scope', function ($scope) {
+            controller: (function ($scope, shoppingCartService) {
+                'ngInject';
+                console.log(shoppingCartService);
                 $scope.backgroundTemplate = './images/background7.jpg';
                 $scope.iputText = '';
                 $scope.personList = [];
@@ -49,7 +51,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     $scope.personList.splice(index,1);
                     console.log($scope.personList);
                 }
-            }])
+            })
         };
         $stateProvider.state(invitationState);
     }])

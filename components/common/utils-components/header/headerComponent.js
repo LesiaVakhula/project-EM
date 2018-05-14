@@ -15,6 +15,7 @@ module.exports = {
 
 		$scope.selectEvent = function ($event) {
 			filterFactory.selectedEvent = $event.target.dataset.id;
+			filterFactory.disabledButtons = [];
 			shoppingCartService.getUsersOrder($scope.userEmail, $event.target.dataset.id);
 			$rootScope.$broadcast('sendSelectedEvent', {
 				show: $event.target.dataset.id === filterFactory.currentEvent
