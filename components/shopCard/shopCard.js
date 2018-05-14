@@ -7,7 +7,7 @@ require('./shopCard.scss');
 module.exports = angular.module('emApp.shopCard', ['ui.router'])
 .config(function($stateProvider) {
     'ngInject';
-    var stateCart = {
+    let stateCart = {
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
@@ -25,6 +25,12 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                 });
             $scope.imageStr = './images/';   
             $scope.createOrder = false;
+            $scope.personList = filterFactory.personList;
+            if($scope.personList) {
+                $scope.personListIsExist = true;
+                $scope.guestsQuantity = filterFactory.personList.length;
+            }
+            
             $scope.createOrderList = function () { //createOrderList
                  let finalOrder = [];
                  $scope.createOrder = true;
@@ -51,11 +57,11 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                 if(object === $scope.order.design){
                     $scope.order.design = null;
                 }
-                if(object === $scope.order.invitationGuest){
-                    $scope.order.invitationGuest = null;
+                if(object === $scope.personList){
+                    $scope.personList = null;
                 }
 
-                $scope.order.services =$scope.order.services.filter(function (item) {
+                $scope.order.services = $scope.order.services.filter(function (item) {
                     if(item.name === name){
                         item.items = item.items.filter(function (a) {
                             return a.id!==id
@@ -83,11 +89,11 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
             $scope.totalAmount = function () {
                 $scope.totalAll = 0;
-                if($scope.order.invitationGuest.exist){
-                    $scope.totalAll+=$scope.totalAmountInvitation;
+                if($scope.personListIsExist){
+                    $scope.totalAll += $scope.totalAmountInvitation;
                 }
                 if(!!$scope.order.halls){
-                    $scope.totalAll+=$scope.totalAmountHalls;
+                    $scope.totalAll += $scope.totalAmountHalls;
                 }
                 let array = $scope.order.services;
                 for(let i=0, l=array.length; i<l; i++){

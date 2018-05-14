@@ -124,9 +124,9 @@ app.post('/addOrderPattern', function (req, res) {
 
 
 app.post('/addItemToOrder', function (req, res) {
-    let newOrder = req.body;
-    let user = req.body.userEmail;
-    let owner = req.body.owner;
+    let newOrder = req.body,
+        user = req.body.userEmail,
+        owner = req.body.owner;
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [],

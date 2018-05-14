@@ -33,10 +33,6 @@ module.exports = function($http, filterFactory) {
         let orderPattern = {
             user: user,
             eventName: eventName,
-            invitationGuest:{
-                    exist: true,
-                    quantityGuest: 0
-            },
             services: []
         };
         if (eventName === "funeral") {

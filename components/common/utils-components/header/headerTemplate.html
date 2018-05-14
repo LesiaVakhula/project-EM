@@ -14,11 +14,8 @@
                 <li class="nav-item active hover">
                     <a class="nav-link hover" ng-click="clickToOpenRegistrationForm()">Sign up</a>
                 </li>
-                <li class="nav-item lg-hide hover active">
-                    <a class="nav-link hover" ui-sref='admin'>For admin</a>
-                </li>
                 <li class="nav-item hover active">
-                    <a class="nav-link hover" ui-sref='shopCard'>Shoping Cart</a>
+                    <a class="nav-link hover" ui-sref='shopCard'>Shopping Cart</a>
                 </li>
                 <li class="nav-item hover active">
                  <span class="navbar-brand" ng-if="isUser">Email: {{userEmail}}</span>
@@ -28,10 +25,10 @@
           Choose event
         </a>
         <div class="dropdown-menu"  ng-click="selectEvent($event)" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" data-id="wedding" ui-sref="event({eventName: 'wedding'})">Wedding</a>
-          <a class="dropdown-item" data-id="funeral" ui-sref="event({eventName: 'funeral'})">Funeral</a>
-          <a class="dropdown-item" data-id="birthday" ui-sref="event({eventName: 'birthday'})">Birthday</a>
-          <a class="dropdown-item" data-id="conference" ui-sref="event({eventName: 'conference'})">Conference</a>
+          <a class="dropdown-item" data-id="wedding" href="#">Wedding</a>
+          <a class="dropdown-item" data-id="funeral" href="#">Funeral</a>
+          <a class="dropdown-item" data-id="birthday" href="#">Birthday</a>
+          <a class="dropdown-item" data-id="conference" href="#">Conference</a>
         </div>
       </li>
             </ul>

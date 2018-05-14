@@ -122,8 +122,7 @@
                 "description": {
                     "name": "Rolls-Royce Phantom",
                     "cost": "6000 uah",
-                    "color": "silver",
-                    "driver": "Vasya Pupkin"
+                    "color": "silver"
                 }
             },
             {
@@ -132,8 +131,7 @@
                 "description": {
                     "name": "Mercedes E class",
                     "cost": "4000 uah",
-                    "color": "black",
-                    "driver": "Vasya Pupkin"
+                    "color": "black"
                 }
             },
             {
@@ -142,8 +140,7 @@
                 "description": {
                     "name": "Mercedes E class",
                     "cost": "4000 uah",
-                    "color": "black",
-                    "driver": "Vasya Pupkin"
+                    "color": "black"
                 }
             }
         ]
@@ -383,7 +380,7 @@
     },
     {
         "id": "7",
-        "name": "funeral-merchadnise",
+        "name": "funeral-merchandise",
         "owner": "em",
         "items": [{
                 "itemId": "1",

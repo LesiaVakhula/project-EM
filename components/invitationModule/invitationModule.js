@@ -11,7 +11,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
             name: 'invitation',
             url: '/invitation',
             templateUrl: invitationTemplate,
-            controller: (function($scope, shoppingCartService, $http, filterFactory) {
+            controller: (function($scope, shoppingCartService, $http, filterFactory, $rootScope) {
                 'ngInject';
                 // $scope.myHtml = "<h1>Hello World</h1>"
                 $scope.froalaOptions = {
@@ -34,10 +34,10 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     })
                     .then(function successCallback(response) {
                         $scope.personList = response.data;
-                        console.log($scope.personList)
+                        filterFactory.personList = response.data;
                     }, function errorCallback(response) {
                         console.log('Error!!!');
-                    });
+                });
 
                 $scope.flag = false;
                 $scope.pattern_email=/[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/;
@@ -85,7 +85,8 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     $scope.email = '';
                     $scope.phone = null;
                     shoppingCartService.changeGuestsList(person, 'add');
-                    $scope.personList.push(person);    
+                    $scope.personList.push(person);  
+                    filterFactory.personList = $scope.personList;
                 };
                 $scope.removePerson = function(count) {
                     let elem = $scope.personList.find(item => {
@@ -94,6 +95,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     shoppingCartService.changeGuestsList(elem, 'remove');
                     let index = $scope.personList.indexOf(elem);
                     $scope.personList.splice(index, 1);
+                    filterFactory.personList = $scope.personList;
                 }
             })
         };
