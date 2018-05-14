@@ -18,7 +18,7 @@ app.use(bodyParser.json({
 //     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 // });
 
-app.get('/getService', function(req, res) {
+app.get('/getService', function (req, res) {
     fs.readFile('./storage/eventsItems.json', 'utf8', (err, response) => {
         if (err) throw err;
         const service = JSON.parse(response).find((item) => item.id === req.query.id);
@@ -30,7 +30,7 @@ app.get('/getService', function(req, res) {
     });
 });
 
-app.get('/getEventServices', function(req, res) {
+app.get('/getEventServices', function (req, res) {
     fs.readFile('./storage/eventsServices.json', 'utf8', (err, response) => {
         if (err) throw err;
         const services = JSON.parse(response).find((item) => item.name === req.query.name);
@@ -42,7 +42,7 @@ app.get('/getEventServices', function(req, res) {
     });
 });
 
-app.get('/getClothesPartners', function(req, res) {
+app.get('/getClothesPartners', function (req, res) {
     fs.readFile('./storage/weddingClothes.json', 'utf8', (err, response) => {
         if (err) throw err;
         const clothesPartners = JSON.parse(response);
@@ -54,7 +54,7 @@ app.get('/getClothesPartners', function(req, res) {
     });
 });
 
-app.get('/getEventsData', function(req, res) {
+app.get('/getEventsData', function (req, res) {
     fs.readFile('./storage/events.json', 'utf8', (err, response) => {
         if (err) throw err;
         const eventsData = JSON.parse(response);
@@ -66,14 +66,14 @@ app.get('/getEventsData', function(req, res) {
     });
 });
 
-app.post('/setNewUser', function(req, res) {
+app.post('/setNewUser', function (req, res) {
     let newUserObj = req.body;
     fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
         let usersArray = response ? JSON.parse(response) : [],
             isUser = usersArray.find((user) => user.email === req.body.email);
         if (isUser) {
-            res.sendStatus(409);
+            res.status(200).send(isUser);
             return;
         };
         usersArray.push(newUserObj);
@@ -87,7 +87,8 @@ app.post('/setNewUser', function(req, res) {
     });
 });
 
-app.get('/getUsersOrder', function(req, res) {
+
+app.get('/getUsersOrder', function (req, res) {
     console.log(req.query);
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
@@ -99,7 +100,7 @@ app.get('/getUsersOrder', function(req, res) {
     });
 });
 
-app.post('/addOrderPattern', function(req, res) {
+app.post('/addOrderPattern', function (req, res) {
     let newOrder = req.body;
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
@@ -124,7 +125,7 @@ app.post('/addOrderPattern', function(req, res) {
 });
 
 
-app.post('/addItemToOrder', function(req, res) {
+app.post('/addItemToOrder', function (req, res) {
     let newOrder = req.body;
     let user = req.body.userEmail;
     let owner = req.body.owner;
@@ -160,20 +161,20 @@ app.post('/addItemToOrder', function(req, res) {
     })
 });
 
-app.get('/getShoppingCartContent', function(req, res) {
+app.get('/getShoppingCartContent', function (req, res) {
     let user = req.query.user;
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         if (response) {
             let ordersStorage = JSON.parse(response),
-                userOrder = ordersStorage.find( item => item.user === user);
-            res.status(200).send(userOrder);    
+                userOrder = ordersStorage.find(item => item.user === user);
+            res.status(200).send(userOrder);
         };
-        
+
     });
 });
 
-app.get('/getUser', function(req, res) {
+app.get('/getUser', function (req, res) {
     fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
         let registeredUser = '';
@@ -190,7 +191,7 @@ app.get('/getUser', function(req, res) {
     });
 });
 
-app.use('*', function(req, res) {
+app.use('*', function (req, res) {
     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 

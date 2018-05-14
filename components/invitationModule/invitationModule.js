@@ -1,10 +1,6 @@
 const invitationTemplate = require('./invitationTemplate.html');
 require('./invitationStyle.scss');
 
-// require('jquery');
-// require('../../node_modules/froala-editor/js/froala_editor.min');
-// require('froala-editor');
-
 module.exports = angular.module('emApp.invitation', ['ui.router'])
     .value('froalaConfig', {
         toolbarInline: false,
@@ -33,7 +29,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                 $scope.flag = false;
                 $scope.pattern_email=/[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/;
                 $scope.pattern_phone=/^\d{10}$/;
-                $scope.formName = {};
+                // $scope.formName = {};
                 let count = 1;
                 function goodLook(num) {
                     if(num <= 9){
@@ -56,14 +52,15 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     }
                     return newDate;
                 };
-                $scope.addPerson = function(name, lastName, email, phone){
-                    if(!name || !lastName || !email || !phone){
+                $scope.addPerson = function(){
+                    if(!$scope.name || !$scope.lastName || !$scope.email || !$scope.phone){
                         return;
                     }
-                    let person = {name: name, lastName: lastName, email: email, phone: phone,count: count++}
-                    $scope.personList.push(person);
-                    shoppingCartService.addToCart(person, 'invitationGuest', 'other');
-                    console.log( $scope.personList);
+                    $scope.personList.push({name: $scope.name, lastName: $scope.lastName, email: $scope.email, phone: $scope.phone,count: count++});
+                    $scope.name = '';
+                    $scope.lastName = '';
+                    $scope.email = '';
+                    $scope.phone = null;
                 };
                 $scope.removePerson = function (count) {
                     let elem = $scope.personList.find(item =>{
