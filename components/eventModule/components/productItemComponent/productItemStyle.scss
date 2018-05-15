@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .item-block {
     display: flex;
     margin-top: 10px;
@@ -35,7 +37,7 @@
     text-align: center;
 }
 
-.my.ng-binding{
+.my.ng-binding {
     padding: 3%;
 }
 
@@ -44,21 +46,34 @@
 }
 
 button.btn.btn-dark.add-btn {
-    margin-right: 8%;
-    padding: 2%;
+    position: relative;
+    margin-right: 4%;
     align-self: flex-end;
     font-size: 1.3vw;
-    z-index: 1;
-    box-shadow: none;
-    &:hover {
+    &:hover:enabled {
         box-shadow: 5px 5px 28px 0px rgba(44, 74, 57, 1);
         opacity: 0.9;
         text-shadow: 2px 2px #000;
         color: #2ef080;
     }
-    &:active{
-        transform: translate(2px,2px);
-      }
+    &:disabled:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: -6%;
+        color: #000;
+        background-color: #2ef080;
+        width: 2.2vw;
+        height: 2.2vw;
+        border-radius: 50%;
+        top: -1vw;
+        font-size: 1.8vw;
+        font-family: 'Material Icons';
+        content: "done";
+    }
+    &:active {
+        transform: translate(2px, 2px);
+    }
 }
 
 @media only screen and (max-width:576px) {
@@ -66,13 +81,13 @@ button.btn.btn-dark.add-btn {
         width: 50%;
         height: auto;
     }
-    .table.description{
+    .table.description {
         padding: 0;
         margin-bottom: 0;
         font-size: 2vw;
         line-height: 2.5vw;
     }
-    .my.ng-binding{
+    .my.ng-binding {
         padding: 2%;
     }
     button.btn.btn-dark.add-btn {

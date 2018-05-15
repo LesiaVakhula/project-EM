@@ -1,5 +1,6 @@
 module.exports = function ($scope, $stateParams, $state, filterFactory, $http) {
     'ngInject';
+    filterFactory.currentService = $stateParams.id;
     if ($stateParams.id == 9 || $stateParams.id == 10) {
         if ($stateParams.id == 9) {
             filterFactory.gender = 'male';

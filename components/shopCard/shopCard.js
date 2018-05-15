@@ -14,97 +14,197 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
         controller:  (function ($scope, shoppingCartService, filterFactory, $http){
             'ngInject';
-             $http.get('/getShoppingCartContent', {
-                    params: {
-                        user: filterFactory.userEmail
-                    }
-                }).then(function successCallback(response) {
-                    $scope.order = response.data;
-                    console.log( $scope.order);
-                }, function errorCallback(response) {
-                    console.log('Error!!!');
-                });
-            $scope.imageStr = './images/';   
-            $scope.createOrder = false;
-            $scope.createOrderList = function () { //createOrderList
-                 let finalOrder = [];
-                 $scope.createOrder = true;
-                 let array = $scope.order.services;
-                for(let i=0, l=array.length; i<l; i++){
-                    for(let k=0, m=array[i].items.length; k<m; k++){
-                        finalOrder.push(array[i].items[k]);
-                    }
-                };
-                $scope.sum = finalOrder.reduce((a,b)=>{
-                    console.log(b.quantity,parseFloat(b.cost));
-                   return a+(b.quantity*parseFloat(b.cost));
-                },0);
-                console.log( $scope.sum)
-                return finalOrder;
-            };
+            $http.get('/getShoppingCartContent', {
+                   params: {
+                       user: filterFactory.userEmail
+                   }
+               }).then(function successCallback(response) {
+                   $scope.order = response.data;
+                   for(let item in $scope.order){
+                   console.log(item);
+                       
+                   }
+                   console.log($scope.order);
+               }, function errorCallback(response) {
+                   console.log('Error!!!');
+               });
+           $scope.imageStr = './images/';   
+           $scope.createOrder = false;
+           $scope.guestsQuantity = 0;
+           $scope.personList = filterFactory.personList;
+           if($scope.personList) {
+               $scope.personListIsExist = true;
+               $scope.guestsQuantity = filterFactory.personList.length;
+               console.log($scope.guestsQuantity);
+           }
+           $scope.quantityProduct = 1;
+           $scope.createOrderList = function () { //createOrderList
+                let finalOrder = [];
+                $scope.createOrder = true;
+                let array = $scope.order.services;
+               for(let i=0, l=array.length; i<l; i++){
+                   for(let k=0, m=array[i].items.length; k<m; k++){
+                       finalOrder.push(array[i].items[k]);
+                   }
+               };
+               $scope.sum = finalOrder.reduce((a,b)=>{
+                   console.log(b.quantity,parseFloat(b.cost));
+                  return a+(b.quantity*parseFloat(b.cost));
+               },0);
+               console.log( $scope.sum)
+               return finalOrder;
+           };
 
-           // console.log($scope.confirmOrder());
-            $scope.handle = function (object,name,id) {
-          
-                shoppingCartService.removeFromCart(object, name);
-                if(object === $scope.order.halls){
-                    $scope.order.halls = null;
-                }
-                if(object === $scope.order.design){
-                    $scope.order.design = null;
-                }
-                if(object === $scope.order.invitationGuest){
-                    $scope.order.invitationGuest = null;
-                }
+           $scope.handle = function (object,name,id) {
+         
+               shoppingCartService.removeFromCart(object);
+               if(object === $scope.order.halls){
+                   $scope.order.halls = null;
+               }
+               if(object === $scope.order.design){
+                   $scope.order.design = null;
+               }
+               if(object === $scope.personList){
+                   $scope.personList = null;
+               }
 
-                $scope.order.services =$scope.order.services.filter(function (item) {
-                    if(item.name === name){
-                        item.items = item.items.filter(function (a) {
-                            return a.id!==id
-                        });
-                        return true;
-                    }else {
-                        return true
-                    }
-                });
-            };
+               $scope.order.services = $scope.order.services.filter(function (item) {
+                   if(item.name === name){
+                       item.items = item.items.filter(function (a) {
+                           return a.id!==id
+                       });
+                       return true;
+                   }else {
+                       return true
+                   }
+               });
+           };
 
-            $scope.totalAmountProduct = function(quantity,price){
-                if(price==='invite'){
-                    if(quantity <= 100){
-                            return 100;
-                        }else if(quantity > 100 && quantity <= 200){
-                            return 150;
-                        }else {
-                            return 200;
-                        }
-                }
-                return quantity*parseFloat(price);
+           $scope.totalAmountProduct = function(quantity,price){
+               if(price==='invite'){
+                   if(quantity <= 100){
+                           return 100;
+                       }else if(quantity > 100 && quantity <= 200){
+                           return 150;
+                       }else {
+                           return 200;
+                       }
+               }
+               return quantity*parseFloat(price);
+           }
+
+           $scope.totalAmount = function () {
+               $scope.totalAll = 0;
+               if($scope.personListIsExist){
+                   $scope.totalAll += $scope.totalAmountInvitation;
+               }
+               if(!!$scope.order.halls){
+                   $scope.totalAll += $scope.totalAmountHalls;
+               }
+               if(!!$scope.order['memorial-halls']){
+                $scope.totalAll += $scope.totalAmountHalls;
             }
+               let array = $scope.order.services;
+               for(let i=0, l=array.length; i<l; i++){
+                   for(let k=0, m=array[i].items.length; k<m; k++){
+                       $scope.totalAll+=array[i].items[k].cost* array[i].items[k].quantity;
+                   }
+               }
+           };
+       })
+   };
+    //         'ngInject';
+    //          $http.get('/getShoppingCartContent', {
+    //                 params: {
+    //                     user: filterFactory.userEmail
+    //                 }
+    //             }).then(function successCallback(response) {
+    //                 $scope.order = response.data;
+    //                 console.log( $scope.order);
+    //             }, function errorCallback(response) {
+    //                 console.log('Error!!!');
+    //             });
+    //         $scope.imageStr = './images/';   
+    //         $scope.createOrder = false;
+    //         $scope.createOrderList = function () { //createOrderList
+    //              let finalOrder = [];
+    //              $scope.createOrder = true;
+    //              let array = $scope.order.services;
+    //             for(let i=0, l=array.length; i<l; i++){
+    //                 for(let k=0, m=array[i].items.length; k<m; k++){
+    //                     finalOrder.push(array[i].items[k]);
+    //                 }
+    //             };
+    //             $scope.sum = finalOrder.reduce((a,b)=>{
+    //                 console.log(b.quantity,parseFloat(b.cost));
+    //                return a+(b.quantity*parseFloat(b.cost));
+    //             },0);
+    //             console.log( $scope.sum)
+    //             return finalOrder;
+    //         };
+
+    //        // console.log($scope.confirmOrder());
+    //         $scope.handle = function (object,name,id) {
+          
+    //             shoppingCartService.removeFromCart(object, name);
+    //             if(object === $scope.order.halls){
+    //                 $scope.order.halls = null;
+    //             }
+    //             if(object === $scope.order.design){
+    //                 $scope.order.design = null;
+    //             }
+    //             if(object === $scope.order.invitationGuest){
+    //                 $scope.order.invitationGuest = null;
+    //             }
+
+    //             $scope.order.services =$scope.order.services.filter(function (item) {
+    //                 if(item.name === name){
+    //                     item.items = item.items.filter(function (a) {
+    //                         return a.id!==id
+    //                     });
+    //                     return true;
+    //                 }else {
+    //                     return true
+    //                 }
+    //             });
+    //         };
+
+    //         $scope.totalAmountProduct = function(quantity,price){
+    //             if(price==='invite'){
+    //                 if(quantity <= 100){
+    //                         return 100;
+    //                     }else if(quantity > 100 && quantity <= 200){
+    //                         return 150;
+    //                     }else {
+    //                         return 200;
+    //                     }
+    //             }
+    //             return quantity*parseFloat(price);
+    //         }
             
 
-            $scope.totalAmount = function () {
-                $scope.totalAll = 0;
-                if($scope.order.invitationGuest.exist){
-                    $scope.totalAll+=$scope.totalAmountInvitation;
-                }
-                if(!!$scope.order.halls){
-                    $scope.totalAll+=$scope.totalAmountHalls;
-                }
-                let array = $scope.order.services;
-                for(let i=0, l=array.length; i<l; i++){
-                       // console.log( array[i].name)
-                    for(let k=0, m=array[i].items.length; k<m; k++){
-                        $scope.totalAll+=array[i].items[k].cost* array[i].items[k].quantity;
-                    }
-                }
-                return $scope.totalAll
-            };
-            $scope.closeModal = function(){
-                $scope.createOrder = false;
-            }
-        })
-    };
+    //         $scope.totalAmount = function () {
+    //             $scope.totalAll = 0;
+    //             if($scope.order.invitationGuest.exist){
+    //                 $scope.totalAll+=$scope.totalAmountInvitation;
+    //             }
+    //             if(!!$scope.order.halls){
+    //                 $scope.totalAll+=$scope.totalAmountHalls;
+    //             }
+    //             let array = $scope.order.services;
+    //             for(let i=0, l=array.length; i<l; i++){
+    //                    // console.log( array[i].name)
+    //                 for(let k=0, m=array[i].items.length; k<m; k++){
+    //                     $scope.totalAll+=array[i].items[k].cost* array[i].items[k].quantity;
+    //                 }
+    //             }
+    //             return $scope.totalAll
+    //         };
+    //         $scope.closeModal = function(){
+    //             $scope.createOrder = false;
+    //         }
+    //     })
+    // };
     $stateProvider.state(stateCart);
 })
 // .service('shoppingCartService', shoppingCartService)

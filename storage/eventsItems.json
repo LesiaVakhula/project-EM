@@ -1,139 +1,137 @@
 [{
-    "id": "1",
-    "name": "cars",
-    "owner": "em",
-    "items": [{
-        "itemId": "1",
-        "image": "camry-black.png",
-        "description": {
-            "name": "Toyota Camry",
-            "cost": "2500 uah/day",
-            "color": "black"
-        }
+        "id": "1",
+        "name": "cars",
+        "owner": "em",
+        "items": [{
+                "itemId": "1",
+                "image": "camry-black.png",
+                "description": {
+                    "name": "Toyota Camry",
+                    "cost": "2500 uah/day",
+                    "color": "black"
+                }
+            },
+            {
+                "itemId": "2",
+                "image": "camry-white.png",
+                "description": {
+                    "name": "Toyota Camry",
+                    "cost": "2500 uah/day",
+                    "color": "white"
+                }
+            },
+            {
+                "itemId": "3",
+                "image": "a6-black.png",
+                "description": {
+                    "name": "Audi A6",
+                    "cost": "3900 uah/day",
+                    "color": "black"
+                }
+            },
+            {
+                "itemId": "4",
+                "image": "a6-white.png",
+                "description": {
+                    "name": "Audi A6",
+                    "cost": "4400 uah/day",
+                    "color": "white"
+                }
+            },
+            {
+                "itemId": "5",
+                "image": "s500-black.png",
+                "description": {
+                    "name": "Mercedes-Benz S500",
+                    "cost": "4600 uah/day",
+                    "color": "black"
+                }
+            },
+            {
+                "itemId": "6",
+                "image": "s500-silver.png",
+                "description": {
+                    "name": "Mercedes-Benz S550",
+                    "cost": "4600 uah/day",
+                    "color": "silver"
+                }
+            },
+            {
+                "itemId": "7",
+                "image": "gl-black.png",
+                "description": {
+                    "name": "Mercedes-Benz GL350",
+                    "cost": "5200 uah/day",
+                    "color": "black"
+                }
+            },
+            {
+                "itemId": "8",
+                "image": "gl-white.png",
+                "description": {
+                    "name": "Mercedes-Benz GL350",
+                    "cost": "5000 uah/day",
+                    "color": "white"
+                }
+            },
+            {
+                "itemId": "9",
+                "image": "blue-mazda.png",
+                "description": {
+                    "name": "Mazda 6",
+                    "cost": "3000 uah/day",
+                    "color": "blue"
+                }
+            },
+            {
+                "itemId": "10",
+                "image": "red-mazda.png",
+                "description": {
+                    "name": "Mazda 6",
+                    "cost": "3000 uah/day",
+                    "color": "red"
+                }
+            },
+            {
+                "itemId": "11",
+                "image": "hundai-black.png",
+                "description": {
+                    "name": "Hyundai",
+                    "cost": "5500 uah/day",
+                    "color": "black"
+                }
+            },
+            {
+                "itemId": "12",
+                "image": "ford.png",
+                "description": {
+                    "name": "Ford",
+                    "cost": "6000 uah/day",
+                    "color": "brown"
+                }
+            }
+        ]
     },
-        {
-            "itemId": "2",
-            "image": "camry-white.png",
-            "description": {
-                "name": "Toyota Camry",
-                "cost": "2500 uah/day",
-                "color": "white"
-            }
-        },
-        {
-            "itemId": "3",
-            "image": "a6-black.png",
-            "description": {
-                "name": "Audi A6",
-                "cost": "3900 uah/day",
-                "color": "black"
-            }
-        },
-        {
-            "itemId": "4",
-            "image": "a6-white.png",
-            "description": {
-                "name": "Audi A6",
-                "cost": "4400 uah/day",
-                "color": "white"
-            }
-        },
-        {
-            "itemId": "5",
-            "image": "s500-black.png",
-            "description": {
-                "name": "Mercedes-Benz S500",
-                "cost": "4600 uah/day",
-                "color": "black"
-            }
-        },
-        {
-            "itemId": "6",
-            "image": "s500-silver.png",
-            "description": {
-                "name": "Mercedes-Benz S550",
-                "cost": "4600 uah/day",
-                "color": "silver"
-            }
-        },
-        {
-            "itemId": "7",
-            "image": "gl-black.png",
-            "description": {
-                "name": "Mercedes-Benz GL350",
-                "cost": "5200 uah/day",
-                "color": "black"
-            }
-        },
-        {
-            "itemId": "8",
-            "image": "gl-white.png",
-            "description": {
-                "name": "Mercedes-Benz GL350",
-                "cost": "5000 uah/day",
-                "color": "white"
-            }
-        },
-        {
-            "itemId": "9",
-            "image": "blue-mazda.png",
-            "description": {
-                "name": "Mazda 6",
-                "cost": "3000 uah/day",
-                "color": "blue"
-            }
-        },
-        {
-            "itemId": "10",
-            "image": "red-mazda.png",
-            "description": {
-                "name": "Mazda 6",
-                "cost": "3000 uah/day",
-                "color": "red"
-            }
-        },
-        {
-            "itemId": "11",
-            "image": "hundai-black.png",
-            "description": {
-                "name": "Hyundai",
-                "cost": "5500 uah/day",
-                "color": "black"
-            }
-        },
-        {
-            "itemId": "12",
-            "image": "ford.png",
-            "description": {
-                "name": "Ford",
-                "cost": "6000 uah/day",
-                "color": "brown"
-            }
-        }
-    ]
-},
     {
         "id": "11",
         "name": "funeral-cars",
         "owner": "em",
         "items": [{
-            "itemId": "9",
-            "image": "funeral-rolls-royce.png",
-            "description": {
-                "name": "Rolls-Royce Phantom",
-                "cost": "6000 uah",
-                "color": "silver",
-                "driver": "Vasya Pupkin"
-            }
-        },
+                "itemId": "9",
+                "image": "funeral-rolls-royce.png",
+                "description": {
+                    "name": "Rolls-Royce Phantom",
+                    "cost": "6000 uah",
+                    "color": "silver"
+                }
+            },
             {
                 "itemId": "10",
                 "image": "funeral-cadilac-black.png",
                 "description": {
                     "name": "Mercedes E class",
                     "cost": "4000 uah",
-                    "color": "black",
-                    "driver": "Vasya Pupkin"
+                    "color": "black"
                 }
             },
             {
@@ -142,8 +140,7 @@
                 "description": {
                     "name": "Mercedes E class",
                     "cost": "4000 uah",
-                    "color": "black",
-                    "driver": "Vasya Pupkin"
+                    "color": "black"
                 }
             }
         ]
@@ -153,14 +150,14 @@
         "name": "halls",
         "owner": "other",
         "items": [{
-            "itemId": "1",
-            "image": "santinno.png",
-            "description": {
-                "name": "Santino",
-                "number of people": "120",
-                "cost": "1000 uah/person"
-            }
-        },
+                "itemId": "1",
+                "image": "santinno.png",
+                "description": {
+                    "name": "Santino",
+                    "number of people": "120",
+                    "cost": "1000 uah/person"
+                }
+            },
             {
                 "itemId": "2",
                 "image": "buhta.png",
@@ -249,13 +246,13 @@
         "name": "memorial-halls",
         "owner": "other",
         "items": [{
-            "itemId": "1",
-            "image": "dominican.png",
-            "description": {
-                "name": "Dominician cathedral",
-                "...": "..."
-            }
-        },
+                "itemId": "1",
+                "image": "dominican.png",
+                "description": {
+                    "name": "Dominician cathedral",
+                    "...": "..."
+                }
+            },
             {
                 "itemId": "2",
                 "image": "Church of Transfiguration.png",
@@ -288,14 +285,14 @@
         "name": "food-courts",
         "owner": "other",
         "items": [{
-            "itemId": "1",
-            "image": "Chief lviv ua.png",
-            "description": {
-                "name": "Сhief bestcatering",
-                "link": "http://chef.lviv.ua",
-                "discount": "12 %"
-            }
-        },
+                "itemId": "1",
+                "image": "Chief lviv ua.png",
+                "description": {
+                    "name": "Сhief bestcatering",
+                    "link": "http://chef.lviv.ua",
+                    "discount": "12 %"
+                }
+            },
             {
                 "itemId": "2",
                 "image": "cateringlviv.png",
@@ -348,13 +345,13 @@
         "name": "animators",
         "owner": "em",
         "items": [{
-            "itemId": "1",
-            "image": "brad-pitt.png",
-            "description": {
-                "name": "Brad Pitt",
-                "cost": "2800 $"
-            }
-        },
+                "itemId": "1",
+                "image": "brad-pitt.png",
+                "description": {
+                    "name": "Brad Pitt",
+                    "cost": "2800 $"
+                }
+            },
             {
                 "itemId": "2",
                 "image": "will-smith.png",
@@ -383,16 +380,16 @@
     },
     {
         "id": "7",
-        "name": "funeral-merchadnise",
+        "name": "funeral-merchandise",
         "owner": "em",
         "items": [{
-            "itemId": "1",
-            "image": "grob-1.png",
-            "description": {
-                "name": "coffin",
-                "cost": "3100 uah"
-            }
-        },
+                "itemId": "1",
+                "image": "grob-1.png",
+                "description": {
+                    "name": "coffin",
+                    "cost": "3100 uah"
+                }
+            },
             {
                 "itemId": "2",
                 "image": "grob-2.png",
@@ -472,14 +469,14 @@
         "name": "design",
         "owner": "other",
         "items": [{
-            "itemId": "1",
-            "image": "rockets.png",
-            "description": {
-                "name": "Rockets",
-                "link": "https://rocketsevent.com",
-                "discount": "7 %"
-            }
-        },
+                "itemId": "1",
+                "image": "rockets.png",
+                "description": {
+                    "name": "Rockets",
+                    "link": "https://rocketsevent.com",
+                    "discount": "7 %"
+                }
+            },
             {
                 "itemId": "2",
                 "image": "design-1.png",
