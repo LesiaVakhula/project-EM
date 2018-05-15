@@ -63,15 +63,18 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
             height: auto;
             padding: 10px;
             .heading {
+                display: none;
                 top: 0;
                 left: 0;
                 transform: none;
-                h2 {
-                    font-size: 1.75vw;
-                    @media only screen and (max-width: 576px) {
-                        font-size: 5vw;
-                    }
+               }
+               h2 {
+                position: static;
+                font-size: 1.75vw;
+                @media only screen and (max-width: 576px) {
+                    font-size: 5vw;
                 }
+
             }
         }
     }

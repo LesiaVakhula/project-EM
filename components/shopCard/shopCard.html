@@ -20,11 +20,11 @@
                         <p class="description" ng-model="item.name">{{item.name}}</p>
                         <p class="image"><img src={{imageStr+item.imgUrl}} alt="photo"></p>
                         <p class="quantity">
-                            <input  ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" value={{item.quantity}} min="1" max={{item.amount}}>
+                            <input  ng-change = "totalAmount()" type="number" id="quantity" ng-model="quantityProduct=1"  min="1" max="2"> <!-- ng-model="item.quantity"-->
                         </p> 
                         <p class="price">{{item.cost}}</p>
 
-                        <p class="total">{{totalAmountProduct(3,item.cost)}} uah</p>
+                        <p class="total">{{totalAmountProduct(quantityProduct,item.cost)}} uah</p>
                         <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service,service.name, item.id)" >&#10006;</button></p>
                     </div>
                 </div>

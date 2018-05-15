@@ -52,25 +52,31 @@
             width: 20vw;
             height: 6.5vw;
         }
-
-
+        @media only screen and (max-width: 850px) {
+            width: 27vw;
+            height: 7.5vw;
+        }
+        @media only screen and (max-width: 690px) {
+            width: 35vw;
+            height: 9vw;
+        }
         
         @media only screen and (max-width: 576px) {
             width: 35vw;
             height: 10.5vw;
         }
-        @media only screen and (max-width: 411px) {
+        @media only screen and (max-width: 414px) {
             width: 45vw;
             height: 14vw;
         }
         @media only screen and (max-width: 375px) {
             width: 45vw;
-            height: 14vw;
+            height: 15vw;
         }
 
 
         .heading {
-            border: 2px solid #2ef080;
+            border: 3px solid #2ef080;
             
             // background-color: rgba(79, 79, 79, 0.75);
             // position: relative;
@@ -94,12 +100,8 @@
             text-transform: capitalize;
             width: max-content;
 
-            @media only screen and (max-width: 375px) {
-                top: 3vw;
-            }
-            @media only screen and (max-width: 576px) {
-                top: 2.8vw;
-            }
+           
+           
             @media only screen and (min-width: 1501px) {
                 top: 1.2vw;
                 font-size: 41px;
@@ -119,6 +121,17 @@
             @media only screen and (max-width: 1000px) {
                 font-size: 30px;
             }
+            @media only screen and (max-width: 576px) {
+                top: 2.8vw;
+            }
+            @media only screen and (max-width: 375px) {
+                top: 3.5vw;
+                font-size: 25px;
+                
+            }
+            // @media only screen and (max-width: 375px) {
+            //     top: 3.5vw;
+            // }
     
             // &::first-letter {
             //     text-transform: uppercase;
