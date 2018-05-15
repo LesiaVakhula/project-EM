@@ -20,7 +20,7 @@
                         <p class="description" ng-model="item.name">{{item.name}}</p>
                         <p class="image"><img src={{imageStr+item.imgUrl}} alt="photo"></p>
                         <p class="quantity">
-                            <input  ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" value={{item.quantity}} min="1" max={{item.amount}}>
+                            <input  ng-change = "totalAmount()" ng-model="item.quantity" type="number" id="quantity" min="1" max={{item.amount}}>
                         </p> 
                         <p class="price">{{item.cost}}</p>
 
@@ -33,7 +33,7 @@
                    <div class="guest-invitation-info">
                        <p class="description">People</p>
                        <p class="image">-</p>
-                       <p class="quantity">{{guestsQuantity}}</p>
+                       <p class="quantity">{{guestsQuantity}} people</p>
                        <p class="price">-</p>
                        <p class="total">{{totalAmountInvitation = totalAmountProduct(
                        guestsQuantity,'invite')}} uah</p>
@@ -44,10 +44,10 @@
                     <h4>Rent hall: </h4>
                     <div class="rent-hall-info">
                         <p class="description">{{order.halls.name}}</p>
-                        <p class="image">{{imageStr+order.halls.imgUrl}}</p>
-                        <p class="quantity">- </p>
+                        <p class="image"><img src={{imageStr+order.halls.imgUrl}} alt="photo"></p>
+                        <p class="quantity">{{personListIsExist ? guestsQuantity: 0}} people </p>
                         <p class="price">{{order.halls.cost}}</p>
-                        <p class="total">{{totalAmountHalls = totalAmountProduct(order.halls.people,order.halls.cost)}} uah</p>
+                        <p class="total">{{totalAmountHalls = totalAmountProduct(guestsQuantity = 0, order.halls.cost)}} uah</p>
                         <p class="delete"> <button class="btn-remove" ng-click="handle(order.halls)" >x</button>
                     </div>
                 </div>

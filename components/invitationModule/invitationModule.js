@@ -2,10 +2,10 @@ const invitationTemplate = require('./invitationTemplate.html');
 require('./invitationStyle.scss');
 
 module.exports = angular.module('emApp.invitation', ['ui.router'])
-    .value('froalaConfig', {
-        toolbarInline: false,
-        placeholderText: 'Enter Text Here'
-    })
+    // .value('froalaConfig', {
+    //     toolbarInline: false,
+    //     placeholderText: 'Enter Text Here'
+    // })
     .config(['$stateProvider', function($stateProvider) {
         let invitationState = {
             name: 'invitation',
@@ -14,15 +14,15 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
             controller: (function($scope, shoppingCartService, $http, filterFactory, $rootScope) {
                 'ngInject';
                 // $scope.myHtml = "<h1>Hello World</h1>"
-                $scope.froalaOptions = {
-                    toolbarButtons: ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
-                    events: {
-                        'froalaEditor.initialized': function() {
-                            // Use the methods like this.
-                            $scope.froalaOptions.froalaEditor('selection.get');
-                        }
-                    }
-                };
+                // $scope.froalaOptions = {
+                //     toolbarButtons: ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
+                //     events: {
+                //         'froalaEditor.initialized': function() {
+                //             // Use the methods like this.
+                //             $scope.froalaOptions.froalaEditor('selection.get');
+                //         }
+                //     }
+                // };
                 $scope.backgroundTemplate = './images/background7.jpg';
                 $scope.iputText = '';
                 $http.get('/getUserGuestsList', {
@@ -35,6 +35,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     .then(function successCallback(response) {
                         $scope.personList = response.data;
                         filterFactory.personList = response.data;
+                        console.log( $scope.personList )
                     }, function errorCallback(response) {
                         console.log('Error!!!');
                 });
@@ -87,6 +88,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     shoppingCartService.changeGuestsList(person, 'add');
                     $scope.personList.push(person);  
                     filterFactory.personList = $scope.personList;
+                    console.log($scope.personList)
                 };
                 $scope.removePerson = function(count) {
                     let elem = $scope.personList.find(item => {

@@ -72,6 +72,13 @@ div,p{
         display: flex;
       }
     }
+    .rent-hall{
+      .image{
+        img{
+          height: 100%;
+        }
+      }
+    }
     .description,.quantity,.image,.price,.total,.delete{
       height: 20%;
       font-size:18px;

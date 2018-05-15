@@ -20,6 +20,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     }
                 }).then(function successCallback(response) {
                     $scope.order = response.data;
+                    console.log( $scope.order);
                 }, function errorCallback(response) {
                     console.log('Error!!!');
                 });
