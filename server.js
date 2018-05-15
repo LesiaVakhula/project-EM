@@ -18,7 +18,7 @@ app.use(bodyParser.json({
 //     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 // });
 
-app.get('/getService', function (req, res) {
+app.get('/getService', function(req, res) {
     fs.readFile('./storage/eventsItems.json', 'utf8', (err, response) => {
         if (err) throw err;
         const service = JSON.parse(response).find((item) => item.id === req.query.id);
@@ -30,7 +30,7 @@ app.get('/getService', function (req, res) {
     });
 });
 
-app.get('/getEventServices', function (req, res) {
+app.get('/getEventServices', function(req, res) {
     fs.readFile('./storage/eventsServices.json', 'utf8', (err, response) => {
         if (err) throw err;
         const services = JSON.parse(response).find((item) => item.name === req.query.name);
@@ -42,7 +42,7 @@ app.get('/getEventServices', function (req, res) {
     });
 });
 
-app.get('/getClothesPartners', function (req, res) {
+app.get('/getClothesPartners', function(req, res) {
     fs.readFile('./storage/weddingClothes.json', 'utf8', (err, response) => {
         if (err) throw err;
         const clothesPartners = JSON.parse(response);
@@ -54,7 +54,7 @@ app.get('/getClothesPartners', function (req, res) {
     });
 });
 
-app.get('/getEventsData', function (req, res) {
+app.get('/getEventsData', function(req, res) {
     fs.readFile('./storage/events.json', 'utf8', (err, response) => {
         if (err) throw err;
         const eventsData = JSON.parse(response);
@@ -66,7 +66,7 @@ app.get('/getEventsData', function (req, res) {
     });
 });
 
-app.post('/setNewUser', function (req, res) {
+app.post('/setNewUser', function(req, res) {
     let newUserObj = req.body;
     fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
@@ -98,7 +98,7 @@ app.get('/getUsersOrder', function(req, res) {
     });
 });
 
-app.post('/addOrderPattern', function (req, res) {
+app.post('/addOrderPattern', function(req, res) {
     let newOrder = req.body;
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
@@ -123,10 +123,11 @@ app.post('/addOrderPattern', function (req, res) {
 });
 
 
-app.post('/addItemToOrder', function (req, res) {
+app.post('/addItemToOrder', function(req, res) {
     let newOrder = req.body,
         user = req.body.userEmail,
         owner = req.body.owner;
+    console.log(newOrder);
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [],
@@ -157,29 +158,59 @@ app.post('/addItemToOrder', function (req, res) {
     })
 });
 
+app.post('/removeItemFromOrder', function(req, res) {
+    let itemToRemove = req.body,
+        user = req.body.user;
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        let orderStorage = response ? JSON.parse(response) : [],
+            userOrders = orderStorage.find((item) => item.user === user),
+            serviceIndex = userOrders.services.findIndex((item) => item.name === itemToRemove.service.name);
+        if (serviceIndex !== -1) {
+            userOrders.services.splice(serviceIndex, 1);
+        } else {
+            let service = Object.keys(userOrders).find(key => {
+                return userOrders[key]['name'] === itemToRemove.service.name
+            });
+            delete userOrders[service];
+        }
+
+        let index = orderStorage.findIndex((item) => item.user === userOrders.user);
+        orderStorage[index] = userOrders;
+
+        fs.writeFile('./storage/orders.json', JSON.stringify(orderStorage), (err) => {
+            if (err) {
+                throw err;
+            } else {
+                res.sendStatus(201);
+            };
+        });
+    })
+})
+
 app.get('/getUserGuestsList', function(req, res) {
     let user = req.query.userName,
         event = req.query.eventName,
         currentEvent = req.query.currentEvent;
-        console.log(user, event, currentEvent);
+    console.log(user, event, currentEvent);
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
         if (response) {
             let guestsListStorage = JSON.parse(response),
-                usersGuestsList = guestsListStorage.filter(elem => elem.user === user 
-                    && elem.eventName === event 
-                    && elem.currentEvent === currentEvent),
+                usersGuestsList = guestsListStorage.filter(elem => elem.user === user &&
+                    elem.eventName === event &&
+                    elem.currentEvent === currentEvent),
                 personsList = usersGuestsList.map(elem => elem = elem.person);
-            res.status(200).send(personsList);    
+            res.status(200).send(personsList);
         };
-        
+
     });
 });
 
 app.post('/addPersonToInvite', function(req, res) {
     let userList = req.body,
         user = req.body.user;
-        console.log(userList)
+    console.log(userList)
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
         let guestsListStorage = response ? JSON.parse(response) : [];
@@ -201,10 +232,10 @@ app.post('/removePersonFromInvite', function(req, res) {
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
         let guestsListStorage = JSON.parse(response),
-            currentGuestIndex = guestsListStorage.findIndex(elem => elem.user === guest.user 
-            && elem.eventName === guest.eventName 
-            && elem.currentEvent === guest.currentEvent
-            && elem.person.count === guest.person.count);
+            currentGuestIndex = guestsListStorage.findIndex(elem => elem.user === guest.user &&
+                elem.eventName === guest.eventName &&
+                elem.currentEvent === guest.currentEvent &&
+                elem.person.count === guest.person.count);
         guestsListStorage.splice(currentGuestIndex, 1);
 
         fs.writeFile('./storage/guestsList.json', JSON.stringify(guestsListStorage), (err) => {
@@ -217,24 +248,24 @@ app.post('/removePersonFromInvite', function(req, res) {
     });
 });
 
-app.post('/removeGuests',  function(req, res) {
+app.post('/removeGuests', function(req, res) {
     let data = req.body;
 
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
         let guestsListStorage = JSON.parse(response);
-            guestsListStorage = guestsListStorage.filter(elem => elem.user === data.user 
-                    && elem.eventName === data.eventName),
-        fs.writeFile('./storage/guestsList.json', JSON.stringify(guestsListStorage), (err) => {
-            if (err) {
-                throw err;
-            } else {
-                res.sendStatus(200);
-            };
-        });
+        guestsListStorage = guestsListStorage.filter(elem => elem.user === data.user &&
+                elem.eventName === data.eventName),
+            fs.writeFile('./storage/guestsList.json', JSON.stringify(guestsListStorage), (err) => {
+                if (err) {
+                    throw err;
+                } else {
+                    res.sendStatus(200);
+                };
+            });
     });
 })
- 
+
 app.get('/getShoppingCartContent', function(req, res) {
     let user = req.query.user;
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
@@ -248,7 +279,7 @@ app.get('/getShoppingCartContent', function(req, res) {
     });
 });
 
-app.get('/getUser', function (req, res) {
+app.get('/getUser', function(req, res) {
     fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
         let registeredUser = '';
@@ -265,7 +296,7 @@ app.get('/getUser', function (req, res) {
     });
 });
 
-app.use('*', function (req, res) {
+app.use('*', function(req, res) {
     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
 
