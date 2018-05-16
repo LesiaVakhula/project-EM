@@ -4,16 +4,18 @@ require('@uirouter/angularjs');
 require('./shopCard.scss');
 
 
+
 module.exports = angular.module('emApp.shopCard', ['ui.router'])
 .config(function($stateProvider) {
     'ngInject';
-    var stateCart = {
+    let stateCart = {
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
 
         controller:  (function ($scope, shoppingCartService, filterFactory, $http){
             'ngInject';
+
             $http.get('/getShoppingCartContent', {
                     params: {
                         user: filterFactory.userEmail
@@ -48,18 +50,21 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                 return finalOrder;
             };
     
-            $scope.handle = function (object,name,id) {
-                shoppingCartService.removeFromCart(object);
-                if(object === $scope.order.halls){
-                    $scope.order.halls = null;
-                }
-                if(object === $scope.order.design){
-                    $scope.order.design = null;
-                }
-                if(object === $scope.personList){
-                    $scope.personList = null;
-                }
-    
+
+           $scope.handle = function (object,name,id) {
+               if(object !== $scope.personList) {
+                   shoppingCartService.removeFromCart(object);
+               }
+               if(object === $scope.order.halls){
+                   $scope.order.halls = null;
+               }
+               if(object === $scope.order.design){
+                   $scope.order.design = null;
+               }
+               if(object === $scope.personList){
+                   $scope.personList = null;
+               }
+
                 $scope.order.services = $scope.order.services.filter(function (item) {
                     if(item.name === name){
                         item.items = item.items.filter(function (a) {
@@ -71,6 +76,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     }
                 });
             };
+
         $scope.totalAmountHalls = function(quantity,price){
             
             halls = $scope.totalAmountProduct(quantity,price)
@@ -78,6 +84,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
         }
             $scope.totalAmountProduct = function(quantity,price){
             quantity ? quantity : quantity = 0;
+
                 if(price==='invite'){
                     if(quantity <= 100){
                             return 100;
@@ -106,6 +113,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                 }
                 return $scope.totalAll;
             };
+
 
             $scope.closeModal = function(){
                 $scope.createOrder = false;

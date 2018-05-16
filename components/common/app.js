@@ -3,6 +3,7 @@ const home = require('../home/emAppHome.js');
 const shopCard = require('../shopCard/shopCard.js');
 const shoppingCartService = require('../eventModule/shoppingCartService');
 const eventPage = require('../eventModule/eventModule.js');
+console.log(shoppingCartService);
 require("bootstrap");
 require('@uirouter/angularjs');
 require('ng-dialog');
@@ -29,6 +30,6 @@ module.exports = angular.module('emApp', ['ui.router', 'ngDialog', home, shopCar
             $rootScope.$state = $state;
         })
     .service('shoppingCartService', shoppingCartService)
-    .factory('filterFactory', require('../eventModule/filterFactory.js'))
+    .factory('filterFactory', require('../EventModule/filterFactory.js'))
     .component('footerComponent', require('./utils-components/footer/footerComponent.js'))
     .component('headerComponent', require('./utils-components/header/headerComponent.js'));

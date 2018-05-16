@@ -35,7 +35,6 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     .then(function successCallback(response) {
                         $scope.personList = response.data;
                         filterFactory.personList = response.data;
-                        console.log( $scope.personList )
                     }, function errorCallback(response) {
                         console.log('Error!!!');
                 });
@@ -88,7 +87,6 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     shoppingCartService.changeGuestsList(person, 'add');
                     $scope.personList.push(person);  
                     filterFactory.personList = $scope.personList;
-                    console.log($scope.personList)
                 };
                 $scope.removePerson = function(count) {
                     let elem = $scope.personList.find(item => {
