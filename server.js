@@ -267,9 +267,10 @@ app.post('/removeGuests', function(req, res) {
 
 app.get('/getShoppingCartContent', function(req, res) {
     let user = req.query.user;
+    console.log(user);
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
-        if (response) {
+        if (response) {          
             let ordersStorage = JSON.parse(response),
                 userOrder = ordersStorage.find(item => item.user === user);
             res.status(200).send(userOrder);
