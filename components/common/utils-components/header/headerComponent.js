@@ -27,6 +27,7 @@ module.exports = {
 		});
 
 		$scope.selectEvent = function ($event) {
+
 			if (localStorageService.get('selectedEvent')) {
 				filterFactory.selectedEvent = localStorageService.get('selectedEvent');
 			};
@@ -34,7 +35,7 @@ module.exports = {
 			if (selectedEvent === filterFactory.selectedEvent) {
 				return;
 			}
-			filterFactory.selectedEvent = $event.target.dataset.id;
+			filterFactory.selectedEvent = selectedEvent;
 			localStorageService.set('selectedEvent', $event.target.dataset.id);
 			filterFactory.disabledButtons = [];
 			localStorageService.set('disabledButtons', []);
@@ -43,7 +44,8 @@ module.exports = {
 			if (!filterFactory.currentEvent) {
 				filterFactory.currentEvent = localStorageService.get('currentEvent');
 			};
-
+			shoppingCartService.getUsersOrder($scope.userEmail, selectedEvent);
+			shoppingCartService.checkGuestsList($scope.userEmail, selectedEvent);
 			$rootScope.$broadcast('sendSelectedEvent', {
 				show: $event.target.dataset.id === filterFactory.currentEvent
 			});
