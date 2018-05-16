@@ -28,7 +28,7 @@
                     </div>
                 </div>
 
-                <div class="guest-invitation" ng-show="personListIsExist">
+                <div class="guest-invitation" ng-if="personListIsExist">
                     <h4 class="product-title">Invite guests: </h4>
                    <div class="guest-invitation-info">
                        <p class="description">People</p>
@@ -47,7 +47,7 @@
                         <p class="image"><img src={{imageStr+order.halls.imgUrl}} alt="photo"></p>
                         <p class="quantity">{{guestsQuantity ? guestsQuantity : '0'}} people </p>
                         <p class="price">{{order.halls.cost}}</p>
-                        <p class="total">{{totalAmountHalls = totalAmountProduct(guestsQuantity, order.halls.cost)}} uah</p>
+                        <p class="total">{{totalAmountHalls(guestsQuantity, order.halls.cost)}} uah</p>
                         <p class="delete"> <button class="btn-remove" ng-click="handle(order.halls)" >&#10006;</button>
                     </div>
                 </div>
@@ -105,7 +105,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-if="order.personListIsExist">
+                            <tr ng-if="personListIsExist">
                                 <td >Invite  guests</td>
                                 <td>{{guestsQuantity ? guestsQuantity : '0'}} people</td>
                                 <td>{{totalAmountProduct(guestsQuantity,'invite')}}</td>
@@ -135,7 +135,7 @@
                         </tbody>
                     </table>
                     <div class="modal-total">
-                        <p>Total: {{sum+150}}</p>
+                        <p>Total: {{sum + totalAmountHalls(guestsQuantity, order.halls.cost) + (personListIsExist ? totalAmountProduct(guestsQuantity,'invite') : 0)}}</p>
                     </div>
                     <div class="confirm-order">
                         <button class="btn-confirm-order">Confirm</button>
