@@ -1,7 +1,7 @@
 <section>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
-            <h2>Invite guests</h2>
+            <h2 class="invite-title">Invite guests</h2>
             <form class="form-invitation"name="formName"  novalidate>
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 description">
                     <label for="name">First Name:</label>
@@ -30,9 +30,9 @@
             </form>
 
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
             <div class="template-invitation">
-                <h3>Invitation template:</h3>
+                <h3 class="template-title">Invitation template:</h3>
                 <div class="template-version">
                     <img src="{{backgroundTemplate}}" alt="">
                     <p class="invitation-name">{{personList[0].lastName}}  {{personList[0].name}} </p>
@@ -47,7 +47,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6 list">
-            <h2>Guest list:</h2>
+            <h2 class="invite-title">Guest list:</h2>
             <ul class="person-item">
                 <li ng-repeat="person in personList">
                     <ul class="list-item">
@@ -55,7 +55,7 @@
                         <li>{{person.lastName}}</li>
                         <li hidden>{{person.phone}}</li>
                         <li hidden>{{person.email}}</li>
-                        <li> <button class="removePerson" ng-click="removePerson(person.count)">x</button></li>
+                        <li class="remove-person" > <button class="removePerson" ng-click="removePerson(person.count)">x</button></li>
                     </ul>
                 </li>
             </ul>
