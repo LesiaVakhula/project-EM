@@ -29,6 +29,6 @@ module.exports = angular.module('emApp', ['ui.router', 'ngDialog', home, shopCar
             $rootScope.$state = $state;
         })
     .service('shoppingCartService', shoppingCartService)
-    .factory('filterFactory', require('../EventModule/filterFactory.js'))
+    .factory('filterFactory', require('../eventModule/filterFactory.js'))
     .component('footerComponent', require('./utils-components/footer/footerComponent.js'))
     .component('headerComponent', require('./utils-components/header/headerComponent.js'));
