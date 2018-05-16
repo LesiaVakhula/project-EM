@@ -225,7 +225,7 @@
                 "itemId": "9",
                 "image": "warszawa.png",
                 "description": {
-                    "name": "InterContinental Warszawa conference hall",
+                    "name": "Warszawa conference hall",
                     "number of people": "120",
                     "cost": "2100 uah/day"
                 }
@@ -265,7 +265,7 @@
                 "itemId": "3",
                 "image": "Temple of the Holy Supreme Apostles Peter and Paul.png",
                 "description": {
-                    "name": "Temple of the Holy Supreme Apostles Peter and Paul",
+                    "name": "Temple of Peter and Paul",
                     "...": "..."
                 }
             },

@@ -27,6 +27,16 @@
 
 .table.description {
     width: 45%;
+    padding: 0;
+    vertical-align: baseline;
+    th{
+        padding: 0;
+        vertical-align: baseline;
+    }
+    td{
+        padding: 0;
+        vertical-align: baseline;
+    }
 }
 
 .table {
@@ -34,11 +44,12 @@
     font-size: 1.3vw;
     border-bottom: 1px solid #dee2e6;
     line-height: 2vw;
-    text-align: center;
+    // text-align: center;
 }
 
+
 th.my.ng-binding{
-    width: 30%;
+    width: 50%;
     padding-left: 3%;
 }
 
@@ -98,3 +109,4 @@ button.btn.btn-dark.add-btn {
         font-size: 2vw;
     }
 }
+
