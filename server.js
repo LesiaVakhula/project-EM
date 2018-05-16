@@ -161,6 +161,7 @@ app.post('/addItemToOrder', function(req, res) {
 app.post('/removeItemFromOrder', function(req, res) {
     let itemToRemove = req.body,
         user = req.body.user;
+        console.log(user, req.body); 
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [],

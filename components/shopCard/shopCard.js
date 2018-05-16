@@ -49,8 +49,11 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
             };
 
             $scope.handle = function (object,name,id) {
-          
-                shoppingCartService.removeFromCart(object);
+            console.log(object, filterFactory.disabledButtons);
+                    if(object !== $scope.personList) {
+                     shoppingCartService.removeFromCart(object);
+                    }
+               
                 if(object === $scope.order.halls){
                     $scope.order.halls = null;
                 }
