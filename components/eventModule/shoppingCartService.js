@@ -1,4 +1,4 @@
-module.exports = function ($http, filterFactory, localStorageService) {
+module.exports = function($http, filterFactory) {
     'ngIngject';
 
     function makePostRequest(url, data) {
@@ -10,7 +10,8 @@ module.exports = function ($http, filterFactory, localStorageService) {
             });
     }
 
-    this.getUsersOrder = function (userName, eventName) {
+    this.getUsersOrder = function(userName, eventName) {
+
         $http.get('/getUsersOrder', {
                 params: {
                     userName: userName,
@@ -25,17 +26,13 @@ module.exports = function ($http, filterFactory, localStorageService) {
             }, function errorCallback(response) {
                 console.log('Error!!!');
             });
-    };
+    }
 
 
     function createOrderPattern(user, eventName) {
         let orderPattern = {
             user: user,
             eventName: eventName,
-            invitationGuest: {
-                exist: true,
-                quantityGuest: 0
-            },
             services: []
         };
         if (eventName === "funeral") {
@@ -63,32 +60,33 @@ module.exports = function ($http, filterFactory, localStorageService) {
         makePostRequest('/addOrderPattern', orderPattern);
     }
 
-    this.addToCart = function (item, serviceName, owner) {
+    this.addToCart = function(item, serviceName, owner) {
+        console.log(item, serviceName);
         let order = {
             name: serviceName,
             service: item,
             owner: owner,
-            userEmail: filterFactory.userEmail || localStorageService.get('email')
+            userEmail: filterFactory.userEmail
         };
-
         makePostRequest('/addItemToOrder', order);
-    };
+    }
 
-    this.removeFromCart = function (item, eventName) {
+    this.removeFromCart = function(service) {
         let itemToDelete = {
-            name: eventName,
-            service: item
+            user: filterFactory.userEmail,
+            service: service
         };
-        $http.delete('/removeItemFromOrder', itemToDelete)
-            .then(function successCallback(response) {
-                console.log('deleted');
-            }, function errorCallback(response) {
-                console.log('Error!!!');
-            });
-    };
+        makePostRequest('/removeItemFromOrder', itemToDelete);
+        // $http.delete('/removeItemFromOrder', itemToDelete)
+        //     .then(function successCallback(response) {
+        //         console.log('deleted');
+        //     }, function errorCallback(response) {
+        //         console.log('Error!!!');
+        //     });
 
+    }
 
-    this.changeGuestsList = function (person, operation) {
+    this.changeGuestsList = function(person, operation) {
         let url = '/addPersonToInvite';
         let personData = {
             user: filterFactory.userEmail,
@@ -96,19 +94,17 @@ module.exports = function ($http, filterFactory, localStorageService) {
             currentEvent: filterFactory.currentEvent,
             person: person
         };
-        if (operation === 'remove') {
-            url = '/removePersonFromInvite';
+        if(operation === 'remove') {
+           url = '/removePersonFromInvite';
         }
 
         makePostRequest(url, personData);
 
     }
 
-    this.checkGuestsList = function (userName, eventName) {
-        let data = {
-            userName: userName,
-            eventName: eventName
-        };
+     this.checkGuestsList = function(userName, eventName) {
+        let data = { userName: userName, eventName: eventName };
         makePostRequest('/removeGuests', data);
     }
+    
 };

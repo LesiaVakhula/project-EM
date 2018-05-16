@@ -28,16 +28,16 @@
                         <p class="delete"> <button class="btn-remove" id={{item.id}} ng-click="handle(service,service.name, item.id)" >x</button></p>
                     </div>
                 </div>
-                <div class="guest-invitation" ng-if="order.invitationGuest.exist">
+                <div class="guest-invitation" ng-if="personListIsExist">
                     <h4>Invite guests: </h4>
                    <div class="guest-invitation-info">
                        <p class="description">People</p>
-                       <p class="image"> - </p>
-                       <!-- <p class="quantity">{{order.invitationGuest.quantityGuest}} </p> -->
-                       <p class="quantity">-</p>
-                       <p class="price"> - </p>
-                       <p class="total">{{totalAmountInvitation = totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}} uah</p>
-                       <p class="delete"> <button class="btn-remove" ng-click="handle(order.invitationGuest)" >x</button>
+                       <p class="image">-</p>
+                       <p class="quantity">{{guestsQuantity}}</p>
+                       <p class="price">-</p>
+                       <p class="total">{{totalAmountInvitation = totalAmountProduct(
+                       guestsQuantity,'invite')}} uah</p>
+                       <p class="delete"> <button class="btn-remove" ng-click="handle(personList)" >x</button>
                    </div>
                 </div>
                 <div class="rent-hall" ng-if="!!order.halls">
@@ -83,17 +83,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-if="order.invitationGuest.exist">
+                            <tr ng-if="order.personListIsExist">
                                 <td >Invite  guests</td>
-                                <td>{{order.invitationGuest.quantityGuest}} people</td>
-                                <td>{{totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}}</td>
-                                <td>{{totalAmountProduct(order.invitationGuest.quantityGuest,'invite')}}</td>
+                                <td>{{guestsQuantity}} people</td>
+                                <td>{{totalAmountProduct(guestsQuantity,'invite')}}</td>
+                                <td>{{totalAmountProduct(guestsQuantity,'invite')}}</td>
                             </tr>
                             <tr ng-if="!!order.halls">
                                 <td >Rent hall {{order.halls.name}}</td>
-                                <td>{{order.invitationGuest.quantity}} people</td>
+                                <td>{{guestsQuantity}} people</td>
                                 <td>{{order.halls.cost}}</td>
-                                <td>{{totalAmountProduct(order.invitationGuest.quantity,order.halls.cost)}}</td>
+                                <td>{{totalAmountProduct(guestsQuantity,order.halls.cost)}}</td>
                             </tr>
                         
                             <tr ng-repeat="serviceItem in createOrderList()">

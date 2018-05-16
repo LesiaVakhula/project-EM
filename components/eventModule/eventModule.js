@@ -1,7 +1,6 @@
 const angular = require('angular');
 const template = require('./eventModule.html');
 const partners = require('../partnersModule/partnersModule');
-const shoppingCartService = require('./shoppingCartService');
 const productsTemplate = require('./productsTemplate.html');
 const invitation = require('../invitationModule/invitationModule');
 
@@ -14,10 +13,9 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners, invitatio
             name: 'event',
             url: '/:eventName',
             templateUrl: template,
-            controller: function ($scope, $stateParams, $http, filterFactory, localStorageService) {
+            controller: function ($scope, $stateParams, $http, filterFactory) {
                 'ngInject';
                 filterFactory.currentEvent = $stateParams.eventName;
-                localStorageService.set('currentEvent', $stateParams.eventName);
                 $http.get('/getEventServices', {
                     params: {
                         name: $stateParams.eventName
@@ -44,7 +42,4 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners, invitatio
     .component('eventComponent', require('./components/eventComponent/eventComponent.js'))
     .component('productItemComponent', require('./components/productItemComponent/productItem.js'))
     .controller('servicesCtrl', require('../../components/eventModule/servicesCtrl.js'))
-    .factory('filterFactory', require('./filterFactory.js'))
-    .service('shoppingCartService', shoppingCartService)
-
     .name;

@@ -1,17 +1,21 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
 .item-block {
     display: flex;
-    margin: 10px auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
     padding: 2%;
-    flex-wrap: nowrap;
+    align-items: flex-start;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: flex-end;
     border: 1px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
 }
 
 .item-img {
-    width: 40%;
+    width: 50%;
     height: auto;
     border: 1px solid rgba(0, 0, 0, 0.3);
     align-self: center;
@@ -22,23 +26,23 @@
 }
 
 .table.description {
-    width: 60%;
+    width: 45%;
 }
 
 .table {
     margin: 0 2%;
-    font-size: 1.2vw;
+    font-size: 1.3vw;
     border-bottom: 1px solid #dee2e6;
     line-height: 2vw;
-    white-space: nowrap;
-}
-
-td.my.ng-binding{
-    padding: 1% 0;
     text-align: center;
 }
-.my.ng-binding{
-    padding: 1% 0;
+
+.my.ng-binding {
+    padding: 3%;
+}
+
+.table.my {
+    padding: 5% 0;
 }
 
 button.btn.btn-dark.add-btn {
@@ -73,11 +77,8 @@ button.btn.btn-dark.add-btn {
 }
 
 @media only screen and (max-width:576px) {
-    .item-block {
-        margin: 3% auto;
-    }
     .item-img {
-        width: 40%;
+        width: 50%;
         height: auto;
     }
     .table.description {
@@ -90,6 +91,7 @@ button.btn.btn-dark.add-btn {
         padding: 2%;
     }
     button.btn.btn-dark.add-btn {
+        margin-top: -8%;
         margin-right: 11%;
         padding: 2%;
         font-size: 2vw;
