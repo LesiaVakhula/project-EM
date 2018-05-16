@@ -26,9 +26,10 @@ module.exports = {
             if(filterFactory.selectedEvent) {
                         ngDialog.openConfirm({
                     templateUrl: confirmationPopupTemplate,
+                    className: 'ngdialog-theme-default confirm-modal'
                 }).then(
                     function(value) {
-                        $state.go('event', {'eventName': selectedEvent });
+                       // $state.go('event', {'eventName': selectedEvent });
                         $scope.changeEvent(selectedEvent);
                     },
                     function(value) {
@@ -51,6 +52,7 @@ module.exports = {
             $scope.isEventSelected = true;
             shoppingCartService.getUsersOrder($scope.userEmail, selectedEvent);
             shoppingCartService.checkGuestsList($scope.userEmail, selectedEvent);
+            $state.go('event', {'eventName': selectedEvent });
             filterFactory.disabledButtons = [];
             $rootScope.$broadcast('sendSelectedEvent', {
                 show: selectedEvent === filterFactory.currentEvent
