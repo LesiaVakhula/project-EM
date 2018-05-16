@@ -1,1 +1,1 @@
-[{"user":"l@m.com","eventName":"wedding","invitationGuest":{"exist":true,"quantityGuest":0},"services":[{"name":"cars","items":[]}]}]
+[{"user":"l@m.com","eventName":"funeral","invitationGuest":{"exist":true,"quantityGuest":0},"services":[{"name":"funeral-cars","items":[{"imgUrl":"funeral-rolls-royce.png","id":"9","name":"Rolls-Royce Phantom","cost":"6000 uah","color":"silver","driver":"Vasya Pupkin"}]},{"name":"funeral-merchandise","items":[]}]}]
