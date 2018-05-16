@@ -24,12 +24,15 @@
                     Choose event
                     </a>
                     <div class="dropdown-menu black"  ng-click="selectEvent($event)" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" data-id="wedding" ui-sref="event({eventName: 'wedding'})">Wedding</a>
-                    <a class="dropdown-item" data-id="funeral" ui-sref="event({eventName: 'funeral'})">Funeral</a>
-                    <a class="dropdown-item" data-id="birthday" ui-sref="event({eventName: 'birthday'})">Birthday</a>
-                    <a class="dropdown-item" data-id="conference" ui-sref="event({eventName: 'conference'})">Conference</a>
+                    <a class="dropdown-item" data-id="wedding" href="#">Wedding</a>
+                    <a class="dropdown-item" data-id="funeral" href="#">Funeral</a>
+                    <a class="dropdown-item" data-id="birthday" href="#">Birthday</a>
+                    <a class="dropdown-item" data-id="conference" href="#">Conference</a>
                     </div>
-                </li>       
+                </li>     
+                <li class="nav-item hover active">
+                    <span class="navbar-brand" ng-if="isEventSelected">Event: {{selectedEvent}}</span>
+                   </li>  
             </ul>         
         </div>
         <div class="right-align-shop" ng-if="isUser">

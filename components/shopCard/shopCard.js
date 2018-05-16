@@ -4,16 +4,18 @@ require('@uirouter/angularjs');
 require('./shopCard.scss');
 
 
+
 module.exports = angular.module('emApp.shopCard', ['ui.router'])
 .config(function($stateProvider) {
     'ngInject';
-    var stateCart = {
+    let stateCart = {
         name: 'shopCard',
         url:'/shop',
         templateUrl : template,
 
         controller:  (function ($scope, shoppingCartService, filterFactory, $http){
             'ngInject';
+
             $http.get('/getShoppingCartContent', {
                    params: {
                        user: filterFactory.userEmail
@@ -48,8 +50,9 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
            };
     
            $scope.handle = function (object,name,id) {
-         
-               shoppingCartService.removeFromCart(object);
+               if(object !== $scope.personList) {
+                   shoppingCartService.removeFromCart(object);
+               }
                if(object === $scope.order.halls){
                    $scope.order.halls = null;
                }
@@ -87,24 +90,18 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
            }
     
            $scope.allProductAmount=0;
-
            $scope.totalAmount = function () {
                $scope.totalAll = 0;
                if($scope.personListIsExist){
                    $scope.totalAll += $scope.totalAmountInvitation ? $scope.totalAmountInvitation : 0;
-                    console.log($scope.totalAll);
                }
                if($scope.order.halls){
-                   $scope.totalAll += $scope.totalAmountHalls ?  $scope.totalAmountHalls : 0;
-                   console.log($scope.totalAll);
-                   
+                   $scope.totalAll += $scope.totalAmountHalls ?  $scope.totalAmountHalls : 0;     
                }
                let array = $scope.order.services;
                for(let i=0, l=array.length; i<l; i++){
                    for(let k=0, m=array[i].items.length; k<m; k++){
-                       $scope.totalAll+= parseFloat(array[i].items[k].cost);
-                    console.log($scope.totalAll);
-                       
+                       $scope.totalAll+= parseFloat(array[i].items[k].cost);   
                    }
                }
                return $scope.totalAll;

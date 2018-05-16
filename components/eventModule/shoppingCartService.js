@@ -61,6 +61,7 @@ module.exports = function($http, filterFactory) {
     }
 
     this.addToCart = function(item, serviceName, owner) {
+        console.log(item, serviceName);
         let order = {
             name: serviceName,
             service: item,
@@ -70,17 +71,18 @@ module.exports = function($http, filterFactory) {
         makePostRequest('/addItemToOrder', order);
     }
 
-    this.removeFromCart = function(item, eventName) {
+    this.removeFromCart = function(service) {
         let itemToDelete = {
-            name: eventName,
-            service: item
+            user: filterFactory.userEmail,
+            service: service
         };
-        $http.delete('/removeItemFromOrder', itemToDelete)
-            .then(function successCallback(response) {
-                console.log('deleted');
-            }, function errorCallback(response) {
-                console.log('Error!!!');
-            });
+        makePostRequest('/removeItemFromOrder', itemToDelete);
+        // $http.delete('/removeItemFromOrder', itemToDelete)
+        //     .then(function successCallback(response) {
+        //         console.log('deleted');
+        //     }, function errorCallback(response) {
+        //         console.log('Error!!!');
+        //     });
 
     }
 

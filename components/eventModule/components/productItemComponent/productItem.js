@@ -30,6 +30,7 @@ module.exports = {
             }
 
             this.addToCart = function(item, serviceName, owner, $event) {
+                console.log($event.target.dataset.id);
                 $event.target.setAttribute('disabled', true);
                 filterFactory.disabledButtons.push({
                     event: filterFactory.currentEvent, 

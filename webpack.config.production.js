@@ -58,6 +58,5 @@ module.exports = {
   new MiniCssExtractPlugin({
       filename: "style.css",
     })
-  ],
-  watch:true
+  ]
 };
