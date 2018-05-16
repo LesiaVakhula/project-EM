@@ -6,5 +6,5 @@
             <td class="my">{{item}}</td>
         </tr>
     </table>
-    <button type="button" class="btn btn-dark add-btn" ng-click='$ctrl.addToCart($ctrl.data.itemId)'>Add to shopping cart</button>
+    <button data-id="{{$ctrl.index}}" ng-show="showAddButton" class="btn btn-dark add-btn"  ng-click='$ctrl.addToCart($ctrl.data, $ctrl.name, $ctrl.owner, $event)'>Add to shopping cart</button>
 </div>

@@ -14,7 +14,6 @@ module.exports = {
             } else {
                 this.mobileImageUrl = this.imageUrl;
             };
-
         };
     }
 };

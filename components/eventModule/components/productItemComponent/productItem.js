@@ -4,16 +4,56 @@ require('./productItemStyle.scss');
 module.exports = {
     templateUrl: template,
     bindings: {
-        data: '='
+        data: '=',
+        name: '=',
+        owner: '=',
+        index: '='
     },
-    controller: function () {
+    controller: function ($scope, $rootScope, shoppingCartService, filterFactory, localStorageService) {
+        'ngInject';
+
+        $scope.showAddButton = localStorageService.get('currentEvent') === localStorageService.get('selectedEvent');
+        if (!filterFactory.currentEvent) {
+            filterFactory.currentEvent = localStorageService.get('currentEvent');
+        };
+
+        if (!filterFactory.currentService) {
+            filterFactory.currentService = localStorageService.get('selectedEvent');
+        };
+
+        if (localStorageService.get('disabledButtons')) {
+            filterFactory.disabledButtons = localStorageService.get('disabledButtons');
+        };
+
+
+        $scope.$on('sendSelectedEvent', function (event, args) {
+            $scope.showAddButton = args.show;
+        });
+
         this.$onInit = () => {
             this.imageUrl = require(`../../../common/images/productItemImages/${this.data.image}`);
-            //Додати на клік $http і post запит в json
-            this.addToCart = function (itemId) {
-                //$http.post()
-                console.log(itemId);
-            }
+            this.buttons = angular.element(document.querySelectorAll('.add-btn'));
+
+            for (let i = 0; i < this.buttons.length; i++) {
+                if (filterFactory.disabledButtons.some(
+                        item => item.id == i &&
+                        item.event === filterFactory.currentEvent &&
+                        item.name === filterFactory.currentService)) {
+                    this.buttons[i].setAttribute('disabled', true);
+                };
+            };
+
+            this.addToCart = function (item, serviceName, owner, $event) {
+                $event.target.setAttribute('disabled', true);
+                filterFactory.disabledButtons.push({
+                    event: filterFactory.currentEvent,
+                    name: filterFactory.currentService,
+                    id: $event.currentTarget.dataset.id
+                });
+
+                localStorageService.set('disabledButtons', filterFactory.disabledButtons);
+                shoppingCartService.addToCart(item, serviceName, owner);
+            };
         }
     }
 };

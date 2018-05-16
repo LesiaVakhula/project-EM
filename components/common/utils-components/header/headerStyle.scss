@@ -4,72 +4,72 @@
   padding: 3px 10px;
 }
 
-/*MODAL STYLE*/ 
-
+/*MODAL STYLE*/
 .ngdialog {
-    &.ngdialog-theme-default {
-        &.modal-view {
-            .ngdialog-content {
-                background-color: #595959;
-                margin:-115px auto;
-                color: #fff;
-                border: 1px solid #2ef080;
-                @media only screen and (max-width: 768px) {
-                    width:50%;
-                }
-
-                @media only screen and (max-width:576px) {
-                    width: 75%;
-                }
-            }
-            .ngdialog-overlay {
-                background: rgba(0, 0, 0, .75);
-            }
+  &.ngdialog-theme-default {
+    &.modal-view {
+      .ngdialog-content {
+        background-color: #595959;
+        margin: -115px auto;
+        color: #fff;
+        border: 1px solid #2ef080;
+        @media only screen and (max-width: 768px) {
+          width:50%;
         }
+        @media only screen and (max-width:576px) {
+          width: 75%;
+        }
+        .form-group {
+          .form-text{
+            color: #2ef080!important;
+          }
+        }
+      }
+      .ngdialog-overlay {
+        background: rgba(0, 0, 0, .75);
+      }
     }
+  }
 }
+
 /* FORM BUTTON STYLE*/
+
 button.btn.btn-dark.login-btn {
-  position:static;
-  font-size:initial;
+  position: static;
+  font-size: initial;
 }
 
-
-
-.logo{
+.logo {
   width: 30px;
   height: 30px;
   border: 2px solid #ffffff;
   margin: 0;
   box-sizing: border-box;
   position: relative;
-
-  span{
+  span {
     font-size: 14px;
     font-family: 'Lobster', cursive;
     position: absolute;
-
-    &:first-child{
-      top:-2px;
+    &:first-child {
+      top: -2px;
       left: 5px;
     }
-    &:last-child{
+    &:last-child {
       bottom: 0px;
       right: 3px;
     }
   }
 }
 
-.navbar-nav li.nav-item a.hover:hover{
+.navbar-nav li.nav-item a.hover:hover {
   color: #474747;
 }
 
-div.dropdown-menu.black.show{
+div.dropdown-menu.black.show {
   background-color: #000000;
-  a{
+  a {
     color: #ffffff;
-
-    &:hover{
+    &:hover {
       background-color: #000000;
       color: #474747;
     }
@@ -77,7 +77,7 @@ div.dropdown-menu.black.show{
 }
 
 @media (min-width: 576px) {
-  .lg-hide{
+  .lg-hide {
     display: none;
   }
 }

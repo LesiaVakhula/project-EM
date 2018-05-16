@@ -1,55 +1,97 @@
-.item-img {
-    width: 50%;
-    height: auto;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    //filter: grayscale(0);
-    &:hover {
-        filter: grayscale(1);
-    }
-}
-
-.table {
-    width: 50%;
-    padding: 0;
-    margin: 0;
-    font-size: 15px;
-    // text-align: center;
-    border-bottom: 1px solid #dee2e6;
-}
-
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 .item-block {
-    position: relative;
     display: flex;
-    margin: 5px;
-    padding: 5px 5px 20px 5px;
+    margin: 10px auto;
+    padding: 2%;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
     border: 1px solid rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
 }
 
+.item-img {
+    width: 40%;
+    height: auto;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    align-self: center;
+    border-radius: 10px;
+    &:hover {
+        filter: grayscale(1);
+    }
+}
+
+.table.description {
+    width: 60%;
+}
+
+.table {
+    margin: 0 2%;
+    font-size: 1.2vw;
+    border-bottom: 1px solid #dee2e6;
+    line-height: 2vw;
+    white-space: nowrap;
+}
+
+td.my.ng-binding{
+    padding: 1% 0;
+    text-align: center;
+}
+.my.ng-binding{
+    padding: 1% 0;
+}
+
 button.btn.btn-dark.add-btn {
-    position: absolute;
-    top: 81%;
-    left: 60%;
+    position: relative;
+    margin-right: 4%;
     align-self: flex-end;
     font-size: 1.3vw;
-    z-index: 1;
-    &:hover {
+    &:hover:enabled {
         box-shadow: 5px 5px 28px 0px rgba(44, 74, 57, 1);
         opacity: 0.9;
         text-shadow: 2px 2px #000;
         color: #2ef080;
     }
+    &:disabled:after {
+        content: "";
+        display: block;
+        position: absolute;
+        right: -6%;
+        color: #000;
+        background-color: #2ef080;
+        width: 2.2vw;
+        height: 2.2vw;
+        border-radius: 50%;
+        top: -1vw;
+        font-size: 1.8vw;
+        font-family: 'Material Icons';
+        content: "done";
+    }
+    &:active {
+        transform: translate(2px, 2px);
+    }
 }
 
 @media only screen and (max-width:576px) {
-    .table{
-        font-size: 8px;
+    .item-block {
+        margin: 3% auto;
+    }
+    .item-img {
+        width: 40%;
+        height: auto;
+    }
+    .table.description {
+        padding: 0;
+        margin-bottom: 0;
+        font-size: 2vw;
+        line-height: 2.5vw;
+    }
+    .my.ng-binding {
+        padding: 2%;
     }
     button.btn.btn-dark.add-btn {
+        margin-right: 11%;
+        padding: 2%;
         font-size: 2vw;
     }
 }

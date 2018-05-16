@@ -15,15 +15,15 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
         height: calc(100vh - 92px);
     }
     .grid-container {
-     display: grid;
-     height: 95%;
-     grid-gap: 10px;
-     margin: 10px auto;
-     max-width: 75%;
-     @media only screen and(max-width: 768px) {
-         max-height: 80%;
-         margin: auto;
-         max-width: 100%;
+        display: grid;
+        height: 95%;
+        grid-gap: 10px;
+        margin: 10px auto;
+        max-width: 75%;
+        @media only screen and(max-width: 768px) {
+            max-height: 80%;
+            margin: auto;
+            max-width: 100%;
         }
     }
     &-wedding {
@@ -79,7 +79,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
 
 
 .wedding .service-6 {
-    grid-template-areas: "a b b" "a c d " "e f d "; 
+    grid-template-areas: "a b b" "a c d " "e f d ";
     grid-template-rows: 35% 30% 35%;
     .wedding-suits {
         grid-area: a;
@@ -99,13 +99,13 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
     .guest-invitation {
         grid-area: e;
     }
-    
+
     @media only screen and (min-width:769px) and (max-width:1024px) {
         max-width: 80%;
         grid-template-columns: 30% 40% 30%;
     }
-  
-   
+
+
     //     .wedding-suits {
     //         height: 470px;
     //     }
@@ -197,22 +197,22 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
         max-width: 80%;
         grid-template-columns: 30% 40% 30%;
     }
-        //    .car-rent {
-        //     height: 250px;
-        // }
-        // .repast-hall {
-        //      height: 490px;
-        // }
-        // .invite {
-        //     height: 490px;
-        // }
-        // .memorial-hall {
-        //     height: 220px;
-        // }
-        // .funeral-merchandise {
-        //     height: 250px;
-        // }
-    
+    //    .car-rent {
+    //     height: 250px;
+    // }
+    // .repast-hall {
+    //      height: 490px;
+    // }
+    // .invite {
+    //     height: 490px;
+    // }
+    // .memorial-hall {
+    //     height: 220px;
+    // }
+    // .funeral-merchandise {
+    //     height: 250px;
+    // }
+
 }
 
 .conference .service-4 {
@@ -245,7 +245,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
            height: 210px;
        }
    } */
-    
+
     @media only screen and (min-width:1025px) {
         max-width: 65%;
 
@@ -255,7 +255,7 @@ $birthdayBannerUrl:'../../../common/images/birthday/birth_banner.png';
         max-width: 75%;
         .event-img {
             opacity: 0.5;
-        } 
+        }
     }
 }
 

@@ -1,23 +1,40 @@
-<form>
-   <div class="form-group">
+<form name="signUpForm" ng-submit="signUpFunc(signUpForm.$valid)" novalidate>
+  <div class="form-group">
     <label for="nameInput">First name</label>
-    <input type="text" class="form-control" id="nameInput" placeholder="Enter first name">
+    <input type="text" class="form-control" id="nameInput" placeholder="Enter first name" ng-model="firstName" name="signUpName"
+      ng-pattern="regExpName" minlength="2" required>
+    <small class="form-text text-muted text-decoration" ng-show="signUpForm.signUpName.$touched && signUpForm.signUpName.$invalid">
+      Please enter your first name</small>
   </div>
-    <div class="form-group">
+  <div class="form-group">
     <label for="lastNameInput">Last name</label>
-    <input type="text" class="form-control" id="lastNameInput" placeholder="Enter last name">
+    <input type="text" class="form-control" id="lastNameInput" placeholder="Enter last name" ng-model="lastName" name="signUpLastName"
+      ng-pattern="regExpName" minlength="2" required>
+    <small class="form-text text-muted text-decoration" ng-show="signUpForm.signUpLastName.$touched && signUpForm.signUpLastName.$invalid">
+      Please enter your last name</small>
   </div>
-   <div class="form-group">
+  <div class="form-group">
     <label for="phoneNumberInput">Phone number</label>
-    <input type="text" class="form-control" id="phoneNumberInput" placeholder="Enter phone number">
+    <input type="text" class="form-control" id="phoneNumberInput" placeholder="Enter phone number" ng-model="phoneNumber" name="signUpNumber"
+      ng-pattern="regExpPhone" required>
+    <small class="form-text text-muted text-decoration" ng-show="signUpForm.signUpNumber.$touched && signUpForm.signUpNumber.$invalid">
+      The phone number is invalid</small>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+    <label for="inputEmail">Email address</label>
+    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" ng-model="email"
+      name="signUpEmail" ng-change="changeRegEmail()" required>
+    <small class="form-text text-muted text-decoration" ng-show="signUpForm.signUpEmail.$touched && signUpForm.signUpEmail.$invalid">
+      The email address is invalid</small>
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="inputPassword">Password</label>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Password" ng-model="pass" ng-minlength="4" name="signUpPass"
+      required>
+    <small class="form-text text-muted text-decoration" ng-show="signUpForm.signUpPass.$touched && signUpForm.signUpPass.$invalid">
+      Password must consist of at least four characters</small>
+    <small class="form-text text-muted text-decoration" ng-show="emailError && signUpForm.$valid">
+      A user with this e-mail address already exists</small>
   </div>
   <button type="submit" class="btn btn-dark add-btn login-btn">Submit</button>
 </form>

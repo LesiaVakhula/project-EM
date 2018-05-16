@@ -1,26 +1,23 @@
 const invitationTemplate = require('./invitationTemplate.html');
 require('./invitationStyle.scss');
 
-// require('jquery');
-// require('../../node_modules/froala-editor/js/froala_editor.min');
-// require('froala-editor');
-
 module.exports = angular.module('emApp.invitation', ['ui.router'])
     .value('froalaConfig', {
         toolbarInline: false,
         placeholderText: 'Enter Text Here'
     })
-    .config(['$stateProvider',function($stateProvider) {
+    .config(['$stateProvider', function($stateProvider) {
         let invitationState = {
             name: 'invitation',
-            url:'/invitation',
-            templateUrl : invitationTemplate,
-            controller: (['$scope', function ($scope) {
+            url: '/invitation',
+            templateUrl: invitationTemplate,
+            controller: (function($scope, shoppingCartService, $http, filterFactory) {
+                'ngInject';
                 // $scope.myHtml = "<h1>Hello World</h1>"
                 $scope.froalaOptions = {
-                    toolbarButtons : ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
+                    toolbarButtons: ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
                     events: {
-                        'froalaEditor.initialized': function () {
+                        'froalaEditor.initialized': function() {
                             // Use the methods like this.
                             $scope.froalaOptions.froalaEditor('selection.get');
                         }
@@ -28,50 +25,77 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                 };
                 $scope.backgroundTemplate = './images/background7.jpg';
                 $scope.iputText = '';
-                $scope.personList = [];
+                $http.get('/getUserGuestsList', {
+                        params: {
+                            userName: filterFactory.userEmail,
+                            eventName: filterFactory.selectedEvent,
+                            currentEvent: filterFactory.currentEvent
+                        }
+                    })
+                    .then(function successCallback(response) {
+                        $scope.personList = response.data;
+                        console.log($scope.personList)
+                    }, function errorCallback(response) {
+                        console.log('Error!!!');
+                    });
+
                 $scope.flag = false;
                 $scope.pattern_email=/[a-zA-Z0-9!#$%&amp;'*+\/=?^_`{|}~.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*/;
                 $scope.pattern_phone=/^\d{10}$/;
-                $scope.formName = {};
+                // $scope.formName = {};
                 let count = 1;
+
                 function goodLook(num) {
-                    if(num <= 9){
+                    if (num <= 9) {
                         return '0' + num;
                     }
                     return num;
                 };
-                $scope.getDate = function (date) {
-                    if(!date){return}
+                $scope.getDate = function(date) {
+                    if (!date) {
+                        return
+                    }
                     let dateFull = new Date(date);
                     let newDate = {
                         day: goodLook(dateFull.getDate()),
-                        month: goodLook(dateFull.getMonth()+1),
+                        month: goodLook(dateFull.getMonth() + 1),
                         year: goodLook(dateFull.getFullYear()),
                         hour: goodLook(dateFull.getHours()),
                         minutes: goodLook(dateFull.getMinutes())
                     };
-                    if(newDate.day && newDate.month && newDate.year && newDate.hour && newDate.minutes){
+                    if (newDate.day && newDate.month && newDate.year && newDate.hour && newDate.minutes) {
                         $scope.flag = true;
                     }
                     return newDate;
                 };
-                $scope.addPerson = function(name, lastName, email, phone){
-                    if(!name || !lastName || !email || !phone){
+
+                $scope.addPerson = function() {
+                    if (!$scope.name || !$scope.lastName || !$scope.email || !$scope.phone) {
                         return;
                     }
-
-                    $scope.personList.push({name: name, lastName: lastName, email: email, phone: phone,count: count++});
-                    console.log( $scope.personList);
+                    let person = {
+                        name: $scope.name,
+                        lastName: $scope.lastName,
+                        email: $scope.email,
+                        phone: $scope.phone,
+                        count: count++
+                    }
+                    $scope.name = '';
+                    $scope.lastName = '';
+                    $scope.email = '';
+                    $scope.phone = null;
+                    shoppingCartService.changeGuestsList(person, 'add');
+                    $scope.personList.push(person);    
                 };
-                $scope.removePerson = function (count) {
-                    let elem = $scope.personList.find(item =>{
+                $scope.removePerson = function(count) {
+                    let elem = $scope.personList.find(item => {
                         return item.count === count;
                     });
+                    shoppingCartService.changeGuestsList(elem, 'remove');
                     let index = $scope.personList.indexOf(elem);
-                    $scope.personList.splice(index,1);
-                    console.log($scope.personList);
+                    $scope.personList.splice(index, 1);
                 }
-            }])
+            })
         };
         $stateProvider.state(invitationState);
     }])

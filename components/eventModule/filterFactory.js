@@ -1,6 +1,10 @@
 module.exports = function(){
     return {
         gender: 'male',
-        event: 'funeral'
+        currentEvent: '',
+        selectedEvent: '',
+        isUser: false,
+        userEmail: '',
+        disabledButtons: []
     };
 };

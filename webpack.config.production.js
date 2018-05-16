@@ -1,6 +1,5 @@
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const webpack = require('webpack');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   mode: 'production',
@@ -34,6 +33,7 @@ module.exports = {
         use: [{
           loader: 'ng-annotate-loader'
         }],
+        exclude: path.resolve(__dirname,'node_modules')
       },
       {
         test: /\.html$/,
@@ -57,12 +57,6 @@ module.exports = {
   plugins: [
   new MiniCssExtractPlugin({
       filename: "style.css",
-    }),
-  new webpack.ProvidePlugin({
-      'window.jQuery': 'jquery',
-       $: 'jquery',
-       jQuery: 'jquery',
-       jquery: 'jquery'
     })
   ],
   watch:true
