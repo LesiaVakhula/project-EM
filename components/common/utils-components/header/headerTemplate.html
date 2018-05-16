@@ -1,39 +1,47 @@
 <header class="header">
     <nav class="navbar navbar-expand-sm navbar-dark">
         <a class="navbar-brand" ui-sref="home">
-            <div class="logo"> <span>E</span><span>M</span></div>
+            <div class="logo">
+                <span>E</span>
+                <span>M</span>
+            </div>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09"
+            aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active hover">
-                    <a class="nav-link hover" ng-click="clickToOpenLoginForm()">Sign in</a>
+                    <a class="nav-link hover" ng-click="clickToOpenLoginForm()" ng-if="!isLoggedUser()">Sign in</a>
                 </li>
                 <li class="nav-item active hover">
-                    <a class="nav-link hover" ng-click="clickToOpenRegistrationForm()">Sign up</a>
+                    <a class="nav-link hover" ng-click="clickToOpenRegistrationForm()" ng-if="!isLoggedUser()">Sign up</a>
                 </li>
                 <li class="nav-item lg-hide hover active">
                     <a class="nav-link hover" ui-sref='admin'>For admin</a>
                 </li>
                 <li class="nav-item hover active">
-                    <a class="nav-link hover" ui-sref='shopCard'>Shoping Cart</a>
+                    <a class="nav-link hover" ui-sref='shopCard' ng-if="isLoggedUser()">Shoping Cart</a>
                 </li>
                 <li class="nav-item hover active">
-                 <span class="navbar-brand" ng-if="isUser">Email: {{userEmail}}</span>
+                    <span class="navbar-brand" ng-if="isLoggedUser()">Email: {{userEmail}}</span>
                 </li>
-                 <li class="nav-item dropdown" ng-if="isUser">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Choose event
-        </a>
-        <div class="dropdown-menu"  ng-click="selectEvent($event)" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" data-id="wedding" ui-sref="event({eventName: 'wedding'})">Wedding</a>
-          <a class="dropdown-item" data-id="funeral" ui-sref="event({eventName: 'funeral'})">Funeral</a>
-          <a class="dropdown-item" data-id="birthday" ui-sref="event({eventName: 'birthday'})">Birthday</a>
-          <a class="dropdown-item" data-id="conference" ui-sref="event({eventName: 'conference'})">Conference</a>
-        </div>
-      </li>
+                <li class="nav-item hover active">
+                    <span class="navbar-brand" ng-click="logOutFunc()" ng-if="isLoggedUser()">Log out</span>
+                </li>
+                <li class="nav-item dropdown" ng-if="isLoggedUser()">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        Choose event
+                    </a>
+                    <div class="dropdown-menu" ng-click="selectEvent($event)" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" data-id="wedding" ui-sref="event({eventName: 'wedding'})">Wedding</a>
+                        <a class="dropdown-item" data-id="funeral" ui-sref="event({eventName: 'funeral'})">Funeral</a>
+                        <a class="dropdown-item" data-id="birthday" ui-sref="event({eventName: 'birthday'})">Birthday</a>
+                        <a class="dropdown-item" data-id="conference" ui-sref="event({eventName: 'conference'})">Conference</a>
+                    </div>
+                </li>
             </ul>
         </div>
     </nav>

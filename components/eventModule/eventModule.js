@@ -13,9 +13,10 @@ module.exports = angular.module('emApp.Event', ['ui.router', partners, invitatio
             name: 'event',
             url: '/:eventName',
             templateUrl: template,
-            controller: function ($scope, $stateParams, $http, filterFactory) {
+            controller: function ($scope, $stateParams, $http, filterFactory, localStorageService) {
                 'ngInject';
                 filterFactory.currentEvent = $stateParams.eventName;
+                localStorageService.set('currentEvent', $stateParams.eventName);
                 $http.get('/getEventServices', {
                     params: {
                         name: $stateParams.eventName

@@ -1,7 +1,9 @@
 const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
-    fs = require('fs');
+    fs = require('fs'),
+    cookie = require('cookie'),
+    cookieParser = require('cookie-parser');
 
 app.use(express.static('build'))
 // configuration =================
@@ -13,10 +15,19 @@ app.use(bodyParser.json({
     type: 'application/vnd.api+json'
 })); // parse application/vnd.api+json as json
 
+app.use(cookieParser('secret'));
+
 // application -------------------------------------------------------------
 // app.get('/', function(req, res) {
 //     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 // });
+
+app.get('/checkingUser', function (req, res) {
+    const cookies = cookie.parse(req.headers['cookie']),
+        parsedCookies = cookieParser.signedCookies(cookies, 'secret');
+    res.status(200).send(parsedCookies);
+});
+
 
 app.get('/getService', function (req, res) {
     fs.readFile('./storage/eventsItems.json', 'utf8', (err, response) => {
@@ -87,6 +98,26 @@ app.post('/setNewUser', function (req, res) {
     });
 });
 
+app.post('/clearOrder', function (req, res) {
+    let user = req.body.user;
+
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        if (!response) {
+            return;
+        };
+        let orders = JSON.parse(response),
+            orderIndex = orders.findIndex(order => order.user === user);
+        orders.splice(orderIndex, 1);
+        fs.writeFile('./storage/orders.json', JSON.stringify(orders), (err) => {
+            if (err) {
+                throw err;
+            } else {
+                res.sendStatus(201);
+            };
+        });
+    });
+});
 
 app.get('/getUsersOrder', function (req, res) {
     console.log(req.query);
@@ -106,13 +137,11 @@ app.post('/addOrderPattern', function (req, res) {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [];
         let currentOrderIndex = orderStorage.findIndex(item => item.user = newOrder.user);
-
         if (currentOrderIndex !== -1) {
             orderStorage[currentOrderIndex] = newOrder;
         } else {
             orderStorage.push(newOrder);
-        }
-
+        };
 
         fs.writeFile('./storage/orders.json', JSON.stringify(orderStorage), (err) => {
             if (err) {
@@ -186,6 +215,12 @@ app.get('/getUser', function (req, res) {
             registeredUser = users.find((user) => {
                 return user.email === userEmail && user.password === userPass;
             });
+            if (registeredUser) {
+                res.cookie('user', registeredUser.email, {
+                    maxAge: 100000000,
+                    signed: true
+                });
+            };
         };
         res.status(200).send(registeredUser);
     });

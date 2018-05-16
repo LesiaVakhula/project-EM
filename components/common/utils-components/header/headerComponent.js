@@ -5,8 +5,21 @@ require('./headerStyle.scss');
 
 module.exports = {
 	templateUrl: template,
-	controller: function ($scope, ngDialog, filterFactory, $rootScope, shoppingCartService) {
+	controller: function ($scope, ngDialog, filterFactory, $rootScope, $state, shoppingCartService, $http, localStorageService, $cookies) {
 		'ngInject';
+
+		$http.get('/checkingUser')
+			.then(function successCallback(response) {
+				$scope.userEmail = response.data.user;
+				$scope.isUser = true;
+				localStorageService.set('email', response.data.user);
+			}, function errorCallback(response) {
+				console.log('Error!!!');
+			});
+
+		$scope.isLoggedUser = function () {
+			return localStorageService.get('isUser');
+		};
 
 		$scope.$on('sendUserLog', function (event, args) {
 			$scope.isUser = args.isUser;
@@ -14,9 +27,23 @@ module.exports = {
 		});
 
 		$scope.selectEvent = function ($event) {
+			if (localStorageService.get('selectedEvent')) {
+				filterFactory.selectedEvent = localStorageService.get('selectedEvent');
+			};
+			let selectedEvent = $event.target.dataset.id;
+			if (selectedEvent === filterFactory.selectedEvent) {
+				return;
+			}
 			filterFactory.selectedEvent = $event.target.dataset.id;
+			localStorageService.set('selectedEvent', $event.target.dataset.id);
 			filterFactory.disabledButtons = [];
+			localStorageService.set('disabledButtons', []);
 			shoppingCartService.getUsersOrder($scope.userEmail, $event.target.dataset.id);
+
+			if (!filterFactory.currentEvent) {
+				filterFactory.currentEvent = localStorageService.get('currentEvent');
+			};
+
 			$rootScope.$broadcast('sendSelectedEvent', {
 				show: $event.target.dataset.id === filterFactory.currentEvent
 			});
@@ -26,7 +53,7 @@ module.exports = {
 			ngDialog.open({
 				templateUrl: loginFormTemplate,
 				className: 'ngdialog-theme-default modal-view',
-				controller: function ($scope, $http, filterFactory, $rootScope) {
+				controller: function ($scope, $http, filterFactory, $rootScope, localStorageService) {
 					'ngInject';
 
 					$scope.regError = false;
@@ -44,7 +71,7 @@ module.exports = {
 							}).then(function successCallback(response) {
 								if (response.data) {
 									$scope.regError = false;
-									filterFactory.isUser = true;
+									localStorageService.set('isUser', true);
 									filterFactory.userEmail = response.data.email;
 									$rootScope.$broadcast('sendUserLog', {
 										isUser: true,
@@ -99,6 +126,23 @@ module.exports = {
 					};
 				}
 			});
+		};
+
+		$scope.logOutFunc = function () {
+			$scope.isUser = false;
+			$http.post('/clearOrder', {
+					user: localStorageService.get('email')
+				})
+				.then(function successCallback(response) {}, function errorCallback(response) {
+					console.log('Error!!!');
+				});
+			localStorageService.clearAll();
+			$state.go('home');
+			localStorageService.currentEvent = '';
+			localStorageService.selectedEvent = '';
+			localStorageService.isUser = false;
+			localStorageService.userEmail = '';
+			localStorageService.disabledButtons = [];
 		};
 	}
 };

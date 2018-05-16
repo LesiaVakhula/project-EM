@@ -1,8 +1,8 @@
-module.exports = function($http, filterFactory) {
+module.exports = function($http, filterFactory, localStorageService) {
     'ngIngject';
 
     this.getUsersOrder = function(userName, eventName) {
-
+        console.log(userName);
         $http.get('/getUsersOrder', {
                 params: {
                     userName: userName,
@@ -17,7 +17,7 @@ module.exports = function($http, filterFactory) {
             }, function errorCallback(response) {
                 console.log('Error!!!');
             });
-    }
+    };
 
 
     function createOrderPattern(user, eventName) {
@@ -67,16 +67,16 @@ module.exports = function($http, filterFactory) {
             name: serviceName,
             service: item,
             owner: owner,
-            userEmail: filterFactory.userEmail
+            userEmail: filterFactory.userEmail || localStorageService.get('email')
         };
-        console.log(order);
+
         $http.post('/addItemToOrder', order)
             .then(function successCallback(response) {
                 console.log('Added');
             }, function errorCallback(response) {
                 console.log('Error!!!');
             });
-    }
+    };
 
     this.removeFromCart = function(item, eventName) {
         let itemToDelete = {
@@ -89,8 +89,7 @@ module.exports = function($http, filterFactory) {
             }, function errorCallback(response) {
                 console.log('Error!!!');
             });
-
-    }
+    };
 
     this.calculatePrice = function(order) {
         let price = 0;
@@ -102,6 +101,6 @@ module.exports = function($http, filterFactory) {
             });
             console.log(price);
             this.order.totalPrice = price;
-        }
-    }
+        };
+    };
 };
