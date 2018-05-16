@@ -18,6 +18,7 @@ div,p{
         span{
           font-weight: bold;
           font-style: italic;
+          text-transform: capitalize;
         }
   }
 
@@ -27,8 +28,14 @@ div,p{
     background: #d6d6d6;
     height: 40px;
     padding: 10px 10px;
-    border-radius: 5px;
+    border-radius: 5px;    
     line-height: 1;
+
+    @media (max-width: 375px) {
+      font-size: 18px;
+      height: 30px;
+      padding: 5px 5px;         
+    }
   }
 
   .shop-card{
@@ -143,7 +150,7 @@ div,p{
         width: 40%;
       }
       @media (max-width: 375px) {
-        width: 23%;
+        width: 20%;
       }
     }
     .price{
@@ -159,7 +166,7 @@ div,p{
     .delete{
       width: 15%;
       @media (max-width: 375px) {
-        width: 10%;
+        width: 13%;
       }
     }
     .btn-remove{

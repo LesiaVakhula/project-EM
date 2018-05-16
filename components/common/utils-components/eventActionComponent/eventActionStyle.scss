@@ -38,36 +38,36 @@
         }
         @media only screen and (max-width: 1500px) {
             width: 16vw;
-            height: 5.5vw;
+            height: 4.8vw;
         }
         @media only screen and (max-width: 1309px) {
             width: 16vw;
-            height: 6.3vw;
+            height: 5.8vw;
         }
-        @media only screen and (max-width: 1130px) {
-            width: 17vw;
+        @media only screen and (max-width: 1100px) {
+            width: 18vw;
             height: 6vw;
         }
         @media only screen and (max-width: 1000px) {
-            width: 20vw;
-            height: 6.5vw;
+            width: 21vw;
+            height: 6.3vw;
         }
-        @media only screen and (max-width: 850px) {
-            width: 27vw;
-            height: 7.5vw;
+        @media only screen and (max-width: 865px) {
+            width: 25vw;
+            height: 7.3vw;
         }
         @media only screen and (max-width: 690px) {
-            width: 35vw;
-            height: 9vw;
+            width: 25.5vw;
+            height: 8.5vw;
         }
         
         @media only screen and (max-width: 576px) {
             width: 35vw;
             height: 10.5vw;
         }
-        @media only screen and (max-width: 414px) {
+        @media only screen and (max-width: 490px) {
             width: 45vw;
-            height: 14vw;
+            height: 12.5vw;
         }
         @media only screen and (max-width: 375px) {
             width: 45vw;
@@ -104,47 +104,38 @@
            
             @media only screen and (min-width: 1501px) {
                 top: 1.2vw;
-                font-size: 41px;
+                font-size: 36px;
             }
             @media only screen and (max-width: 1500px) {
-                font-size: 38px;
-                top: 1.5vw;
+                font-size: 32px;
+                top: 1.2vw;
             }
             @media only screen and (max-width: 1309px) {
-                font-size: 33px;
-                top: 1.6vw;
+                font-size: 30px;
+                top: 1.4vw;
             }
             @media only screen and (max-width: 1130px) {
                 top: 1.5vw;
-                font-size: 30px;
+                // font-size: 30px;
             }
             @media only screen and (max-width: 1000px) {
-                font-size: 30px;
+                font-size: 26px;
+            }
+            @media only screen and (max-width: 865px) {
+                top: 1.9vw;                                
+            }
+            @media only screen and (max-width: 690px) {
+                font-size: 25px;
             }
             @media only screen and (max-width: 576px) {
                 top: 2.8vw;
+                font-size: 26px;                
             }
             @media only screen and (max-width: 375px) {
-                top: 3.5vw;
+                top: 3.6vw;
                 font-size: 25px;
                 
             }
-            // @media only screen and (max-width: 375px) {
-            //     top: 3.5vw;
-            // }
-    
-            // &::first-letter {
-            //     text-transform: uppercase;
-            // }
-            // @media only screen and (min-width: 1001px) {
-            //     font-size: 4vw;
-            // }
-            // @media only screen and (max-width: 1000px) {
-            //     font-size: 5vw;
-            // }
-            // @media only screen and (max-width: 576px) {
-            //     font-size: 5vw;
-            // }
         }
     }
 }

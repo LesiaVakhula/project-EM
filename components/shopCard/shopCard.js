@@ -20,8 +20,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                    }
                }).then(function successCallback(response) {
                    $scope.order = response.data;
-                   for(let item in $scope.order){
-                   }
+                   console.log( $scope.order);
                }, function errorCallback(response) {
                    console.log('Error!!!');
                });
@@ -87,19 +86,25 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                return quantity*parseFloat(price);
            }
     
+           $scope.allProductAmount=0;
+
            $scope.totalAmount = function () {
                $scope.totalAll = 0;
                if($scope.personListIsExist){
-                   $scope.totalAll += $scope.totalAmountInvitation;
-    
+                   $scope.totalAll += $scope.totalAmountInvitation ? $scope.totalAmountInvitation : 0;
+                    console.log($scope.totalAll);
                }
                if($scope.order.halls){
-                   $scope.totalAll += $scope.totalAmountHalls;
+                   $scope.totalAll += $scope.totalAmountHalls ?  $scope.totalAmountHalls : 0;
+                   console.log($scope.totalAll);
+                   
                }
                let array = $scope.order.services;
                for(let i=0, l=array.length; i<l; i++){
                    for(let k=0, m=array[i].items.length; k<m; k++){
                        $scope.totalAll+= parseFloat(array[i].items[k].cost);
+                    console.log($scope.totalAll);
+                       
                    }
                }
                return $scope.totalAll;
@@ -107,7 +112,8 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
            $scope.closeModal = function(){
                 $scope.createOrder = false;
-           }
+           };     
+             
        })
     };
     $stateProvider.state(stateCart);

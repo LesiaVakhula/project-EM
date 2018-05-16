@@ -42,7 +42,7 @@
   top: 0;
 
   a{
-    color: #ffffff;
+    color: #2ef080;
 
     &:hover{
       color: rgba(255, 255, 255, 0.5);
@@ -51,36 +51,53 @@
   }
 
   @media (min-width: 1451px){
-    right: 5vw;
+    right: 2vw;
   }
 
   @media (max-width: 1450px){
-    right: 10vw;
+    right: 2.5vw;
+  }
+  @media (max-width: 1350px){
+    right: 4vw;
+  }
+  @media (max-width: 1200px){
+    right: 3vw;
   }
   @media (max-width: 768px){
-    right: 13vw;
+    right: 3vw;
   }
   @media (max-width: 576px){
-    right: 25vw;
+    right: 15vw;
   }
 }
 
 .right-align-dropdown{
   position: absolute;
   right: 20vw;
-  
-  @media (min-width: 1451px){
+
+  @media (min-width: 1581px){
+    right: 12vw;
+  }
+  @media (max-width: 1580px){
     right: 15vw;
   }
   @media (max-width: 1450px){
-    right: 28vw;
+    right: 15vw;
   }
-
+  @media (max-width: 1350px){
+    right: 17vw;
+  }
+  @media (max-width: 1200px){
+    right: 18vw;
+  }
+  @media (max-width: 1000px){
+    right: 22vw;
+  }
   @media (max-width: 768px){
-    right: 35vw;
+    right: 25vw;
   }
   @media (max-width: 705px){
-    right: 38vw;
+    right: 30vw;
   }
   
   @media (max-width: 576px){
@@ -100,7 +117,8 @@
   padding: 10px 0;
 
   @media (max-width: 576px){
-    right: 9vw;
+    right: 10vw;
+    font-size: 14px;
   }
 }
 /* FORM BUTTON STYLE*/
