@@ -29,18 +29,13 @@ module.exports = {
                     className: 'ngdialog-theme-default confirm-modal'
                 }).then(
                     function(value) {
-                       // $state.go('event', {'eventName': selectedEvent });
                         $scope.changeEvent(selectedEvent);
                     },
                     function(value) {
                         return;
                     }
                 );
-
             } else {
-                if(filterFactory.selectedEvent !== filterFactory.currentEvent) {
-                    $state.go('event', {'eventName': selectedEvent });
-                }
                 $scope.changeEvent(selectedEvent);
             }
 
@@ -48,11 +43,13 @@ module.exports = {
 
         $scope.changeEvent = function(selectedEvent) {
             filterFactory.selectedEvent = selectedEvent;
+            if(filterFactory.selectedEvent !== filterFactory.currentEvent) {
+                $state.go('event', {'eventName': selectedEvent });
+            }
             $scope.selectedEvent = selectedEvent;
             $scope.isEventSelected = true;
             shoppingCartService.getUsersOrder($scope.userEmail, selectedEvent);
             shoppingCartService.checkGuestsList($scope.userEmail, selectedEvent);
-            $state.go('event', {'eventName': selectedEvent });
             filterFactory.disabledButtons = [];
             $rootScope.$broadcast('sendSelectedEvent', {
                 show: selectedEvent === filterFactory.currentEvent

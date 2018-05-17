@@ -3,7 +3,6 @@ const home = require('../home/emAppHome.js');
 const shopCard = require('../shopCard/shopCard.js');
 const shoppingCartService = require('../eventModule/shoppingCartService');
 const eventPage = require('../eventModule/eventModule.js');
-console.log(shoppingCartService);
 require("bootstrap");
 require('@uirouter/angularjs');
 require('ng-dialog');

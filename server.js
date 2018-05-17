@@ -92,6 +92,7 @@ app.get('/getUsersOrder', function(req, res) {
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         let orders = response ? JSON.parse(response) : [];
+        
         let orderExists = orders.some(item => item.user === req.query.userName &&
             item.eventName === req.query.eventName);
         res.status(200).send(orderExists);
@@ -158,8 +159,7 @@ app.post('/addItemToOrder', function (req, res) {
 
 app.post('/removeItemFromOrder', function(req, res) {
     let itemToRemove = req.body,
-        user = req.body.user;
-        console.log(user, req.body); 
+        user = req.body.user; 
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [],
@@ -191,7 +191,6 @@ app.get('/getUserGuestsList', function(req, res) {
     let user = req.query.userName,
         event = req.query.eventName,
         currentEvent = req.query.currentEvent;
-    console.log(user, event, currentEvent);
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
         if (response) {
@@ -209,7 +208,6 @@ app.get('/getUserGuestsList', function(req, res) {
 app.post('/addPersonToInvite', function(req, res) {
     let userList = req.body,
         user = req.body.user;
-    console.log(userList)
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
         let guestsListStorage = response ? JSON.parse(response) : [];
@@ -252,7 +250,7 @@ app.post('/removeGuests', function(req, res) {
 
     fs.readFile('./storage/guestsList.json', 'utf8', (err, response) => {
         if (err) throw err;
-        let guestsListStorage = JSON.parse(response);
+        let guestsListStorage = response ? JSON.parse(response) : [];
         guestsListStorage = guestsListStorage.filter(elem => elem.user === data.user &&
                 elem.eventName === data.eventName),
             fs.writeFile('./storage/guestsList.json', JSON.stringify(guestsListStorage), (err) => {
@@ -267,7 +265,6 @@ app.post('/removeGuests', function(req, res) {
 
 app.get('/getShoppingCartContent', function(req, res) {
     let user = req.query.user;
-    console.log(user);
     fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
         if (err) throw err;
         if (response) {          

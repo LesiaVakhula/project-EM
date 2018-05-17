@@ -77,13 +77,6 @@ module.exports = function($http, filterFactory) {
             service: service
         };
         makePostRequest('/removeItemFromOrder', itemToDelete);
-        // $http.delete('/removeItemFromOrder', itemToDelete)
-        //     .then(function successCallback(response) {
-        //         console.log('deleted');
-        //     }, function errorCallback(response) {
-        //         console.log('Error!!!');
-        //     });
-
     }
 
     this.changeGuestsList = function(person, operation) {
