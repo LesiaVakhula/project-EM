@@ -1,3 +1,106 @@
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+// .item-block {
+//     display: flex;
+//     margin-top: 10px;
+//     margin-bottom: 10px;
+//     padding: 2%;
+//     align-items: flex-start;
+//     flex-wrap: wrap;
+//     align-items: center;
+//     justify-content: flex-end;
+//     border: 1px solid rgba(0, 0, 0, 0.35);
+//     border-radius: 10px;
+//     box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+// }
+
+// .item-img {
+//     width: 50%;
+//     height: auto;
+//     border: 1px solid rgba(0, 0, 0, 0.3);
+//     align-self: center;
+//     border-radius: 10px;
+//     &:hover {
+//         filter: grayscale(1);
+//     }
+// }
+
+// .table.description {
+//     width: 45%;
+// }
+
+// .table {
+//     margin: 0 2%;
+//     font-size: 1.3vw;
+//     border-bottom: 1px solid #dee2e6;
+//     line-height: 2vw;
+//     text-align: center;
+// }
+
+// th.my.ng-binding{
+//     width: 30%;
+//     padding-left: 3%;
+// }
+
+// .table.my {
+//     padding: 5% 0;
+// }
+
+// button.btn.btn-dark.add-btn {
+//     position: relative;
+//     margin-right: 4%;
+//     align-self: flex-end;
+//     font-size: 1.3vw;
+//     &:hover:enabled {
+//         box-shadow: 5px 5px 28px 0px rgba(44, 74, 57, 1);
+//         opacity: 0.9;
+//         text-shadow: 2px 2px #000;
+//         color: #2ef080;
+//     }
+//     &:disabled:after {
+//         content: "";
+//         display: block;
+//         position: absolute;
+//         right: -6%;
+//         color: #000;
+//         background-color: #2ef080;
+//         width: 2.2vw;
+//         height: 2.2vw;
+//         border-radius: 50%;
+//         top: -1vw;
+//         font-size: 1.8vw;
+//         font-family: 'Material Icons';
+//         content: "done";
+//     }
+//     &:active {
+//         transform: translate(2px, 2px);
+//     }
+// }
+
+// @media only screen and (max-width:576px) {
+//     .item-img {
+//         width: 50%;
+//         height: auto;
+//     }
+//     .table.description {
+//         padding: 0;
+//         margin-bottom: 0;
+//         font-size: 2vw;
+//         line-height: 2.5vw;
+//     }
+//     .my.ng-binding {
+//         padding: 2%;
+//     }
+//     button.btn.btn-dark.add-btn {
+//         margin-top: -8%;
+//         margin-right: 11%;
+//         padding: 2%;
+//         font-size: 2vw;
+//     }
+// }
+
+
+
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 .item-block {
@@ -14,8 +117,9 @@
     box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
 }
 
+
 .item-img {
-    width: 50%;
+    width: 40%;
     height: auto;
     border: 1px solid rgba(0, 0, 0, 0.3);
     align-self: center;
@@ -26,7 +130,17 @@
 }
 
 .table.description {
-    width: 45%;
+    width: 55%;
+    padding: 0;
+    font-size: 1.2vw;
+    line-height: 2vw;
+
+    th{
+        padding: 2%;
+    }
+    td{
+        padding: 2%;
+    }
 }
 
 .table {
@@ -34,21 +148,28 @@
     font-size: 1.3vw;
     border-bottom: 1px solid #dee2e6;
     line-height: 2vw;
-    text-align: center;
 }
+
 
 th.my.ng-binding{
     width: 30%;
     padding-left: 3%;
 }
+td.my.ng-binding{  
+    vertical-align: middle; 
+    text-align: center;
+}
 
 .table.my {
     padding: 5% 0;
 }
+.product-item-row {
+    padding-bottom:42px;
+}
 
 button.btn.btn-dark.add-btn {
     position: relative;
-    margin-right: 4%;
+    margin-right: 10%;
     align-self: flex-end;
     font-size: 1.3vw;
     &:hover:enabled {
@@ -79,22 +200,143 @@ button.btn.btn-dark.add-btn {
 
 @media only screen and (max-width:576px) {
     .item-img {
-        width: 50%;
+        width: 40%;
         height: auto;
     }
+    .table {
+        margin: 0 2%;
+        font-size: 1.3vw;
+        line-height: 2vw;
+    }
     .table.description {
-        padding: 0;
+        width: 55%;
         margin-bottom: 0;
         font-size: 2vw;
-        line-height: 2.5vw;
+        padding: 0;
+        
     }
-    .my.ng-binding {
-        padding: 2%;
+    th.my.ng-binding{
+        width: 40%;
+        padding-left:0 3%;
     }
-    button.btn.btn-dark.add-btn {
-        margin-top: -8%;
-        margin-right: 11%;
-        padding: 2%;
-        font-size: 2vw;
+    td.my.ng-binding{  
+        vertical-align: middle; 
+        text-align: center;
     }
+    // button.btn.btn-dark.add-btn {
+    //     padding: 3%;
+    //     margin-right: 18%;
+    //     font-size: 1.5vw;
+    // }
 }
+
+// @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+// .item-block {
+//     display: flex;
+//     margin: 10px;
+//     padding: 2%;
+//     flex-wrap: wrap;
+//     align-items: center;
+//     border: 1px solid rgba(0, 0, 0, 0.35);
+//     border-radius: 10px;
+//     box-shadow: 6px 6px 25px 1px rgba(44, 74, 57, 1);
+// }
+// .items{
+//     display: flex;
+//     flex-wrap: nowrap;
+// }
+// .item-img {
+//     width:37%;
+//     height: auto;
+//     border: 1px solid rgba(0, 0, 0, 0.3);
+//     align-self: center;
+//     border-radius: 10px;
+//     &:hover {
+//         filter: grayscale(1);
+//     }
+// }
+
+// .table.description {
+//     width: 58%;
+//     font-size: 1.2vw;
+// }
+
+// .table th, .table td{
+//     vertical-align: middle!important;
+// }
+// .table {
+//     margin-left: 1%;
+//     border-bottom: 1px solid #dee2e6;
+//     line-height: 1.4vw;
+//     white-space: nowrap;
+//     justify-content: space-between; 
+//     text-align: center;
+// }
+// th.my.ng-binding{
+//     width: 30%;
+// }
+// td.my.ng-binding{
+//     width: 60%;
+//     padding: 1% 0;
+    
+// }
+// .my.ng-binding{
+//     padding: 1% 0;
+// }
+
+// button.btn.btn-dark.add-btn {
+//     position: relative;
+//     // margin-left: 59%;
+    
+//     font-size: 1.3vw;
+//     &:hover:enabled {
+//         box-shadow: 5px 5px 28px 0px rgba(44, 74, 57, 1);
+//         opacity: 0.9;
+//         text-shadow: 2px 2px #000;
+//         color: #2ef080;
+//     }
+//     &:disabled:after {
+//         content: "";
+//         display: block;
+//         position: absolute;
+//         right: -6%;
+//         color: #000;
+//         background-color: #2ef080;
+//         width: 2.2vw;
+//         height: 2.2vw;
+//         border-radius: 50%;
+//         top: -1vw;
+//         font-size: 1.8vw;
+//         font-family: 'Material Icons';
+//         content: "done";
+//     }
+//     &:active {
+//         transform: translate(2px, 2px);
+//     }
+// }
+
+// @media only screen and (max-width:576px) {
+//     .item-block {
+//         margin: 3% auto;
+//     }
+//     .item-img {
+//         width: 40%;
+//         height: auto;
+//     }
+//     .table.description {
+//         justify-content: space-between; 
+//         width: 59%;
+//         padding: 0;
+//         margin: 0 auto;
+//         font-size: 2vw;
+//         line-height: 2.5vw;
+//     }
+//     .my.ng-binding {
+//         padding: 2%;
+//     }
+//     button.btn.btn-dark.add-btn {
+//         font-size: 1.3vw;
+//         padding: 5% calc;
+//     }
+// }
+

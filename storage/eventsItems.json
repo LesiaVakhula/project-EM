@@ -129,7 +129,7 @@
                 "itemId": "2",
                 "image": "funeral-cadilac-black.png",
                 "description": {
-                    "name": "Mercedes E class",
+                    "name": "Cadilac",
                     "cost": "4000 uah",
                     "color": "black"
                 }
@@ -138,8 +138,35 @@
                 "itemId": "3",
                 "image": "funeral-cadilac-white.png",
                 "description": {
-                    "name": "Mercedes E class",
+                    "name": "Cadilac",
                     "cost": "4000 uah",
+                    "color": "white"
+                }
+            },
+            {
+                "itemId": "4",
+                "image": "funeral-car1.png",
+                "description": {
+                    "name": "Cadillac",
+                    "cost": "4000 uah",
+                    "color": "black"
+                }
+            },
+            {
+                "itemId": "5",
+                "image": "funeral-car2.png",
+                "description": {
+                    "name": "Cadillac",
+                    "cost": "4000 uah",
+                    "color": "silver"
+                }
+            },
+            {
+                "itemId": "6",
+                "image": "funeral-tesla.png",
+                "description": {
+                    "name": "Tesla",
+                    "cost": "5000 uah",
                     "color": "black"
                 }
             }
@@ -249,28 +276,32 @@
                 "itemId": "1",
                 "image": "dominican.png",
                 "description": {
-                    "name": "Dominician cathedral"
+                    "name": "Dominician cathedral",
+                    "cost": "500 uah"
                 }
             },
             {
                 "itemId": "2",
                 "image": "Church of Transfiguration.png",
                 "description": {
-                    "name": "Church of Transfiguration"
+                    "name": "Church of Transfiguration",
+                    "cost": "500 uah"
                 }
             },
             {
                 "itemId": "3",
                 "image": "Temple of the Holy Supreme Apostles Peter and Paul.png",
                 "description": {
-                    "name": "Temple of the Holy Supreme Apostles Peter and Paul"
+                    "name": "Temple of Apostles Peter and Paul",
+                    "cost": "500 uah"
                 }
             },
             {
                 "itemId": "4",
                 "image": "Temple of St. Andrew.png",
                 "description": {
-                    "name": "Temple of St. Andrew"
+                    "name": "Temple of St. Andrew",
+                    "cost": "500 uah"
                 }
             }
         ]
