@@ -9,13 +9,14 @@
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active hover">
-                    <a class="nav-link hover" ng-click="clickToOpenLoginForm()">Sign in</a>
+                    <a class="nav-link hover" ng-click="clickToOpenLoginForm()" ng-if="!isLoggedUser()">Sign in</a>
                 </li>
                 <li class="nav-item active hover">
-                    <a class="nav-link hover" ng-click="clickToOpenRegistrationForm()">Sign up</a>
+                    <a class="nav-link hover" ng-click="clickToOpenRegistrationForm()" ng-if="!isLoggedUser()">Sign up</a>
                 </li>
-                    <span class="navbar-text" ng-if="isEventSelected">Event: {{selectedEvent}}</span>
-                 <li class="nav-item right-align-dropdown" ng-if="isUser">
+                    <span class="navbar-text logout" ng-click="logOutFunc()" ng-if="isLoggedUser()">Log out</span>
+                    <span class="navbar-text" ng-if="showSelectedEvent()">Event: {{selectedEvent}}</span>
+                 <li class="nav-item right-align-dropdown" ng-if="isLoggedUser()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Choose event
                     </a>
@@ -28,11 +29,11 @@
                 </li>     
             </ul>         
         </div>
-        <div class="right-align-shop" ng-if="isUser">
+        <div class="right-align-shop" ng-if="isLoggedUser()">
                 <a class="hover" ui-sref='shopCard'><i class="material-icons">shopping_cart</i></a>
         </div>
-        <div class="right-align-email">
-                <span class="" ng-if="isUser">Email: {{userEmail}}</span>
+        <div class="right-align-email" ng-if="isLoggedUser()">
+                <span>Email: {{userEmail}}</span>
         </div>    
     </nav>
 </header>

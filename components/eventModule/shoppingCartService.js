@@ -1,4 +1,4 @@
-module.exports = function($http, filterFactory) {
+module.exports = function($http, filterFactory, localStorageService) {
     'ngIngject';
 
     function makePostRequest(url, data) {
@@ -61,28 +61,32 @@ module.exports = function($http, filterFactory) {
     }
 
     this.addToCart = function(item, serviceName, owner) {
-        console.log(item, serviceName);
         let order = {
             name: serviceName,
             service: item,
             owner: owner,
-            userEmail: filterFactory.userEmail
+            userEmail: filterFactory.userEmail || localStorageService.get('email')
         };
         makePostRequest('/addItemToOrder', order);
     }
 
-    this.removeFromCart = function(service) {
+    this.removeFromCart = function(service, name, id) {
         let itemToDelete = {
-            user: filterFactory.userEmail,
-            service: service
+            user: filterFactory.userEmail || localStorageService.get('email')
         };
+        if(name && id) {
+            itemToDelete.name = name;
+            itemToDelete.id = id;
+        } else {
+            itemToDelete.service = service;
+        }
         makePostRequest('/removeItemFromOrder', itemToDelete);
     }
 
     this.changeGuestsList = function(person, operation) {
         let url = '/addPersonToInvite';
         let personData = {
-            user: filterFactory.userEmail,
+            user: filterFactory.userEmail || localStorageService.get('email'),
             eventName: filterFactory.selectedEvent,
             currentEvent: filterFactory.currentEvent,
             person: person
@@ -96,7 +100,7 @@ module.exports = function($http, filterFactory) {
     }
 
      this.checkGuestsList = function(userName, eventName) {
-        let data = { userName: userName, eventName: eventName };
+        let data = { userName: userName || localStorageService.get('email'), eventName: eventName };
         makePostRequest('/removeGuests', data);
     }
     

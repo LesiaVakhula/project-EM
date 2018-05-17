@@ -2,6 +2,8 @@ const express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     fs = require('fs');
+    cookie = require('cookie'),
+    cookieParser = require('cookie-parser');
 
 app.use(express.static('build'))
 // configuration =================
@@ -12,11 +14,13 @@ app.use(bodyParser.json()); // parse application/json
 app.use(bodyParser.json({
     type: 'application/vnd.api+json'
 })); // parse application/vnd.api+json as json
+app.use(cookieParser('secret'));
 
-// application -------------------------------------------------------------
-// app.get('/', function(req, res) {
-//     res.sendFile(__dirname + '/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-// });
+app.get('/checkingUser', function (req, res) {
+    const cookies = cookie.parse(req.headers['cookie']),
+        parsedCookies = cookieParser.signedCookies(cookies, 'secret');
+    res.status(200).send(parsedCookies);
+});
 
 app.get('/getService', function(req, res) {
     fs.readFile('./storage/eventsItems.json', 'utf8', (err, response) => {
@@ -164,15 +168,17 @@ app.post('/removeItemFromOrder', function(req, res) {
         if (err) throw err;
         let orderStorage = response ? JSON.parse(response) : [],
             userOrders = orderStorage.find((item) => item.user === user),
-            serviceIndex = userOrders.services.findIndex((item) => item.name === itemToRemove.service.name);
-        if (serviceIndex !== -1) {
-            userOrders.services.splice(serviceIndex, 1);
-        } else {
-            let service = Object.keys(userOrders).find(key => {
-                return userOrders[key]['name'] === itemToRemove.service.name
-            });
-            delete userOrders[service];
-        }
+            itemIndex = null;
+            if(itemToRemove.service) {
+                let service = Object.keys(userOrders).find(key => {
+                    return userOrders[key]['name'] === itemToRemove.service.name
+                });
+                delete userOrders[service];
+            } else {
+                let service = userOrders.services.find( elem => elem.name === itemToRemove.name);
+                serviceIndex = service.items.findIndex( elem => elem.id === itemToRemove.id );
+                service.items.splice(itemIndex, 1);
+            }
 
         let index = orderStorage.findIndex((item) => item.user === userOrders.user);
         orderStorage[index] = userOrders;
@@ -276,7 +282,28 @@ app.get('/getShoppingCartContent', function(req, res) {
     });
 });
 
-app.get('/getUser', function(req, res) {
+app.post('/clearOrder', function (req, res) {
+    let user = req.body.user;
+    fs.readFile('./storage/orders.json', 'utf8', (err, response) => {
+        if (err) throw err;
+        if (response) {
+            let orders = JSON.parse(response),
+                orderIndex = orders.findIndex(order => order.user === user);
+            if (orderIndex !== -1) {
+                orders.splice(orderIndex, 1);
+                fs.writeFile('./storage/orders.json', JSON.stringify(orders), (err) => {
+                    if (err) {
+                        throw err;
+                    } else {
+                        res.sendStatus(201);
+                    };
+                });
+            };
+        };
+    });
+});
+
+app.get('/getUser', function (req, res) {
     fs.readFile('./storage/users.json', 'utf8', (err, response) => {
         if (err) throw err;
         let registeredUser = '';
@@ -288,6 +315,12 @@ app.get('/getUser', function(req, res) {
             registeredUser = users.find((user) => {
                 return user.email === userEmail && user.password === userPass;
             });
+            if (registeredUser) {
+                res.cookie('user', registeredUser.email, {
+                    maxAge: 100000000,
+                    signed: true
+                });
+            };
         };
         res.status(200).send(registeredUser);
     });

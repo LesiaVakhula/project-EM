@@ -59,7 +59,7 @@
                         <p class="quantity">{{guestsQuantity ? guestsQuantity : '0'}} people </p>
                         <p class="price">{{order['halmemorial-halls'].cost}}</p>
                         <p class="total"> - </p>
-                        <p class="delete"> <button class="btn-remove" ng-click="handle(order['halmemorial-halls'])" >&#10006;</button>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order['memorial-halls'])" >&#10006;</button>
                     </div>
                 </div>
                 <div class="rent-hall" ng-if="!!order['food-courts']">
@@ -81,7 +81,7 @@
                         <p class="quantity"><a href={{order.design.link}}>link to {{order.design.name}}</a></p>
                         <p class="price">-</p>
                         <p class="total">{{order.design.discount}}</p>
-                        <p class="delete"> <button class="btn-remove" ng-click="handle(['food-courts'])" >&#10006; </button>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.design)" >&#10006; </button>
                     </div>
                 </div>
             </div>

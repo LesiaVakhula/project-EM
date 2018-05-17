@@ -5,6 +5,7 @@ module.exports = function(){
         selectedEvent: '',
         isUser: false,
         userEmail: '',
-        disabledButtons: []
+        disabledButtons: [],
+        personList: []
     };
 };

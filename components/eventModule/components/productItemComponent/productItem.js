@@ -9,12 +9,24 @@ module.exports = {
         owner: '=',
         index: '='
     },
-    controller: function($scope, $rootScope, shoppingCartService, filterFactory) {
+    controller: function($scope, $rootScope, shoppingCartService, filterFactory, localStorageService) {
         'ngInject';
-        $scope.showAddButton = filterFactory.currentEvent === filterFactory.selectedEvent;
+        //$scope.showAddButton = filterFactory.currentEvent === filterFactory.selectedEvent;
         $scope.$on('sendSelectedEvent', function(event, args) {
             $scope.showAddButton = args.show;
         });
+        $scope.showAddButton = localStorageService.get('currentEvent') === localStorageService.get('selectedEvent');
+        if (!filterFactory.currentEvent) {
+            filterFactory.currentEvent = localStorageService.get('currentEvent');
+        };
+
+        if (!filterFactory.currentService) {
+            filterFactory.currentService = localStorageService.get('selectedEvent');
+        };
+
+        if (localStorageService.get('disabledButtons')) {
+            filterFactory.disabledButtons = localStorageService.get('disabledButtons');
+        };
 
         this.$onInit = () => {
             this.imageUrl = require(`../../../common/images/productItemImages/${this.data.image}`);
@@ -36,6 +48,8 @@ module.exports = {
                     event: filterFactory.currentEvent, 
                     name: filterFactory.currentService, 
                     id: $event.currentTarget.dataset.id});
+
+                localStorageService.set('disabledButtons', filterFactory.disabledButtons);
                 shoppingCartService.addToCart(item, serviceName, owner);
             }
         }
