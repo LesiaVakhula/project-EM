@@ -87,8 +87,8 @@ module.exports = function($http, filterFactory, localStorageService) {
         let url = '/addPersonToInvite';
         let personData = {
             user: filterFactory.userEmail || localStorageService.get('email'),
-            eventName: filterFactory.selectedEvent,
-            currentEvent: filterFactory.currentEvent,
+            eventName: filterFactory.selectedEvent || localStorageService.get('selectedEvent'),
+            currentEvent: filterFactory.currentEvent || localStorageService.get('currentEvent'),
             person: person
         };
         if(operation === 'remove') {

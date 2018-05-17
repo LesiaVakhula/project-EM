@@ -117,7 +117,7 @@
         "name": "funeral-cars",
         "owner": "em",
         "items": [{
-                "itemId": "9",
+                "itemId": "1",
                 "image": "funeral-rolls-royce.png",
                 "description": {
                     "name": "Rolls-Royce Phantom",
@@ -126,7 +126,7 @@
                 }
             },
             {
-                "itemId": "10",
+                "itemId": "2",
                 "image": "funeral-cadilac-black.png",
                 "description": {
                     "name": "Mercedes E class",
@@ -135,7 +135,7 @@
                 }
             },
             {
-                "itemId": "11",
+                "itemId": "3",
                 "image": "funeral-cadilac-white.png",
                 "description": {
                     "name": "Mercedes E class",
@@ -249,32 +249,28 @@
                 "itemId": "1",
                 "image": "dominican.png",
                 "description": {
-                    "name": "Dominician cathedral",
-                    "...": "..."
+                    "name": "Dominician cathedral"
                 }
             },
             {
                 "itemId": "2",
                 "image": "Church of Transfiguration.png",
                 "description": {
-                    "name": "Church of Transfiguration",
-                    "...": "..."
+                    "name": "Church of Transfiguration"
                 }
             },
             {
                 "itemId": "3",
                 "image": "Temple of the Holy Supreme Apostles Peter and Paul.png",
                 "description": {
-                    "name": "Temple of the Holy Supreme Apostles Peter and Paul",
-                    "...": "..."
+                    "name": "Temple of the Holy Supreme Apostles Peter and Paul"
                 }
             },
             {
                 "itemId": "4",
                 "image": "Temple of St. Andrew.png",
                 "description": {
-                    "name": "Temple of St. Andrew",
-                    "...": "..."
+                    "name": "Temple of St. Andrew"
                 }
             }
         ]

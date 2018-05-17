@@ -15,7 +15,7 @@
                     <a class="nav-link hover" ng-click="clickToOpenRegistrationForm()" ng-if="!isLoggedUser()">Sign up</a>
                 </li>
                     <span class="navbar-text logout" ng-click="logOutFunc()" ng-if="isLoggedUser()">Log out</span>
-                    <span class="navbar-text" ng-if="showSelectedEvent()">Event: {{selectedEvent}}</span>
+                    <!-- <span class="navbar-text" ng-if="showSelectedEvent()">Event: {{selectedEvent}}</span> -->
                  <li class="nav-item right-align-dropdown" ng-if="isLoggedUser()">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Choose event
@@ -29,11 +29,17 @@
                 </li>     
             </ul>         
         </div>
+        <div  class="center-align-event">
+                <span ng-if="isEventSelected">Event: {{selectedEvent}}</span>
+            </div>
         <div class="right-align-shop" ng-if="isLoggedUser()">
                 <a class="hover" ui-sref='shopCard'><i class="material-icons">shopping_cart</i></a>
         </div>
-        <div class="right-align-email" ng-if="isLoggedUser()">
+        <!-- <div class="right-align-email" ng-if="isLoggedUser()">
                 <span>Email: {{userEmail}}</span>
-        </div>    
+        </div>     -->
+        <div class="right-align-email" ng-if="isLoggedUser()">
+                <p class="" ng-if="isUser">Email: <span> {{userEmail}}</span></p>
+        </div>
     </nav>
 </header>

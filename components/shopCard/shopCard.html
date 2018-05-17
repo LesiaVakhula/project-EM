@@ -35,7 +35,7 @@
                        <p class="image">-</p>
                        <p class="quantity">{{guestsQuantity}} people</p>
                        <p class="price">-</p>
-                       <p class="total">{{totalAmountInvitation = totalAmountProduct(guestsQuantity,'invite')}} uah</p>
+                       <p class="total">{{totalAmountInvitation}} uah</p>
                        <p class="delete"> <button class="btn-remove" ng-click="handle(personList)" >&#10006;</button>
                    </div>
                 </div>
@@ -70,7 +70,7 @@
                         <p class="quantity"><a href={{order['food-courts'].link}}>link to {{order['food-courts'].name}}</a> </p>
                         <p class="price"> - </p>
                         <p class="total">{{order['food-courts'].discount}}</p>
-                        <p class="delete"> <button class="btn-remove" ng-click="handle(order.halls)" >&#10006;</button>
+                        <p class="delete"> <button class="btn-remove" ng-click="handle(order['food-courts'])" >&#10006;</button>
                     </div>
                 </div>
                 <div class="rent-hall" ng-if="!!order.design">

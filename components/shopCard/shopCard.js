@@ -15,8 +15,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
             controller: (function ($scope, shoppingCartService, filterFactory, $http, localStorageService) {
                 'ngInject';
-                console.log(localStorageService.get('email'));
-                console.log(filterFactory.userEmail)
+
                 $http.get('/getShoppingCartContent', {
                     params: {
                         user: filterFactory.userEmail || localStorageService.get('email')
@@ -33,6 +32,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     $scope.createOrder = false;
                     let halls = 0;
                     $scope.personList = filterFactory.personList;
+                    //$scope.personList = localStorageService.get('personList');
                     if ($scope.personList.length) {
                         $scope.personListIsExist = true;
                         $scope.guestsQuantity = filterFactory.personList.length;
@@ -55,11 +55,14 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
 
                     $scope.handle = function (object, name, id) {
-                        if (object !== $scope.personList) {
+                   
+                        if (object !== $scope.personList) {                          
                             shoppingCartService.removeFromCart(object, name, id);
                         } else {
                             $scope.personListIsExist = false;
                             filterFactory.personList = [];
+                            $scope.guestsQuantity = 0;
+                            localStorageService.set('personList', []);
                             shoppingCartService.checkGuestsList(filterFactory.userEmail, filterFactory.selectedEvent);
                         }
                         if (object === $scope.order.halls) {
@@ -74,6 +77,9 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
                         if (object === $scope.order['memorial-halls']) {
                             $scope.order['memorial-halls'] = null;
+                        }
+                        if (object === $scope.order['food-courts']) {
+                            $scope.order['food-courts'] = null;
                         }
 
                         $scope.order.services = $scope.order.services.filter(function (item) {
@@ -96,7 +102,6 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                         quantity ? quantity : quantity = 0;
 
                         if (price === 'invite') {
-                            // if(quantity)
                             if (quantity <= 100) {
                                 return 100;
                             } else if (quantity > 100 && quantity <= 200) {
@@ -107,7 +112,7 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                         };
                         return quantity * parseFloat(price);
                     };
-
+                    $scope.totalAmountInvitation = $scope.totalAmountProduct($scope.guestsQuantity,'invite')
                     $scope.totalAmount = function () {
                         $scope.totalAll = 0;
                         if ($scope.personListIsExist) {

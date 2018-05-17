@@ -2,32 +2,18 @@ const invitationTemplate = require('./invitationTemplate.html');
 require('./invitationStyle.scss');
 
 module.exports = angular.module('emApp.invitation', ['ui.router'])
-    // .value('froalaConfig', {
-    //     toolbarInline: false,
-    //     placeholderText: 'Enter Text Here'
-    // })
     .config(['$stateProvider', function($stateProvider) {
         let invitationState = {
             name: 'invitation',
             url: '/invitation',
             templateUrl: invitationTemplate,
-            controller: (function($scope, shoppingCartService, $http, filterFactory, $rootScope) {
+            controller: (function($scope, shoppingCartService, $http, filterFactory, $rootScope, localStorageService) {
                 'ngInject';
-                // $scope.myHtml = "<h1>Hello World</h1>"
-                // $scope.froalaOptions = {
-                //     toolbarButtons: ["bold", "italic", "underline", "|", "align", "formatOL", "formatUL"],
-                //     events: {
-                //         'froalaEditor.initialized': function() {
-                //             // Use the methods like this.
-                //             $scope.froalaOptions.froalaEditor('selection.get');
-                //         }
-                //     }
-                // };
                 $scope.backgroundTemplate = './images/background7.jpg';
                 $scope.iputText = '';
                 $http.get('/getUserGuestsList', {
                         params: {
-                            userName: filterFactory.userEmail,
+                            userName: filterFactory.userEmail || localStorageService.get('email'),
                             eventName: filterFactory.selectedEvent,
                             currentEvent: filterFactory.currentEvent
                         }
@@ -35,6 +21,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     .then(function successCallback(response) {
                         $scope.personList = response.data;
                         filterFactory.personList = response.data;
+                        localStorageService.set('personList', response.data);
                     }, function errorCallback(response) {
                         console.log('Error!!!');
                 });
@@ -87,6 +74,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     shoppingCartService.changeGuestsList(person, 'add');
                     $scope.personList.push(person);  
                     filterFactory.personList = $scope.personList;
+                    localStorageService.set('personList', $scope.personList);
                 };
                 $scope.removePerson = function(count) {
                     let elem = $scope.personList.find(item => {
@@ -96,6 +84,7 @@ module.exports = angular.module('emApp.invitation', ['ui.router'])
                     let index = $scope.personList.indexOf(elem);
                     $scope.personList.splice(index, 1);
                     filterFactory.personList = $scope.personList;
+                    localStorageService.set('personList', $scope.personList);
                 }
             })
         };
