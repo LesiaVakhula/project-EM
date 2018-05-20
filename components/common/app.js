@@ -15,7 +15,7 @@ require('../../node_modules/ng-dialog/css/ngDialog.min.css');
 require('../../node_modules/ng-dialog/css/ngDialog-theme-default.min.css');
 require("./styles/style.scss");
 
-module.exports = angular.module('emApp', ['ui.router', 'ngDialog','ngCookies', 'LocalStorageModule', home, shopCard, eventPage])
+module.exports = angular.module('emApp', ['ui.router', 'ngDialog', 'ngCookies', 'LocalStorageModule', home, shopCard, eventPage, shoppingCartService])
     .config(function ($locationProvider) {
         'ngInject';
         $locationProvider.html5Mode({
@@ -29,7 +29,6 @@ module.exports = angular.module('emApp', ['ui.router', 'ngDialog','ngCookies', '
             //this solves page refresh and getting back to state
             $rootScope.$state = $state;
         })
-    .service('shoppingCartService', shoppingCartService)
     .factory('filterFactory', require('../EventModule/filterFactory.js'))
     .component('footerComponent', require('./utils-components/footer/footerComponent.js'))
     .component('headerComponent', require('./utils-components/header/headerComponent.js'));

@@ -11,7 +11,6 @@ module.exports = {
     },
     controller: function($scope, $rootScope, shoppingCartService, filterFactory, localStorageService) {
         'ngInject';
-        //$scope.showAddButton = filterFactory.currentEvent === filterFactory.selectedEvent;
         $scope.$on('sendSelectedEvent', function(event, args) {
             $scope.showAddButton = args.show;
         });

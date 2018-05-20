@@ -8,7 +8,6 @@ module.exports = {
     templateUrl: template,
     controller: function($scope,$http, ngDialog, filterFactory, $rootScope, shoppingCartService, $state, localStorageService) {
         'ngInject';
-
         $http.get('/checkingUser')
         .then(function successCallback(response) {
             $scope.userEmail = response.data.user;
@@ -20,6 +19,10 @@ module.exports = {
 
         $scope.isLoggedUser = function () {
 			return localStorageService.get('isUser');
+        };
+
+        $scope.showSelectedEvent = function () {
+            return localStorageService.get('isEventSelected');
         };
         
         $scope.$on('sendUserLog', function(event, args) {
@@ -77,10 +80,6 @@ module.exports = {
                 show: selectedEvent === filterFactory.currentEvent
             });
         }
-
-        $scope.showSelectedEvent = function () {
-            return localStorageService.get('isEventSelected');
-        };
 
         $scope.clickToOpenLoginForm = function() {
             ngDialog.open({

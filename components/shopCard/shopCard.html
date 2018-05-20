@@ -135,10 +135,10 @@
                         </tbody>
                     </table>
                     <div class="modal-total">
-                        <p>Total: {{sum + totalAmountHalls(guestsQuantity, order.halls.cost) + (personListIsExist ? totalAmountProduct(guestsQuantity,'invite') : 0)}}</p>
+                        <p>Total: {{totalAmount()}}</p>
                     </div>
                     <div class="confirm-order">
-                        <button class="btn-confirm-order">Confirm</button>
+                        <button class="btn-confirm-order" ng-click="confirmOrder()">Confirm</button>
                     </div>
                
             </div>

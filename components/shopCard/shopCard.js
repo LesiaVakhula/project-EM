@@ -15,7 +15,6 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
 
             controller: (function ($scope, shoppingCartService, filterFactory, $http, localStorageService) {
                 'ngInject';
-
                 $http.get('/getShoppingCartContent', {
                     params: {
                         user: filterFactory.userEmail || localStorageService.get('email')
@@ -95,12 +94,11 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     };
 
                     $scope.totalAmountHalls = function (quantity, price) {
-                        halls = $scope.totalAmountProduct(quantity, price)
+                        halls = $scope.totalAmountProduct(quantity, price);
                         return halls
                     }
                     $scope.totalAmountProduct = function (quantity, price) {
                         quantity ? quantity : quantity = 0;
-
                         if (price === 'invite') {
                             if (quantity <= 100) {
                                 return 100;
@@ -136,10 +134,14 @@ module.exports = angular.module('emApp.shopCard', ['ui.router'])
                     $scope.closeModal = function () {
                         $scope.createOrder = false;
                     };
+
+                    $scope.confirmOrder = function(){
+                        $scope.createOrder = false;
+                        $scope.showOrderList = false;
+                    }
                 };
             })
         };
         $stateProvider.state(stateCart);
     })
-    // .service('shoppingCartService', shoppingCartService)
     .name;

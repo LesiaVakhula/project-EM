@@ -1,4 +1,6 @@
-module.exports = function($http, filterFactory, localStorageService) {
+const angular = require('angular');
+module.exports = angular.module('emApp.shoppingCartService', [])
+.service('shoppingCartService', function($http, filterFactory, localStorageService) {
     'ngIngject';
 
     function makePostRequest(url, data) {
@@ -104,4 +106,5 @@ module.exports = function($http, filterFactory, localStorageService) {
         makePostRequest('/removeGuests', data);
     }
     
-};
+})
+.name;
